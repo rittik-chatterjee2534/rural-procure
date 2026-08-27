@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --primary-dark: #083b27;
+  --primary: #15803d;
+  --primary-medium: #1bd01b;
+  --primary-light: #d9efcf;
+  --soft-green: #eaf6ec;
+  --pale-green: #f3f8f2;
+
+  --page-background: #f6f8f4;
+  --card-background: #ffffff;
+  --input-background: #ffffff;
+
+  --heading: #092d22;
+  --body-text: #34495e;
+  --muted-text: #718096;
+
+  --border: #d8e0dd;
+  --error: #dc2626;
+  --white: #ffffff;
+
+  --shadow: 0 8px 30px rgba(21, 60, 39, 0.12);
+}
+
+.container{
+    height: 99.8vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container .left{
+    /* border: 1px solid black; */
+    height: 68vh;
+    width: 28vw;
+    margin-top: 15vh;
+    margin-left: 22vw;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 
+        -4px 0 10px rgba(0, 0, 0, 0.04),
+        -16px 0 32px rgba(0, 0, 0, 0.08);
+}
+
+.container .left .heading{
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-size: 1.3rem;
+}
+
+.container .left .heading h1 .rural-txt{
+    color: var(--heading);
+}
+
+.container .left .heading h1 .procure-txt{
+    color: var(--primary);
+}
+
+.container .left .login-details{
+    display: flex;
+    flex-direction: column;
+    height: 53.1vh;
+    padding: 3vh;
+}
+
+.container .left .login-details .login-field{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.container .left .login-details .login-field input{
+    border: 0.5px solid rgb(166, 165, 165);
+    height: 6vh;
+    width: 23vw;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--input-background);
+}
+
+.container .left .login-details .login-field input::placeholder{
+    padding-left: 2vw;
+}
+
+.container .left .login-details .login-field .mobile-number-field .mobile-input,
+.container .left .login-details .login-field .password-field .password-input
+{
+    display: flex;
+    gap: 0;
+    margin-bottom: 1vh;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.container .left .login-details .login-field .mobile-number-field .mobile-input .phone-icon{
+    border: 0.5px solid green;
+    width: 2.4vw;
+    font-size: 1.2rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+}
+
+.container .left .login-details .login-field .password-field .password-input .lock-icon{
+    border: 0.5px solid green;
+    width: 2.4vw;
+    font-size: 1.2rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+}
+
+.container .left .login-details .login-field .password-field .password-input .eye-icon{
+    position: absolute;
+    margin-left: 23vw;
+    margin-top: 2vh;
+}
+
+.container .left .login-details .login-field .password-field a{
+    padding-left: 18vw;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.container .left .login-details .remember-me{
+    display: flex;
+    justify-content: right;
+    /* padding-right: 1vw; */
+}
+
+.container .left .login-details button{
+    height: 11vh;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 1vh;
+    background-color: var(--primary);
+    color: var(--input-background);
+}
+
+
+.container .left .login-details .login-footer{
+    height: 10vh;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+
+.container .left .login-details .login-footer a{
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.container .right{
+    height: 68.2vh;
+    width: 30vw;
+    margin-top: 15vh;
+    margin-right: 22vw;
+}
+
+.container .right img{
+    height: 100%;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 1;
+}
+
+.container .right .text{
+    position: absolute;
+    padding-top: 15vh;
+    padding-left: 1vw;
+}
+
+.container .right .text h1 span{
+    color: var(--primary);
+}
+
+.container .right .text hr{
+    width: 10vw;
+    margin-top: 2vh;
+}
+
+.container .right .text p{
+    color: var(--white);
+}
