@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="admin-login.css" />
+    <title>Admin Login | RuralProcure</title>
+  </head>
+  <body>
+    <main class="login-page">
+      <div class="main-container">
+        <section class="left-container">
+          <!-- Decorative leaves -->
+          <div class="leaf-decoration" aria-hidden="true">
+            <i data-lucide="leaf"></i>
+            <i data-lucide="leaf"></i>
+            <i data-lucide="leaf"></i>
+          </div>
+
+          <!-- Brand -->
+          <header class="brand">
+            <img
+              src="./Images/logo.png"
+              alt="RuralProcure logo"
+              class="brand-logo"
+            />
+
+            <div class="brand-text">
+              <h1>Rural<span>Procure</span></h1>
+              <p>Your Produce. Our Priority.</p>
+            </div>
+          </header>
+
+          <!-- Admin portal information -->
+          <div class="portal-content">
+            <h2>Admin Portal</h2>
+
+            <p class="portal-description">
+              Manage centers, slots, bookings, and procurement operations
+              efficiently.
+            </p>
+
+            <ul class="feature-list">
+              <li class="feature-item">
+                <span class="feature-icon">
+                  <i data-lucide="settings"></i>
+                </span>
+                <span>Manage Centers &amp; Farmers</span>
+              </li>
+
+              <li class="feature-item">
+                <span class="feature-icon">
+                  <i data-lucide="calendar-days"></i>
+                </span>
+                <span>Monitor Bookings &amp; Queue</span>
+              </li>
+
+              <li class="feature-item">
+                <span class="feature-icon">
+                  <i data-lucide="package"></i>
+                </span>
+                <span>Track Procurement</span>
+              </li>
+
+              <li class="feature-item">
+                <span class="feature-icon">
+                  <i data-lucide="chart-no-axes-combined"></i>
+                </span>
+                <span>View Reports &amp; Analytics</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Security information -->
+          <div class="security-card">
+            <div class="security-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+
+            <div class="security-text">
+              <h3>Secure Access</h3>
+              <p>Only authorized personnel can access the admin panel.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="right-container">
+          <!--Right Container-->
+          <div class="login-box">
+            <header class="login-header">
+              <div class="admin-icon">
+                <i data-lucide="shield-user"></i>
+              </div>
+              <h2>Admin Login</h2>
+              <p>Sign in to access your admin dashboard</p>
+            </header>
+            <form action="" class="login-form">
+              <!--Login Form-->
+              <div class="form-group">
+                <label for="admin-email">Email Address</label>
+
+                <div class="input-wrapper">
+                  <i data-lucide="mail" aria-hidden="true"></i>
+                  <input
+                    type="email"
+                    id="admin-email"
+                    name="email"
+                    placeholder="Enter your admin email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="admin-password">Password</label>
+                <div class="input-wrapper">
+                  <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+                  <input
+                    type="password"
+                    id="admin-password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    aria-label="Show password"
+                    class="password-toggle"
+                  >
+                    <i data-lucide="eye-off" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-options">
+                <div class="remember-option">
+                  <input type="checkbox" name="remember" id="remember-admin" />
+                  <label for="remember-admin">Remember me</label>
+                </div>
+                <a href="./forgot-password.html" class="forgot-password"
+                  >Forgot Password?</a
+                >
+              </div>
+              <button type="submit" class="login-button">
+                <i data-lucide="log-in" aria-hidden="true"></i><span>Login</span>
+              </button>
+            </form>
+            <div class="divider">
+              <span class="divider-line" aria-hidden="true"></span>
+              <span class="divider-text">OR</span>
+              <span class="divider-line" aria-hidden="true"></span>
+            </div>
+            <a href="./index.html" class="back-home-button"
+              ><i data-lucide="shield-check" aria-hidden="true"></i><span>Back to Home</span></a
+            >
+          </div>
+          <footer class="admin-footer">
+            <i data-lucide="shield-check" aria-hidden="true"></i>
+            <div class="footer-content">
+              <p>RuralProcure Admin Panel</p>
+              <p class="footer-status">
+                <span>Safe</span>
+                <span aria-hidden="true">|</span>
+                <span>Secure</span>
+                <span aria-hidden="true">|</span>
+                <span>Efficient</span>
+              </p>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="./admin-login.js"></script>
+  </body>
+</html>
