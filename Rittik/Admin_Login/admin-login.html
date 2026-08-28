@@ -102,7 +102,7 @@
               <h2>Admin Login</h2>
               <p>Sign in to access your admin dashboard</p>
             </header>
-            <form action="" class="login-form">
+            <form action="" class="login-form" novalidate>
               <!--Login Form-->
               <div class="form-group">
                 <label for="admin-email">Email Address</label>
@@ -127,6 +127,7 @@
                     type="password"
                     id="admin-password"
                     name="password"
+                    minlength="8"
                     placeholder="Enter your password"
                     autocomplete="current-password"
                     required
@@ -149,8 +150,15 @@
                   >Forgot Password?</a
                 >
               </div>
+              <p
+                class="form-msg"
+                id="form-message"
+                role="status"
+                aria-live="polite"
+              ></p>
               <button type="submit" class="login-button">
-                <i data-lucide="log-in" aria-hidden="true"></i><span>Login</span>
+                <i data-lucide="log-in" aria-hidden="true"></i
+                ><span>Login</span>
               </button>
             </form>
             <div class="divider">
@@ -159,7 +167,8 @@
               <span class="divider-line" aria-hidden="true"></span>
             </div>
             <a href="./index.html" class="back-home-button"
-              ><i data-lucide="shield-check" aria-hidden="true"></i><span>Back to Home</span></a
+              ><i data-lucide="shield-check" aria-hidden="true"></i
+              ><span>Back to Home</span></a
             >
           </div>
           <footer class="admin-footer">

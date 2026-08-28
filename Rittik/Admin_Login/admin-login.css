@@ -485,6 +485,19 @@ body {
   text-decoration: underline;
 }
 
+.form-message {
+  min-height: 18px;
+  margin-top: -8px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--error);
+}
+
+.form-message.success {
+  color: var(--primary);
+}
+
 /* Login Button */
 .login-button {
   width: 100%;
@@ -514,6 +527,14 @@ body {
     transform 0.2s ease,
     box-shadow 0.2s ease,
     filter 0.2s ease;
+}
+
+.login-button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  filter: none;
 }
 
 .login-button svg {
