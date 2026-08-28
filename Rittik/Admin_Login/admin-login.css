@@ -74,7 +74,7 @@ body {
       rgba(246, 250, 240, 0.16) 67%,
       rgba(7, 65, 27, 0.08) 100%
     ),
-    url("./Images/ruralprocure-logo.png");
+    url("../Images/ruralprocure-logo.png");
   background-size: cover;
   background-position: 60% bottom;
   background-repeat: no-repeat;

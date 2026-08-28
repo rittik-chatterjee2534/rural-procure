@@ -18,15 +18,17 @@ const DEMO_ADMIN_PASSWORD = "Admin@123";
 passwordToggle.addEventListener("click", () => {
   const isPasswordHidden = passwordInput.type === "password";
   const passwordIcon = passwordToggle.querySelector("svg");
+
   if (isPasswordHidden) {
     passwordInput.type = "text";
     passwordToggle.setAttribute("aria-label", "Hide password");
-    passwordIcon.setAttribute("data-lucide", "eye-off");
+    passwordIcon.setAttribute("data-lucide", "eye");
   } else {
     passwordInput.type = "password";
     passwordToggle.setAttribute("aria-label", "Show password");
-    passwordIcon.setAttribute("data-lucide", "eye");
+    passwordIcon.setAttribute("data-lucide", "eye-off");
   }
+
   lucide.createIcons();
 });
 
