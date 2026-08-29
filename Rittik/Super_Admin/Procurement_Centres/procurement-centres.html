@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../Dashboard/super-admin-dashboard.css" />
+
+    <link rel="stylesheet" href="./procurement-centres.css" />
+
+    <title>Procurement Centres | RuralProcure</title>
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="../Dashboard/super-admin-dashboard.html"
+            class="sidebar-brand"
+          >
+            <img
+              src="../../Images/logo.png"
+              alt="RuralProcure logo"
+              class="sidebar-logo"
+            />
+            <div class="brand-details">
+              <h1>RuralProcure</h1>
+              <span>Admin Portal</span>
+            </div>
+          </a>
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            class="sidebar-close"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav" aria-label="Admin navigation">
+          <div class="nav-group">
+            <!--Overview-->
+            <p class="nav-group-title">Overview</p>
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="../Dashboard/super-admin-dashboard.html"
+                  class="nav-link"
+                  ><i data-lucide="layout-dashboard" aria-hidden="true"></i
+                  ><span>Dashboard</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Management-->
+            <p class="nav-group-title">Management</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="users" aria-hidden="true"></i
+                  ><span>Farmers</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="badge-check" aria-hidden="true"></i
+                  ><span>Officers</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="./procurement-centres.html"
+                  class="nav-link active"
+                  aria-current="page"
+                  ><i data-lucide="warehouse" aria-hidden="true"></i
+                  ><span>Procurement Centres</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Operations-->
+            <p class="nav-group-title">Operations</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="calendar-days" aria-hidden="true"></i
+                  ><span>Slot Management</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="clipboard-list" aria-hidden="true"></i
+                  ><span>Bookings</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="list-ordered" aria-hidden="true"></i
+                  ><span>Live Queues</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="package-check" aria-hidden="true"></i
+                  ><span>Procurements</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="indian-rupee" aria-hidden="true"></i
+                  ><span>Payments</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--System-->
+            <p class="nav-group-title">System</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i
+                  ><span>Reports &amp; Analytics</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="bell" aria-hidden="true"></i
+                  ><span>Notifications</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="settings" aria-hidden="true"></i
+                  ><span>Settings</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <!--Sidebar Footer-->
+          <button
+            type="button"
+            class="admin-profile"
+            aria-label="Open admin menu"
+            aria-expanded="false"
+          >
+            <div class="admin-avatar">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </div>
+            <div class="admin-details">
+              <strong>Admin</strong>
+              <span>Super Admin</span>
+            </div>
+            <i
+              data-lucide="chevron-down"
+              class="profile-chevron"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </footer>
+      </aside>
+      <div class="sidebar-overlay" aria-hidden="true"></div>
+
+      <div class="dashboard-main">
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <!--Top Navbar Left-->
+            <button
+              type="button"
+              class="sidebar-toggle"
+              aria-label="Open sidebar"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <div class="page-heading">
+              <h1>Procurement Centres</h1>
+
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../Dashboard/super-admin-dashboard.html">Dashboard</a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <span aria-current="page">Procurement Centres</span>
+              </nav>
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!--Top Navbar Right-->
+            <button
+              type="button"
+              class="date-selector"
+              aria-label="Select dashboard date"
+            >
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+              <time id="dashboard-date" datetime="2026-08-28">
+                Aug 28, 2026
+              </time>
+              <i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="notification-button"
+              aria-label="View 4 unread notifications"
+              aria-expanded="false"
+              aria-controls="notification-panel"
+            >
+              <i data-lucide="bell" aria-hidden="true"></i>
+              <span class="notification-badge">4</span>
+            </button>
+            <div class="notification-panel" id="notification-panel" hidden>
+              <div class="notification-panel-header">
+                <h3>Notifications</h3>
+                <button type="button" class="mark-read-button">
+                  Mark all as read
+                </button>
+              </div>
+
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a slot at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Procurement completed</strong>
+                    <p>Procurement #RP-1024 was completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:02">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Payment requires review</strong>
+                    <p>
+                      Payment for procurement #RP-1018 is awaiting approval.
+                    </p>
+                    <time datetime="2026-08-28T20:45">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Centre capacity update</strong>
+                    <p>Bhopal Rural Centre reached 90% daily capacity.</p>
+                    <time datetime="2026-08-28T20:20">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="navbar-profile"
+              aria-label="Open admin profile menu"
+              aria-controls="profile-menu"
+              aria-expanded="false"
+            >
+              <span class="navbar-avatar">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" hidden>
+              <div class="profile-menu-header">
+                <span class="profile-menu-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong>Super Admin</strong>
+                  <span>superadmin@ruralprocure.in</span>
+                </div>
+              </div>
+
+              <a href="#" class="profile-menu-item">
+                <i data-lucide="settings" aria-hidden="true"></i>
+                <span>Account Settings</span>
+              </a>
+
+              <button type="button" class="profile-menu-item logout-button">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="dashboard-content">
+          <!-- Procurement Centres content -->
+          <section class="centres-intro">
+            <p>
+              Manage procurement centres, their capacity, assigned officers and
+              availability.
+            </p>
+
+            <a href="./add-procurement-centre.html" class="add-centre-button">
+              <i data-lucide="plus" aria-hidden="true"></i>
+              <span>Add New Centre</span>
+            </a>
+          </section>
+          <section
+            class="centre-filter-panel"
+            aria-label="Filter procurement centres"
+          >
+            <form class="centre-filters" id="centre-filter-form">
+              <div class="search-field">
+                <label for="centre-search" class="visually-hidden">
+                  Search procurement centres
+                </label>
+
+                <i data-lucide="search" aria-hidden="true"></i>
+
+                <input
+                  type="search"
+                  id="centre-search"
+                  name="search"
+                  placeholder="Search by centre name, code or location..."
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="filter-field">
+                <label for="state-filter">State</label>
+                <select id="state-filter" name="state">
+                  <option value="all">All States</option>
+                  <option value="west-bengal">West Bengal</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="district-filter">District</label>
+                <select id="district-filter" name="district">
+                  <option value="all">All Districts</option>
+                  <option value="nadia">Nadia</option>
+                  <option value="bardhaman">Bardhaman</option>
+                  <option value="malda">Malda</option>
+                  <option value="murshidabad">Murshidabad</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="status-filter">Status</label>
+                <select id="status-filter" name="status">
+                  <option value="all">All Statuses</option>
+                  <option value="active">Active</option>
+                  <option value="full">Full</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="temporarily-closed">Temporarily Closed</option>
+                </select>
+              </div>
+
+              <button type="reset" class="clear-filters-button">
+                <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+                <span>Clear Filters</span>
+              </button>
+            </form>
+          </section>
+          <section
+            class="centre-summary-grid"
+            aria-label="Procurement centre summary"
+          >
+            <article class="centre-summary-card">
+              <span class="summary-icon">
+                <i data-lucide="warehouse" aria-hidden="true"></i>
+              </span>
+
+              <div class="summary-details">
+                <span>Total Centres</span>
+                <strong id="total-centres-count">32</strong>
+                <p>All procurement centres</p>
+              </div>
+            </article>
+
+            <article class="centre-summary-card">
+              <span class="summary-icon">
+                <i data-lucide="circle-check-big" aria-hidden="true"></i>
+              </span>
+
+              <div class="summary-details">
+                <span>Active Centres</span>
+                <strong id="active-centres-count">28</strong>
+                <p>Currently operational</p>
+              </div>
+            </article>
+
+            <article class="centre-summary-card">
+              <span class="summary-icon warning">
+                <i data-lucide="circle-x" aria-hidden="true"></i>
+              </span>
+
+              <div class="summary-details">
+                <span>Inactive Centres</span>
+                <strong id="inactive-centres-count">4</strong>
+                <p>Not operational</p>
+              </div>
+            </article>
+
+            <article class="centre-summary-card">
+              <span class="summary-icon">
+                <i data-lucide="calendar-check" aria-hidden="true"></i>
+              </span>
+
+              <div class="summary-details">
+                <span>Available Slots Today</span>
+                <strong id="available-slots-count">186</strong>
+                <p>Across all centres</p>
+              </div>
+            </article>
+          </section>
+
+          <section
+            class="centres-list-card"
+            aria-labelledby="centres-list-heading"
+          >
+            <div class="centres-list-header">
+              <h2 id="centres-list-heading">Procurement Centres List</h2>
+            </div>
+
+            <div class="centres-table-wrapper">
+              <table class="centres-table">
+                <caption class="visually-hidden">
+                  List of procurement centres and their operational details
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Centre Code</th>
+                    <th scope="col">Centre Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Officer In Charge</th>
+                    <th scope="col">Daily Capacity</th>
+                    <th scope="col">Today's Bookings</th>
+                    <th scope="col">Available Slots</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="centres-table-body">
+                  <!-- Centre rows will go here -->
+                  <tr id="no-results-row" hidden>
+                    <td colspan="9">
+                      <div class="table-empty-state">
+                        <i data-lucide="search-x" aria-hidden="true"></i>
+                        <strong>No procurement centres found</strong>
+                        <p>
+                          Try changing your search term or selected filters.
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <footer class="centres-list-footer">
+              <p id="entries-summary">
+                Showing <strong>1</strong> to <strong>8</strong> of
+                <strong>32</strong> centres
+              </p>
+
+              <nav
+                class="pagination"
+                aria-label="Procurement centres pagination"
+              >
+                <button
+                  type="button"
+                  class="pagination-button previous-page"
+                  aria-label="Go to previous page"
+                  disabled
+                >
+                  <i data-lucide="chevron-left" aria-hidden="true"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="pagination-button active"
+                  aria-label="Page 1"
+                  aria-current="page"
+                  data-page="1"
+                >
+                  1
+                </button>
+
+                <button
+                  type="button"
+                  class="pagination-button"
+                  aria-label="Page 2"
+                  data-page="2"
+                >
+                  2
+                </button>
+
+                <button
+                  type="button"
+                  class="pagination-button"
+                  aria-label="Page 3"
+                  data-page="3"
+                >
+                  3
+                </button>
+
+                <button
+                  type="button"
+                  class="pagination-button"
+                  aria-label="Page 4"
+                  data-page="4"
+                >
+                  4
+                </button>
+
+                <button
+                  type="button"
+                  class="pagination-button next-page"
+                  aria-label="Go to next page"
+                >
+                  <i data-lucide="chevron-right" aria-hidden="true"></i>
+                </button>
+              </nav>
+            </footer>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="./procurement-centres.js"></script>
+  </body>
+</html>

@@ -11,16 +11,25 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="admin-dashboard.css" />
-    <title>Admin Dashboard | RuralProcure</title>
+
+    <link rel="stylesheet" href="../Dashboard/super-admin-dashboard.css" />
+
+    <link rel="stylesheet" href="./procurement-centres.css" />
+
+    <link rel="stylesheet" href="./procurement-centre-details.css" />
+
+    <title>Centre Details | RuralProcure</title>
   </head>
   <body>
     <div class="dashboard-layout">
       <aside class="sidebar">
         <div class="sidebar-header">
-          <a href="./admin-dashboard.html" class="sidebar-brand">
+          <a
+            href="../Dashboard/super-admin-dashboard.html"
+            class="sidebar-brand"
+          >
             <img
-              src="../Images/logo.png"
+              src="../../Images/logo.png"
               alt="RuralProcure logo"
               class="sidebar-logo"
             />
@@ -44,9 +53,8 @@
             <ul class="nav-list">
               <li>
                 <a
-                  href="./admin-dashboard.html"
-                  class="nav-link active"
-                  aria-current="page"
+                  href="../Dashboard/super-admin-dashboard.html"
+                  class="nav-link"
                   ><i data-lucide="layout-dashboard" aria-hidden="true"></i
                   ><span>Dashboard</span></a
                 >
@@ -70,7 +78,10 @@
                 >
               </li>
               <li>
-                <a href="#" class="nav-link"
+                <a
+                  href="./procurement-centres.html"
+                  class="nav-link active"
+                  aria-current="page"
                   ><i data-lucide="warehouse" aria-hidden="true"></i
                   ><span>Procurement Centres</span></a
                 >
@@ -165,10 +176,9 @@
         </footer>
       </aside>
       <div class="sidebar-overlay" aria-hidden="true"></div>
+
       <div class="dashboard-main">
-        <!--Main Dashboard-->
         <header class="top-navbar">
-          <!--Top Navbar-->
           <div class="navbar-left">
             <!--Top Navbar Left-->
             <button
@@ -180,11 +190,23 @@
               <i data-lucide="menu" aria-hidden="true"></i>
             </button>
 
-            <div class="welcome-text">
-              <h2>Welcome back, Admin!</h2>
-              <p>Here's what's happening with RuralProcure today.</p>
+            <div class="page-heading">
+              <h1>Procurement Centres</h1>
+
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../Dashboard/super-admin-dashboard.html">Dashboard</a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <a href="./procurement-centres.html"> Procurement Centres </a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <span id="breadcrumb-centre-code">Centre Details</span>
+              </nav>
             </div>
           </div>
+
           <div class="navbar-right">
             <!--Top Navbar Right-->
             <button
@@ -246,7 +268,9 @@
 
                   <div class="notification-content">
                     <strong>Payment requires review</strong>
-                    <p>Payment for procurement #RP-1018 is awaiting approval.</p>
+                    <p>
+                      Payment for procurement #RP-1018 is awaiting approval.
+                    </p>
                     <time datetime="2026-08-28T20:45">35 minutes ago</time>
                   </div>
                 </li>
@@ -298,198 +322,255 @@
             </div>
           </div>
         </header>
-        <main class="dashboard-content">
-          <!--Main Dashboard-->
-          <section class="stats-grid" aria-label="Dashboard summary">
-            <article class="stat-card">
-              <div class="stat-card-main">
-                <div class="stat-icon">
-                  <i data-lucide="calendar-check" aria-hidden="true"></i>
+
+        <main class="dashboard-content centre-details-content">
+          <section class="centre-details-header">
+            <div class="centre-heading">
+              <a
+                href="./procurement-centres.html"
+                class="back-button"
+                aria-label="Return to procurement centres"
+              >
+                <i data-lucide="arrow-left" aria-hidden="true"></i>
+              </a>
+
+              <div>
+                <div class="centre-title-row">
+                  <h1 id="centre-name">Centre Details</h1>
+
+                  <span class="status-badge active" id="centre-status">
+                    Active
+                  </span>
                 </div>
-                <div class="stat-info">
-                  <span class="stat-label"> Today's Bookings </span>
-                  <strong class="stat-value"> 1,097 </strong>
-                </div>
+
+                <p>
+                  Centre code:
+                  <strong id="centre-code">—</strong>
+                </p>
               </div>
-              <p class="stat-change positive">
-                <i data-lucide="trending-up" aria-hidden="true"></i>
-                <span>15.2%</span> from yesterday
-              </p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-card-main">
-                <div class="stat-icon">
-                  <i data-lucide="users" aria-hidden="true"></i>
-                </div>
-                <div class="stat-info">
-                  <span class="stat-label"> Farmers Waiting </span>
-                  <strong class="stat-value"> 86 </strong>
-                </div>
-              </div>
-              <p class="stat-change negative">
-                <i data-lucide="trending-up" aria-hidden="true"></i>
-                <span>8.3%</span> more than yesterday
-              </p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-card-main">
-                <div class="stat-icon">
-                  <i data-lucide="package-check" aria-hidden="true"></i>
-                </div>
-                <div class="stat-info">
-                  <span class="stat-label"> Procurements Completed </span>
-                  <strong class="stat-value"> 892 </strong>
-                </div>
-              </div>
-              <p class="stat-change positive">
-                <i data-lucide="trending-up" aria-hidden="true"></i>
-                <span>10.1%</span> from yesterday
-              </p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-card-main">
-                <div class="stat-icon">
-                  <i data-lucide="indian-rupee" aria-hidden="true"></i>
-                </div>
-                <div class="stat-info">
-                  <span class="stat-label"> Pending Payments </span>
-                  <strong class="stat-value"> 47 </strong>
-                </div>
-              </div>
-              <p class="stat-change negative">
-                <i data-lucide="trending-up" aria-hidden="true"></i>
-                <span>6.2%</span> more than yesterday
-              </p>
-            </article>
-            <article class="stat-card">
-              <div class="stat-card-main">
-                <div class="stat-icon">
-                  <i data-lucide="warehouse" aria-hidden="true"></i>
-                </div>
-                <div class="stat-info">
-                  <span class="stat-label"> Active Centres </span>
-                  <strong class="stat-value"> 32 </strong>
-                </div>
-              </div>
-              <p class="stat-change positive">
-                <i data-lucide="trending-up" aria-hidden="true"></i>
-                <span>3</span> added this month
-              </p>
-            </article>
+            </div>
+
+            <div class="centre-header-actions">
+              <a href="#" class="secondary-button" id="manage-slots-link">
+                <i data-lucide="calendar-days" aria-hidden="true"></i>
+                <span>Manage Slots</span>
+              </a>
+
+              <a href="#" class="primary-button" id="edit-centre-link">
+                <i data-lucide="pencil" aria-hidden="true"></i>
+                <span>Edit Centre</span>
+              </a>
+            </div>
           </section>
-          <section class="analytics-grid">
-            <article class="analytics-card booking-overview">
-              <div class="analytics-card-header">
-                <h3>Booking & Procurement Overview</h3>
 
-                <select
-                  id="overview-range"
-                  class="analytics-filter"
-                  aria-label="Select overview period"
-                >
-                  <option value="7">Last 7 Days</option>
-                  <option value="30">Last 30 Days</option>
-                  <option value="90">Last 3 Months</option>
-                </select>
-              </div>
+          <section class="centre-overview-grid" aria-label="Centre overview">
+            <article class="centre-stat-card">
+              <span class="centre-stat-icon">
+                <i data-lucide="users" aria-hidden="true"></i>
+              </span>
 
-              <div class="chart-container">
-                <canvas id="booking-overview-chart"></canvas>
+              <div>
+                <span class="centre-stat-label">Daily Capacity</span>
+                <strong class="centre-stat-value" id="daily-capacity">
+                  —
+                </strong>
+                <p>Maximum farmers per day</p>
               </div>
             </article>
-            <article class="analytics-card status-overview">
-              <div class="analytics-card-header">
-                <h3>Requests by Status</h3>
-              </div>
 
-              <div class="status-chart-container">
-                <canvas id="request-status-chart">
-                  Procurement requests grouped by status.
-                </canvas>
+            <article class="centre-stat-card">
+              <span class="centre-stat-icon">
+                <i data-lucide="clipboard-list" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span class="centre-stat-label">Today's Bookings</span>
+                <strong class="centre-stat-value" id="today-bookings">
+                  —
+                </strong>
+                <p>Bookings received today</p>
+              </div>
+            </article>
+
+            <article class="centre-stat-card">
+              <span class="centre-stat-icon">
+                <i data-lucide="calendar-check" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span class="centre-stat-label">Available Slots</span>
+                <strong class="centre-stat-value" id="available-slots">
+                  —
+                </strong>
+                <p>Slots remaining today</p>
+              </div>
+            </article>
+
+            <article class="centre-stat-card">
+              <span class="centre-stat-icon">
+                <i data-lucide="list-ordered" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span class="centre-stat-label">Current Queue</span>
+                <strong class="centre-stat-value" id="current-queue">
+                  —
+                </strong>
+                <p>Farmers currently waiting</p>
               </div>
             </article>
           </section>
-          <section class="dashboard-lower-grid">
-            <article class="dashboard-card recent-activity-card">
-              <div class="dashboard-card-header">
-                <h3>Recent Activity</h3>
-                <a href="#" class="view-all-link">View All</a>
-              </div>
-              <ul class="activity-list">
-                <li class="activity-item">
-                  <span class="activity-icon">
-                    <i data-lucide="calendar-check" aria-hidden="true"></i>
-                  </span>
 
-                  <div class="activity-details">
-                    <strong>New slot booking</strong>
-                    <p>Ramesh Kumar booked a wheat procurement slot.</p>
-                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-icon">
-                    <i data-lucide="package-check" aria-hidden="true"></i>
-                  </span>
+          <section class="centre-information-grid">
+            <article class="details-card">
+              <header class="details-card-header">
+                <div>
+                  <h2>Centre Information</h2>
+                  <p>Location and operational information.</p>
+                </div>
 
-                  <div class="activity-details">
-                    <strong>Procurement Completed</strong>
-                    <p>Procurement #RP-1024 completed at Sehore Centre.</p>
-                    <time datetime="2026-08-28T21:15">18 minutes ago</time>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-icon">
-                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
-                  </span>
+                <span class="details-header-icon">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                </span>
+              </header>
 
-                  <div class="activity-details">
-                    <strong>Payment processed</strong>
-                    <p>₹28,450 was released to Sita Devi.</p>
-                    <time datetime="2026-08-28T21:15">35 minutes ago</time>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <span class="activity-icon">
-                    <i data-lucide="warehouse" aria-hidden="true"></i>
-                  </span>
+              <dl class="details-list">
+                <div class="details-item">
+                  <dt>Centre name</dt>
+                  <dd id="details-centre-name">—</dd>
+                </div>
 
-                  <div class="activity-details">
-                    <strong>Centre capacity updated</strong>
-                    <p>Bhopal Rural Centre added 20 new slots.</p>
-                    <time datetime="2026-08-28T21:15">1 hour ago</time>
-                  </div>
-                </li>
-              </ul>
+                <div class="details-item">
+                  <dt>Centre code</dt>
+                  <dd id="details-centre-code">—</dd>
+                </div>
+
+                <div class="details-item">
+                  <dt>Location</dt>
+                  <dd id="centre-location">—</dd>
+                </div>
+
+                <div class="details-item">
+                  <dt>State</dt>
+                  <dd id="centre-state">—</dd>
+                </div>
+
+                <div class="details-item">
+                  <dt>District</dt>
+                  <dd id="centre-district">—</dd>
+                </div>
+
+                <div class="details-item">
+                  <dt>Operational status</dt>
+                  <dd id="operational-status">—</dd>
+                </div>
+              </dl>
             </article>
 
-            <article class="dashboard-card quick-actions-card">
-              <div class="dashboard-card-header">
-                <h3>Quick Actions</h3>
+            <article class="details-card">
+              <header class="details-card-header">
+                <div>
+                  <h2>Officer In Charge</h2>
+                  <p>Officer assigned to this centre.</p>
+                </div>
+
+                <span class="details-header-icon">
+                  <i data-lucide="badge-check" aria-hidden="true"></i>
+                </span>
+              </header>
+
+              <div class="officer-profile">
+                <span class="officer-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong id="officer-name">—</strong>
+                  <span>Procurement Officer</span>
+                </div>
               </div>
-              <div class="quick-actions-grid">
-                <a href="#" class="quick-action">
-                  <i data-lucide="warehouse" aria-hidden="true"></i>
-                  <span>Add Centre</span>
-                </a>
 
-                <a href="#" class="quick-action">
-                  <i data-lucide="clipboard-check" aria-hidden="true"></i>
-                  <span>Review Bookings</span>
-                </a>
+              <dl class="details-list officer-details-list">
+                <div class="details-item">
+                  <dt>Officer ID</dt>
+                  <dd id="officer-id">—</dd>
+                </div>
 
-                <a href="#" class="quick-action">
-                  <i data-lucide="users" aria-hidden="true"></i>
-                  <span>Manage Farmers</span>
-                </a>
+                <div class="details-item">
+                  <dt>Phone number</dt>
+                  <dd id="officer-phone">—</dd>
+                </div>
 
-                <a href="#" class="quick-action">
-                  <i
-                    data-lucide="chart-no-axes-combined"
-                    aria-hidden="true"
-                  ></i>
-                  <span>Generate Reports</span>
+                <div class="details-item">
+                  <dt>Email address</dt>
+                  <dd id="officer-email">—</dd>
+                </div>
+              </dl>
+            </article>
+          </section>
+          <section class="centre-operations-grid">
+            <article class="details-card capacity-card">
+              <header class="details-card-header">
+                <div>
+                  <h2>Capacity Utilization</h2>
+                  <p>Today’s booking capacity overview.</p>
+                </div>
+
+                <span class="details-header-icon">
+                  <i data-lucide="gauge" aria-hidden="true"></i>
+                </span>
+              </header>
+
+              <div class="capacity-summary">
+                <div>
+                  <span>Capacity used</span>
+                  <strong id="capacity-percentage">—</strong>
+                </div>
+
+                <span id="capacity-description"> Calculating utilization </span>
+              </div>
+
+              <div
+                class="capacity-progress"
+                role="progressbar"
+                aria-label="Centre capacity utilization"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                id="capacity-progress"
+              >
+                <span id="capacity-progress-bar"></span>
+              </div>
+
+              <div class="capacity-legend">
+                <div>
+                  <span class="legend-dot booked"></span>
+                  <span>Booked</span>
+                  <strong id="capacity-booked">—</strong>
+                </div>
+
+                <div>
+                  <span class="legend-dot available"></span>
+                  <span>Available</span>
+                  <strong id="capacity-available">—</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="details-card slots-card">
+              <header class="details-card-header">
+                <div>
+                  <h2>Today’s Slot Activity</h2>
+                  <p>Booking activity across today’s time slots.</p>
+                </div>
+
+                <a href="#" class="card-link" id="view-all-slots-link">
+                  View all
+                  <i data-lucide="arrow-right" aria-hidden="true"></i>
                 </a>
+              </header>
+
+              <div class="slot-activity-list" id="slot-activity-list">
               </div>
             </article>
           </section>
@@ -500,7 +581,6 @@
     <script>
       lucide.createIcons();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./admin-dashboard.js"></script>
+    <script src="./procurement-centre-details.js"></script>
   </body>
 </html>

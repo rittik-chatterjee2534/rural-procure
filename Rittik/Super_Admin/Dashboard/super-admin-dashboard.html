@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./super-admin-dashboard.css" />
+    <title>Admin Dashboard | RuralProcure</title>
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="./super-admin-dashboard.html" class="sidebar-brand">
+            <img
+              src="../../Images/logo.png"
+              alt="RuralProcure logo"
+              class="sidebar-logo"
+            />
+            <div class="brand-details">
+              <h1>RuralProcure</h1>
+              <span>Admin Portal</span>
+            </div>
+          </a>
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            class="sidebar-close"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav" aria-label="Admin navigation">
+          <div class="nav-group">
+            <!--Overview-->
+            <p class="nav-group-title">Overview</p>
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="./admin-dashboard.html"
+                  class="nav-link active"
+                  aria-current="page"
+                  ><i data-lucide="layout-dashboard" aria-hidden="true"></i
+                  ><span>Dashboard</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Management-->
+            <p class="nav-group-title">Management</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="users" aria-hidden="true"></i
+                  ><span>Farmers</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="badge-check" aria-hidden="true"></i
+                  ><span>Officers</span></a
+                >
+              </li>
+              <li>
+                <a href="../Procurement_Centres/procurement-centres.html" class="nav-link"
+                  ><i data-lucide="warehouse" aria-hidden="true"></i
+                  ><span>Procurement Centres</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Operations-->
+            <p class="nav-group-title">Operations</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="calendar-days" aria-hidden="true"></i
+                  ><span>Slot Management</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="clipboard-list" aria-hidden="true"></i
+                  ><span>Bookings</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="list-ordered" aria-hidden="true"></i
+                  ><span>Live Queues</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="package-check" aria-hidden="true"></i
+                  ><span>Procurements</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="indian-rupee" aria-hidden="true"></i
+                  ><span>Payments</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--System-->
+            <p class="nav-group-title">System</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i
+                  ><span>Reports &amp; Analytics</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="bell" aria-hidden="true"></i
+                  ><span>Notifications</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="settings" aria-hidden="true"></i
+                  ><span>Settings</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <!--Sidebar Footer-->
+          <button
+            type="button"
+            class="admin-profile"
+            aria-label="Open admin menu"
+            aria-expanded="false"
+          >
+            <div class="admin-avatar">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </div>
+            <div class="admin-details">
+              <strong>Admin</strong>
+              <span>Super Admin</span>
+            </div>
+            <i
+              data-lucide="chevron-down"
+              class="profile-chevron"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </footer>
+      </aside>
+      <div class="sidebar-overlay" aria-hidden="true"></div>
+      <div class="dashboard-main">
+        <!--Main Dashboard-->
+        <header class="top-navbar">
+          <!--Top Navbar-->
+          <div class="navbar-left">
+            <!--Top Navbar Left-->
+            <button
+              type="button"
+              class="sidebar-toggle"
+              aria-label="Open sidebar"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <div class="welcome-text">
+              <h2>Welcome back, Admin!</h2>
+              <p>Here's what's happening with RuralProcure today.</p>
+            </div>
+          </div>
+          <div class="navbar-right">
+            <!--Top Navbar Right-->
+            <button
+              type="button"
+              class="date-selector"
+              aria-label="Select dashboard date"
+            >
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+              <time id="dashboard-date" datetime="2026-08-28">
+                Aug 28, 2026
+              </time>
+              <i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="notification-button"
+              aria-label="View 4 unread notifications"
+              aria-expanded="false"
+              aria-controls="notification-panel"
+            >
+              <i data-lucide="bell" aria-hidden="true"></i>
+              <span class="notification-badge">4</span>
+            </button>
+            <div class="notification-panel" id="notification-panel" hidden>
+              <div class="notification-panel-header">
+                <h3>Notifications</h3>
+                <button type="button" class="mark-read-button">
+                  Mark all as read
+                </button>
+              </div>
+
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a slot at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Procurement completed</strong>
+                    <p>Procurement #RP-1024 was completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:02">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Payment requires review</strong>
+                    <p>Payment for procurement #RP-1018 is awaiting approval.</p>
+                    <time datetime="2026-08-28T20:45">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Centre capacity update</strong>
+                    <p>Bhopal Rural Centre reached 90% daily capacity.</p>
+                    <time datetime="2026-08-28T20:20">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="navbar-profile"
+              aria-label="Open admin profile menu"
+              aria-controls="profile-menu"
+              aria-expanded="false"
+            >
+              <span class="navbar-avatar">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" hidden>
+              <div class="profile-menu-header">
+                <span class="profile-menu-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong>Admin</strong>
+                  <span>admin@ruralprocure.in</span>
+                </div>
+              </div>
+
+              <a href="#" class="profile-menu-item">
+                <i data-lucide="settings" aria-hidden="true"></i>
+                <span>Account Settings</span>
+              </a>
+
+              <button type="button" class="profile-menu-item logout-button">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="dashboard-content">
+          <!--Main Dashboard-->
+          <section class="stats-grid" aria-label="Dashboard summary">
+            <article class="stat-card">
+              <div class="stat-card-main">
+                <div class="stat-icon">
+                  <i data-lucide="calendar-check" aria-hidden="true"></i>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-label"> Today's Bookings </span>
+                  <strong class="stat-value"> 1,097 </strong>
+                </div>
+              </div>
+              <p class="stat-change positive">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+                <span>15.2%</span> from yesterday
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card-main">
+                <div class="stat-icon">
+                  <i data-lucide="users" aria-hidden="true"></i>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-label"> Farmers Waiting </span>
+                  <strong class="stat-value"> 86 </strong>
+                </div>
+              </div>
+              <p class="stat-change negative">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+                <span>8.3%</span> more than yesterday
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card-main">
+                <div class="stat-icon">
+                  <i data-lucide="package-check" aria-hidden="true"></i>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-label"> Procurements Completed </span>
+                  <strong class="stat-value"> 892 </strong>
+                </div>
+              </div>
+              <p class="stat-change positive">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+                <span>10.1%</span> from yesterday
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card-main">
+                <div class="stat-icon">
+                  <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-label"> Pending Payments </span>
+                  <strong class="stat-value"> 47 </strong>
+                </div>
+              </div>
+              <p class="stat-change negative">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+                <span>6.2%</span> more than yesterday
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-card-main">
+                <div class="stat-icon">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-label"> Active Centres </span>
+                  <strong class="stat-value"> 32 </strong>
+                </div>
+              </div>
+              <p class="stat-change positive">
+                <i data-lucide="trending-up" aria-hidden="true"></i>
+                <span>3</span> added this month
+              </p>
+            </article>
+          </section>
+          <section class="analytics-grid">
+            <article class="analytics-card booking-overview">
+              <div class="analytics-card-header">
+                <h3>Booking & Procurement Overview</h3>
+
+                <select
+                  id="overview-range"
+                  class="analytics-filter"
+                  aria-label="Select overview period"
+                >
+                  <option value="7">Last 7 Days</option>
+                  <option value="30">Last 30 Days</option>
+                  <option value="90">Last 3 Months</option>
+                </select>
+              </div>
+
+              <div class="chart-container">
+                <canvas id="booking-overview-chart"></canvas>
+              </div>
+            </article>
+            <article class="analytics-card status-overview">
+              <div class="analytics-card-header">
+                <h3>Requests by Status</h3>
+              </div>
+
+              <div class="status-chart-container">
+                <canvas id="request-status-chart">
+                  Procurement requests grouped by status.
+                </canvas>
+              </div>
+            </article>
+          </section>
+          <section class="dashboard-lower-grid">
+            <article class="dashboard-card recent-activity-card">
+              <div class="dashboard-card-header">
+                <h3>Recent Activity</h3>
+                <a href="#" class="view-all-link">View All</a>
+              </div>
+              <ul class="activity-list">
+                <li class="activity-item">
+                  <span class="activity-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="activity-details">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a wheat procurement slot.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <span class="activity-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="activity-details">
+                    <strong>Procurement Completed</strong>
+                    <p>Procurement #RP-1024 completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <span class="activity-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="activity-details">
+                    <strong>Payment processed</strong>
+                    <p>₹28,450 was released to Sita Devi.</p>
+                    <time datetime="2026-08-28T21:15">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <span class="activity-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="activity-details">
+                    <strong>Centre capacity updated</strong>
+                    <p>Bhopal Rural Centre added 20 new slots.</p>
+                    <time datetime="2026-08-28T21:15">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card quick-actions-card">
+              <div class="dashboard-card-header">
+                <h3>Quick Actions</h3>
+              </div>
+              <div class="quick-actions-grid">
+                <a href="#" class="quick-action">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                  <span>Add Centre</span>
+                </a>
+
+                <a href="#" class="quick-action">
+                  <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                  <span>Review Bookings</span>
+                </a>
+
+                <a href="#" class="quick-action">
+                  <i data-lucide="users" aria-hidden="true"></i>
+                  <span>Manage Farmers</span>
+                </a>
+
+                <a href="#" class="quick-action">
+                  <i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i>
+                  <span>Generate Reports</span>
+                </a>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./super-admin-dashboard.js"></script>
+  </body>
+</html>

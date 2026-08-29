@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../Dashboard/super-admin-dashboard.css" />
+
+    <link rel="stylesheet" href="./procurement-centres.css" />
+
+    <link rel="stylesheet" href="./add-procurement-centre.css" />
+
+    <title>Edit Procurement Centre | RuralProcure</title>
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="../Dashboard/super-admin-dashboard.html"
+            class="sidebar-brand"
+          >
+            <img
+              src="../../Images/logo.png"
+              alt="RuralProcure logo"
+              class="sidebar-logo"
+            />
+            <div class="brand-details">
+              <h1>RuralProcure</h1>
+              <span>Admin Portal</span>
+            </div>
+          </a>
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            class="sidebar-close"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav" aria-label="Admin navigation">
+          <div class="nav-group">
+            <!--Overview-->
+            <p class="nav-group-title">Overview</p>
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="../Dashboard/super-admin-dashboard.html"
+                  class="nav-link"
+                  ><i data-lucide="layout-dashboard" aria-hidden="true"></i
+                  ><span>Dashboard</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Management-->
+            <p class="nav-group-title">Management</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="users" aria-hidden="true"></i
+                  ><span>Farmers</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="badge-check" aria-hidden="true"></i
+                  ><span>Officers</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="./procurement-centres.html"
+                  class="nav-link active"
+                  aria-current="page"
+                  ><i data-lucide="warehouse" aria-hidden="true"></i
+                  ><span>Procurement Centres</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--Operations-->
+            <p class="nav-group-title">Operations</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="calendar-days" aria-hidden="true"></i
+                  ><span>Slot Management</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="clipboard-list" aria-hidden="true"></i
+                  ><span>Bookings</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="list-ordered" aria-hidden="true"></i
+                  ><span>Live Queues</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="package-check" aria-hidden="true"></i
+                  ><span>Procurements</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="indian-rupee" aria-hidden="true"></i
+                  ><span>Payments</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <!--System-->
+            <p class="nav-group-title">System</p>
+            <ul class="nav-list">
+              <li>
+                <a href="#" class="nav-link"
+                  ><i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i
+                  ><span>Reports &amp; Analytics</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="bell" aria-hidden="true"></i
+                  ><span>Notifications</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link"
+                  ><i data-lucide="settings" aria-hidden="true"></i
+                  ><span>Settings</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <!--Sidebar Footer-->
+          <button
+            type="button"
+            class="admin-profile"
+            aria-label="Open admin menu"
+            aria-expanded="false"
+          >
+            <div class="admin-avatar">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </div>
+            <div class="admin-details">
+              <strong>Admin</strong>
+              <span>Super Admin</span>
+            </div>
+            <i
+              data-lucide="chevron-down"
+              class="profile-chevron"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </footer>
+      </aside>
+      <div class="sidebar-overlay" aria-hidden="true"></div>
+
+      <div class="dashboard-main">
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <!--Top Navbar Left-->
+            <button
+              type="button"
+              class="sidebar-toggle"
+              aria-label="Open sidebar"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <div class="page-heading">
+              <h1>Edit Procurement Centre</h1>
+
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../Dashboard/super-admin-dashboard.html">
+                  Dashboard
+                </a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <a href="./procurement-centres.html"> Procurement Centres </a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <span>Edit Centre</span>
+              </nav>
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!--Top Navbar Right-->
+            <button
+              type="button"
+              class="date-selector"
+              aria-label="Select dashboard date"
+            >
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+              <time id="dashboard-date" datetime="2026-08-28">
+                Aug 28, 2026
+              </time>
+              <i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="notification-button"
+              aria-label="View 4 unread notifications"
+              aria-expanded="false"
+              aria-controls="notification-panel"
+            >
+              <i data-lucide="bell" aria-hidden="true"></i>
+              <span class="notification-badge">4</span>
+            </button>
+            <div class="notification-panel" id="notification-panel" hidden>
+              <div class="notification-panel-header">
+                <h3>Notifications</h3>
+                <button type="button" class="mark-read-button">
+                  Mark all as read
+                </button>
+              </div>
+
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a slot at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Procurement completed</strong>
+                    <p>Procurement #RP-1024 was completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:02">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Payment requires review</strong>
+                    <p>
+                      Payment for procurement #RP-1018 is awaiting approval.
+                    </p>
+                    <time datetime="2026-08-28T20:45">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Centre capacity update</strong>
+                    <p>Bhopal Rural Centre reached 90% daily capacity.</p>
+                    <time datetime="2026-08-28T20:20">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="navbar-profile"
+              aria-label="Open admin profile menu"
+              aria-controls="profile-menu"
+              aria-expanded="false"
+            >
+              <span class="navbar-avatar">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" hidden>
+              <div class="profile-menu-header">
+                <span class="profile-menu-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong>Admin</strong>
+                  <span>admin@ruralprocure.in</span>
+                </div>
+              </div>
+
+              <a href="#" class="profile-menu-item">
+                <i data-lucide="settings" aria-hidden="true"></i>
+                <span>Account Settings</span>
+              </a>
+
+              <button type="button" class="profile-menu-item logout-button">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="dashboard-content add-centre-content">
+          <section class="form-page-header">
+            <div class="form-page-heading">
+              <a
+                href="./procurement-centres.html"
+                class="back-button"
+                aria-label="Return to procurement centres"
+              >
+                <i data-lucide="arrow-left" aria-hidden="true"></i>
+              </a>
+
+              <div>
+                <h1>Edit Procurement Centre</h1>
+                <p>Edit procurement centre.</p>
+              </div>
+            </div>
+          </section>
+
+          <form id="add-centre-form" novalidate>
+            <section class="form-card">
+              <header class="form-card-header">
+                <span class="form-section-icon">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <h2>Basic Information</h2>
+                  <p>Enter the centre’s name, code and capacity.</p>
+                </div>
+              </header>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="centre-name-input">
+                    Centre Name
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="centre-name-input"
+                    name="centreName"
+                    placeholder="Example: Krishnanagar Centre"
+                    maxlength="80"
+                    required
+                  />
+
+                  <small class="field-error" id="centre-name-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="centre-code-input">
+                    Centre Code
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="centre-code-input"
+                    name="centreCode"
+                    placeholder="Example: PS-09"
+                    pattern="PS-[0-9]{2}"
+                    maxlength="5"
+                    required
+                  />
+
+                  <small class="form-help">
+                    Use the format PS-01, PS-02, etc.
+                  </small>
+
+                  <small class="field-error" id="centre-code-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="daily-capacity-input">
+                    Daily Capacity
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="number"
+                    id="daily-capacity-input"
+                    name="dailyCapacity"
+                    placeholder="Example: 100"
+                    min="1"
+                    max="1000"
+                    required
+                  />
+
+                  <small class="field-error" id="capacity-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="centre-status-input">
+                    Operational Status
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <select id="centre-status-input" name="status" required>
+                    <option value="">Select status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+
+                  <small class="field-error" id="status-error"></small>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-card">
+              <header class="form-card-header">
+                <span class="form-section-icon">
+                  <i data-lucide="map-pin" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <h2>Location Information</h2>
+                  <p>Provide the complete location of the centre.</p>
+                </div>
+              </header>
+
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="centre-address-input">
+                    Address
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <textarea
+                    id="centre-address-input"
+                    name="address"
+                    rows="3"
+                    placeholder="Enter the complete centre address"
+                    maxlength="200"
+                    required
+                  ></textarea>
+
+                  <small class="field-error" id="address-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="state-input">
+                    State
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <select id="state-input" name="state" required>
+                    <option value="">Select state</option>
+                    <option value="west-bengal">West Bengal</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="jharkhand">Jharkhand</option>
+                  </select>
+
+                  <small class="field-error" id="state-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="district-input">
+                    District
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <select id="district-input" name="district" required>
+                    <option value="">Select district</option>
+                    <option value="nadia">Nadia</option>
+                    <option value="bardhaman">Bardhaman</option>
+                    <option value="malda">Malda</option>
+                    <option value="murshidabad">Murshidabad</option>
+                    <option value="jalpaiguri">Jalpaiguri</option>
+                    <option value="cooch-behar">Cooch Behar</option>
+                    <option value="purulia">Purulia</option>
+                    <option value="birbhum">Birbhum</option>
+                  </select>
+
+                  <small class="field-error" id="district-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="pincode-input">
+                    PIN Code
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="pincode-input"
+                    name="pincode"
+                    placeholder="Enter 6-digit PIN code"
+                    inputmode="numeric"
+                    pattern="[0-9]{6}"
+                    maxlength="6"
+                    required
+                  />
+
+                  <small class="field-error" id="pincode-error"></small>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-card">
+              <header class="form-card-header">
+                <span class="form-section-icon">
+                  <i data-lucide="badge-check" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <h2>Officer Assignment</h2>
+                  <p>Assign an officer to manage the centre.</p>
+                </div>
+              </header>
+
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="officer-input">
+                    Officer In Charge
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <select id="officer-input" name="officer" required>
+                    <option value="">Select an officer</option>
+                    <option value="OFF-101">Amit Roy — OFF-101</option>
+                    <option value="OFF-102">S. Das — OFF-102</option>
+                    <option value="OFF-103">R. Ali — OFF-103</option>
+                    <option value="OFF-104">P. Sarkar — OFF-104</option>
+                    <option value="OFF-105">D. Barman — OFF-105</option>
+                    <option value="OFF-106">M. Islam — OFF-106</option>
+                    <option value="OFF-107">K. Mahato — OFF-107</option>
+                    <option value="OFF-108">S. Karmakar — OFF-108</option>
+                  </select>
+
+                  <small class="field-error" id="officer-error"></small>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-card">
+              <header class="form-card-header">
+                <span class="form-section-icon">
+                  <i data-lucide="clock-3" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <h2>Operating Schedule</h2>
+                  <p>Set the opening and closing times.</p>
+                </div>
+              </header>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="opening-time-input">
+                    Opening Time
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="time"
+                    id="opening-time-input"
+                    name="openingTime"
+                    value="09:00"
+                    required
+                  />
+
+                  <small class="field-error" id="opening-time-error"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="closing-time-input">
+                    Closing Time
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    type="time"
+                    id="closing-time-input"
+                    name="closingTime"
+                    value="17:00"
+                    required
+                  />
+
+                  <small class="field-error" id="closing-time-error"></small>
+                </div>
+              </div>
+            </section>
+
+            <p
+              class="form-message"
+              id="form-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+            <div class="form-actions">
+              <a href="./procurement-centres.html" class="cancel-button">
+                Cancel
+              </a>
+
+              <button type="submit" class="save-centre-button">
+                <i data-lucide="save" aria-hidden="true"></i>
+                <span>Save Changes</span>
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="./edit-procurement-centre.js"></script>
+  </body>
+</html>
