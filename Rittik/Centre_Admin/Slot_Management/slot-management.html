@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Dashboard/centre-admin-dashboard.css" />
+    <link rel="stylesheet" href="./slot-management.css" />
+    <title>Slot Management | RuralProcure</title>
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="../Dashboard/centre-admin-dashboard.html"
+            class="sidebar-brand"
+          >
+            <img
+              src="../../Images/logo.png"
+              alt="RuralProcure logo"
+              class="sidebar-logo"
+            />
+            <div class="brand-details">
+              <h1>RuralProcure</h1>
+              <span>Centre Admin Portal</span>
+            </div>
+          </a>
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            class="sidebar-close"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav" aria-label="Centre admin navigation">
+          <div class="nav-group">
+            <p class="nav-group-title">Overview</p>
+
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="../Dashboard/centre-admin-dashboard.html"
+                  class="nav-link"
+                >
+                  <i data-lucide="layout-dashboard" aria-hidden="true"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                  <span>My Centre</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">Operations</p>
+
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="./slot-management.html"
+                  class="nav-link active"
+                  aria-current="page"
+                >
+                  <i data-lucide="calendar-days" aria-hidden="true"></i>
+                  <span>Slot Management</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Bookings/bookings.html" class="nav-link">
+                  <i data-lucide="clipboard-list" aria-hidden="true"></i>
+                  <span>Bookings</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Live_Queue/live-queue.html" class="nav-link">
+                  <i data-lucide="list-ordered" aria-hidden="true"></i>
+                  <span>Live Queue</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Procurements/procurements.html" class="nav-link">
+                  <i data-lucide="package-check" aria-hidden="true"></i>
+                  <span>Procurements</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Payments/payments.html" class="nav-link">
+                  <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  <span>Payments</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">System</p>
+
+            <ul class="nav-list">
+              <li>
+                <a href="../Reports/reports.html" class="nav-link">
+                  <i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i>
+                  <span>Centre Reports</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="bell" aria-hidden="true"></i>
+                  <span>Notifications</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="settings" aria-hidden="true"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <!--Sidebar Footer-->
+          <button
+            type="button"
+            class="admin-profile"
+            aria-label="Open admin menu"
+            aria-expanded="false"
+          >
+            <div class="admin-avatar">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </div>
+            <div class="admin-details">
+              <strong>Centre Admin</strong>
+              <span>Krishnanagar Centre</span>
+            </div>
+            <i
+              data-lucide="chevron-down"
+              class="profile-chevron"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </footer>
+      </aside>
+      <div class="sidebar-overlay" aria-hidden="true"></div>
+      <div class="dashboard-main">
+        <!--Main Dashboard-->
+        <header class="top-navbar">
+          <!--Top Navbar-->
+          <div class="navbar-left">
+            <!--Top Navbar Left-->
+            <button
+              type="button"
+              class="sidebar-toggle"
+              aria-label="Open sidebar"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <div class="welcome-text page-heading">
+              <h2>Slot Management</h2>
+
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../Dashboard/centre-admin-dashboard.html">
+                  Dashboard
+                </a>
+
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+
+                <span>Slot Management</span>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-right">
+            <!--Top Navbar Right-->
+            <button
+              type="button"
+              class="date-selector"
+              aria-label="Select dashboard date"
+            >
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+              <time id="dashboard-date" datetime="2026-08-28">
+                Aug 28, 2026
+              </time>
+              <i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="notification-button"
+              aria-label="View 4 unread notifications"
+              aria-expanded="false"
+              aria-controls="notification-panel"
+            >
+              <i data-lucide="bell" aria-hidden="true"></i>
+              <span class="notification-badge">4</span>
+            </button>
+            <div class="notification-panel" id="notification-panel" hidden>
+              <div class="notification-panel-header">
+                <h3>Notifications</h3>
+                <button type="button" class="mark-read-button">
+                  Mark all as read
+                </button>
+              </div>
+
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a slot at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Procurement completed</strong>
+                    <p>Procurement #RP-1024 was completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:02">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Payment requires review</strong>
+                    <p>
+                      Payment for procurement #RP-1018 is awaiting approval.
+                    </p>
+                    <time datetime="2026-08-28T20:45">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Centre capacity update</strong>
+                    <p>Bhopal Rural Centre reached 90% daily capacity.</p>
+                    <time datetime="2026-08-28T20:20">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="navbar-profile"
+              aria-label="Open admin profile menu"
+              aria-controls="profile-menu"
+              aria-expanded="false"
+            >
+              <span class="navbar-avatar">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" hidden>
+              <div class="profile-menu-header">
+                <span class="profile-menu-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong>Centre Admin</strong>
+                  <span>centre.admin@ruralprocure.in</span>
+                </div>
+              </div>
+
+              <a href="#" class="profile-menu-item">
+                <i data-lucide="settings" aria-hidden="true"></i>
+                <span>Account Settings</span>
+              </a>
+
+              <button type="button" class="profile-menu-item logout-button">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="dashboard-content slot-management-content">
+          <section class="slot-page-intro">
+            <div>
+              <h1>Today’s Procurement Slots</h1>
+              <p>Create and manage booking slots for Krishnanagar Centre.</p>
+            </div>
+
+            <button
+              type="button"
+              class="create-slot-button"
+              id="create-slot-button"
+            >
+              <i data-lucide="plus" aria-hidden="true"></i>
+              <span>Create New Slot</span>
+            </button>
+          </section>
+
+          <section
+            class="slot-summary-grid"
+            aria-label="Slot management summary"
+          >
+            <article class="slot-summary-card">
+              <span class="slot-summary-icon">
+                <i data-lucide="calendar-days" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span>Today’s Slots</span>
+                <strong id="total-slots-count">3</strong>
+                <p>Across today’s schedule</p>
+              </div>
+            </article>
+
+            <article class="slot-summary-card">
+              <span class="slot-summary-icon">
+                <i data-lucide="users" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span>Daily Capacity</span>
+                <strong id="total-capacity-count">100</strong>
+                <p>Total available capacity</p>
+              </div>
+            </article>
+
+            <article class="slot-summary-card">
+              <span class="slot-summary-icon">
+                <i data-lucide="clipboard-check" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span>Booked</span>
+                <strong id="booked-slots-count">74</strong>
+                <p>Bookings received today</p>
+              </div>
+            </article>
+
+            <article class="slot-summary-card">
+              <span class="slot-summary-icon">
+                <i data-lucide="calendar-plus" aria-hidden="true"></i>
+              </span>
+
+              <div>
+                <span>Available</span>
+                <strong id="available-slots-count">26</strong>
+                <p>Slots remaining today</p>
+              </div>
+            </article>
+          </section>
+          <section class="slot-filter-card">
+            <form class="slot-filters" id="slot-filter-form">
+              <div class="slot-filter-group">
+                <label for="slot-date-filter">Schedule Date</label>
+
+                <input type="date" id="slot-date-filter" name="date" />
+              </div>
+
+              <div class="slot-filter-group">
+                <label for="crop-filter">Crop Type</label>
+
+                <select id="crop-filter" name="crop">
+                  <option value="all">All Crops</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="rice">Rice</option>
+                  <option value="maize">Maize</option>
+                  <option value="mustard">Mustard</option>
+                  <option value="mixed-crops">Mixed Crops</option>
+                </select>
+              </div>
+
+              <div class="slot-filter-group">
+                <label for="slot-status-filter">Status</label>
+
+                <select id="slot-status-filter" name="status">
+                  <option value="all">All Statuses</option>
+                  <option value="available">Available</option>
+                  <option value="full">Full</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+
+              <button type="reset" class="clear-slot-filters">
+                <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+                <span>Clear Filters</span>
+              </button>
+            </form>
+          </section>
+
+          <section class="slot-list-card">
+            <header class="slot-list-header">
+              <div>
+                <h2>Slot Schedule</h2>
+                <p>Manage today’s procurement booking slots.</p>
+              </div>
+
+              <span id="slot-results-count">3 slots</span>
+            </header>
+
+            <div class="slot-table-wrapper">
+              <table class="slot-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Crop Type</th>
+                    <th scope="col">Capacity</th>
+                    <th scope="col">Booked</th>
+                    <th scope="col">Available</th>
+                    <th scope="col">Utilization</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="slots-table-body">
+                  <!-- Slot rows will be created using JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <div class="slot-modal" id="slot-modal" hidden>
+      <div class="slot-modal-backdrop" data-modal-close></div>
+
+      <section
+        class="slot-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="slot-modal-title"
+      >
+        <header class="slot-modal-header">
+          <div>
+            <h2 id="slot-modal-title">Create New Slot</h2>
+            <p>Add a new procurement booking slot.</p>
+          </div>
+
+          <button
+            type="button"
+            class="slot-modal-close"
+            data-modal-close
+            aria-label="Close create slot form"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </header>
+
+        <form id="create-slot-form" class="create-slot-form">
+          <div class="slot-form-group slot-form-full">
+            <label for="new-slot-date">Schedule Date</label>
+            <input type="date" id="new-slot-date" name="date" required />
+          </div>
+
+          <div class="slot-form-row">
+            <div class="slot-form-group">
+              <label for="new-slot-start-time">Start Time</label>
+              <input
+                type="time"
+                id="new-slot-start-time"
+                name="startTime"
+                required
+              />
+            </div>
+
+            <div class="slot-form-group">
+              <label for="new-slot-end-time">End Time</label>
+              <input
+                type="time"
+                id="new-slot-end-time"
+                name="endTime"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="slot-form-row">
+            <div class="slot-form-group">
+              <label for="new-slot-crop">Crop Type</label>
+              <select id="new-slot-crop" name="crop" required>
+                <option value="">Select crop</option>
+                <option value="wheat">Wheat</option>
+                <option value="rice">Rice</option>
+                <option value="maize">Maize</option>
+                <option value="mustard">Mustard</option>
+                <option value="mixed-crops">Mixed Crops</option>
+              </select>
+            </div>
+
+            <div class="slot-form-group">
+              <label for="new-slot-capacity">Capacity</label>
+              <input
+                type="number"
+                id="new-slot-capacity"
+                name="capacity"
+                min="1"
+                max="500"
+                placeholder="Example: 30"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="slot-form-group slot-form-full">
+            <label for="new-slot-status">Initial Status</label>
+            <select id="new-slot-status" name="status" required>
+              <option value="available">Available</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+
+          <p
+            class="slot-form-message"
+            id="slot-form-message"
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <footer class="slot-modal-actions">
+            <button type="button" class="slot-modal-cancel" data-modal-close>
+              Cancel
+            </button>
+
+            <button type="submit" class="slot-modal-submit">
+              <i data-lucide="plus" aria-hidden="true"></i>
+              <span>Create Slot</span>
+            </button>
+          </footer>
+        </form>
+      </section>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="./slot-management.js"></script>
+  </body>
+</html>

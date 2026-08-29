@@ -31,21 +31,22 @@ dashboardDate.textContent = today.toLocaleDateString("en-IN", {
 
 // Chart data
 const overviewLabels = [
-  "Aug 22",
-  "Aug 23",
   "Aug 24",
   "Aug 25",
   "Aug 26",
   "Aug 27",
   "Aug 28",
+  "Aug 29",
+  "Aug 30",
 ];
 
-const bookingData = [760, 840, 790, 920, 880, 1010, 1097];
-const procurementData = [610, 670, 640, 720, 760, 830, 892];
+const bookingData = [62, 68, 65, 70, 69, 72, 74];
 
-const requestStatusLabels = ["Pending", "Approved", "In Progress", "Completed"];
+const procurementData = [34, 38, 36, 40, 39, 42, 43];
 
-const requestStatusData = [246, 182, 96, 44];
+const requestStatusLabels = ["Scheduled", "Checked In", "Completed", "Missed"];
+
+const requestStatusData = [13, 16, 43, 2];
 
 const overviewDataByRange = {
   7: {
@@ -55,17 +56,25 @@ const overviewDataByRange = {
   },
 
   30: {
-    labels: ["Aug 1", "Aug 6", "Aug 11", "Aug 16", "Aug 21", "Aug 28"],
-    bookings: [680, 740, 810, 870, 960, 1097],
-    procurements: [520, 590, 650, 710, 790, 892],
+    labels: [
+      "Aug 1",
+      "Aug 6",
+      "Aug 11",
+      "Aug 16",
+      "Aug 21",
+      "Aug 30",
+    ],
+    bookings: [51, 56, 60, 65, 69, 74],
+    procurements: [27, 30, 33, 36, 40, 43],
   },
 
   90: {
     labels: ["June", "July", "August"],
-    bookings: [18420, 21680, 24750],
-    procurements: [14280, 16940, 19320],
+    bookings: [1410, 1585, 1760],
+    procurements: [820, 960, 1120],
   },
 };
+
 
 // Booking and procurement line chart
 const overviewChart = new Chart(overviewChartCanvas, {
@@ -150,8 +159,9 @@ const requestStatusChart = new Chart(statusChartCanvas, {
 
     datasets: [
       {
+        label: "Bookings",
         data: requestStatusData,
-        backgroundColor: ["#f59e0b", "#22a447", "#3b82f6", "#064e3b"],
+        backgroundColor: ["#f59e0b", "#3b82f6", "#22a447", "#dc2626"],
         borderWidth: 0,
       },
     ],
