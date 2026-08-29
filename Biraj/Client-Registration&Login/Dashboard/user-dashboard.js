@@ -1,180 +1,361 @@
-/* ================= SIDEBAR ================= */
+/* =========================================
+   SIDEBAR
+========================================= */
 
+const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
-const menuBtn = document.getElementById("menuBtn");
-
-
-menuBtn.addEventListener("click", () => {
+menuToggle.addEventListener("click", () => {
 
     sidebar.classList.toggle("open");
 
 });
 
 
+/* =========================================
+   SIDEBAR NAVIGATION
+========================================= */
 
-/* ================= USER DROPDOWN ================= */
+const navItems = document.querySelectorAll(".nav-item");
 
-const userBtn = document.getElementById("userBtn");
+navItems.forEach(item => {
 
-const userMenu = document.getElementById("userMenu");
+    item.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        navItems.forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        // Close mobile sidebar
+        if (window.innerWidth <= 750) {
+            sidebar.classList.remove("open");
+        }
+
+    });
+
+});
 
 
-userBtn.addEventListener("click", (event) => {
+/* =========================================
+   PROFILE DROPDOWN
+========================================= */
+
+const profileButton =
+    document.getElementById("profileButton");
+
+const profileDropdown =
+    document.getElementById("profileDropdown");
+
+
+profileButton.addEventListener("click", (event) => {
 
     event.stopPropagation();
 
-    userMenu.classList.toggle("show");
+    profileDropdown.classList.toggle("show");
 
 });
 
 
 document.addEventListener("click", () => {
 
-    userMenu.classList.remove("show");
+    profileDropdown.classList.remove("show");
 
 });
 
 
+/* =========================================
+   NOTIFICATION DROPDOWN
+========================================= */
 
-/* ================= NAVIGATION ================= */
+const notificationButton =
+    document.getElementById("notificationButton");
 
-const navItems = document.querySelectorAll(".nav-item");
+const notificationDropdown =
+    document.getElementById("notificationDropdown");
 
+const markAllRead =
+    document.getElementById("markAllRead");
 
-navItems.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        navItems.forEach(nav => {
-
-            nav.classList.remove("active");
-
-        });
-
-
-        item.classList.add("active");
+const viewAllNotifications =
+    document.getElementById("viewAllNotifications");
 
 
-        showToast(
-            item.innerText.trim() + " selected"
+/* Open / Close Notification Dropdown */
+
+notificationButton.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    notificationDropdown.classList.toggle("show");
+
+    // Close profile dropdown
+    profileDropdown.classList.remove("show");
+
+});
+
+
+/* Prevent dropdown from closing when clicking inside */
+
+notificationDropdown.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+});
+
+
+/* Mark all notifications as read */
+
+markAllRead.addEventListener("click", () => {
+
+    const notifications =
+        document.querySelectorAll(".notification-item");
+
+    notifications.forEach(notification => {
+
+        notification.classList.remove("unread");
+
+        notification.classList.add("read");
+
+    });
+
+
+    // Remove notification badge
+    const badge =
+        document.querySelector(".notification-count");
+
+    badge.style.display = "none";
+
+
+    // Change header text
+    const headerText =
+        document.querySelector(".notification-header span");
+
+    headerText.textContent = "You're all caught up";
+
+});
+
+
+/* Individual notification click */
+
+const notificationItems =
+    document.querySelectorAll(".notification-item");
+
+
+notificationItems.forEach(notification => {
+
+    notification.addEventListener("click", () => {
+
+        notification.classList.remove("unread");
+
+        notification.classList.add("read");
+
+        updateNotificationCount();
+
+    });
+
+});
+
+
+/* Update notification count */
+
+function updateNotificationCount() {
+
+    const unread =
+        document.querySelectorAll(
+            ".notification-item.unread"
+        ).length;
+
+
+    const badge =
+        document.querySelector(".notification-count");
+
+
+    const headerText =
+        document.querySelector(
+            ".notification-header span"
         );
 
 
-        /* Close mobile sidebar */
+    if (unread === 0) {
 
-        if (window.innerWidth <= 800) {
+        badge.style.display = "none";
 
-            sidebar.classList.remove("open");
+        headerText.textContent =
+            "You're all caught up";
 
-        }
+    } else {
 
-    });
+        badge.style.display = "flex";
+
+        badge.textContent = unread;
+
+        headerText.textContent =
+            unread + " new notifications";
+
+    }
+
+}
+
+
+/* View All Notifications */
+
+viewAllNotifications.addEventListener("click", () => {
+
+    alert("Opening all notifications...");
+
+});
+
+
+/* Close dropdown when clicking outside */
+
+document.addEventListener("click", () => {
+
+    notificationDropdown.classList.remove("show");
 
 });
 
 
 
-/* ================= BOOKING TABS ================= */
 
-const tabs = document.querySelectorAll(".tab");
+/* =========================================
+   VIEW BOOKING
+========================================= */
 
+const viewBooking =
+    document.getElementById("viewBooking");
 
-tabs.forEach(tab => {
+viewBooking.addEventListener("click", () => {
 
-    tab.addEventListener("click", () => {
-
-        const parent = tab.parentElement;
-
-
-        parent
-            .querySelectorAll(".tab")
-            .forEach(button => {
-
-                button.classList.remove("active");
-
-            });
-
-
-        tab.classList.add("active");
-
-
-        showToast(
-            tab.innerText + " bookings"
-        );
-
-    });
-
-});
-
-
-
-/* ================= BUTTONS ================= */
-
-const buttons =
-    document.querySelectorAll(".primary, .outline");
-
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        /*
-        Ignore tab buttons because
-        they have their own event.
-        */
-
-        if (!button.classList.contains("tab")) {
-
-            showToast(
-                button.innerText.trim() + " clicked"
-            );
-
-        }
-
-    });
-
-});
-
-
-
-/* ================= NOTIFICATION ================= */
-
-const notifyBtn =
-    document.getElementById("notifyBtn");
-
-
-notifyBtn.addEventListener("click", () => {
-
-    showToast(
-        "You have 3 new notifications"
+    alert(
+        "Booking Details\n\n" +
+        "Crop: Paddy\n" +
+        "Token: A-42\n" +
+        "Date: 15 Sep 2026\n" +
+        "Time: 10:00 AM – 10:30 AM\n" +
+        "Centre: Krishnanagar Procurement Centre"
     );
 
 });
 
 
+/* =========================================
+   LIVE QUEUE
+========================================= */
 
-/* ================= TOAST ================= */
+const viewQueue =
+    document.getElementById("viewQueue");
 
-const toast =
-    document.getElementById("toast");
-
-
-function showToast(message) {
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
+const queueButton =
+    document.getElementById("queueButton");
 
 
-    clearTimeout(window.toastTimer);
+function showQueueMessage() {
 
-
-    window.toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, 1800);
+    alert(
+        "Live Queue\n\n" +
+        "Your Token: A-42\n" +
+        "Currently Serving: A-39\n" +
+        "People Ahead: 2\n" +
+        "Estimated Wait: ~15 min"
+    );
 
 }
+
+
+viewQueue.addEventListener("click", showQueueMessage);
+
+queueButton.addEventListener("click", showQueueMessage);
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+const quickCards =
+    document.querySelectorAll(".quick-card");
+
+
+quickCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const title =
+            card.querySelector("h3").textContent;
+
+        alert(title + " selected.");
+
+    });
+
+});
+
+
+/* =========================================
+   LIVE QUEUE SIMULATION
+========================================= */
+
+let peopleAhead = 2;
+
+setInterval(() => {
+
+    if (peopleAhead > 0) {
+
+        // Randomly simulate queue movement
+        if (Math.random() > 0.7) {
+
+            peopleAhead--;
+
+            const queueRows =
+                document.querySelectorAll(".queue-row");
+
+            if (queueRows.length >= 3) {
+
+                queueRows[2]
+                    .querySelector("strong")
+                    .textContent = peopleAhead;
+
+            }
+
+        }
+
+    }
+
+}, 5000);
+
+
+/* =========================================
+   NOTIFICATION BADGE
+========================================= */
+
+let notifications = 3;
+
+setTimeout(() => {
+
+    const badge =
+        document.querySelector(".notification-count");
+
+    if (notifications === 0) {
+
+        badge.style.display = "none";
+
+    }
+
+}, 1000);
+
+
+/* =========================================
+   RESPONSIVE SIDEBAR
+========================================= */
+
+window.addEventListener("resize", () => {
+
+    if (window.innerWidth > 750) {
+
+        sidebar.classList.remove("open");
+
+    }
+
+});

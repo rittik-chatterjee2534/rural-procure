@@ -9,15 +9,16 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap Icons -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
     <!-- CSS -->
@@ -25,620 +26,594 @@
   </head>
 
   <body>
-    <div class="app">
-      <!-- ================= SIDEBAR ================= -->
+    <!-- =========================
+         MOBILE HEADER
+    ========================== -->
 
-      <aside class="sidebar" id="sidebar">
-        <div class="brand">
-          <div class="brand-mark">
-            <i class="bi bi-house-fill"></i>
-          </div>
-
-          <h1>RuralProcure</h1>
-
-          <p>Your Purchase Our Priority</p>
+    <header class="mobile-header">
+      <div class="mobile-logo">
+        <div class="logo-circle small-logo">
+          <i class="fa-solid fa-seedling"></i>
         </div>
 
-        <!-- Profile -->
+        <div>
+          <h2>RuralProcure</h2>
+        </div>
+      </div>
 
-        <div class="profile">
-          <div class="avatar">
-            <i class="bi bi-person-fill"></i>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+      <!-- Logo -->
+
+      <div class="brand">
+        <div class="logo-circle">
+          <img src="../Images/logo.png" alt="RuralProcure" />
+        </div>
+
+        <h1>RuralProcure</h1>
+
+        <p>Better Price. Better Future.</p>
+      </div>
+
+      <!-- Main Navigation -->
+
+      <nav class="navigation">
+        <a href="#" class="nav-item active">
+          <i class="fa-solid fa-house"></i>
+
+          <span>Home</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-calendar"></i>
+
+          <span>Book New Slot</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-clipboard"></i>
+
+          <span>My Bookings</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+
+          <span>Live Queue</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+
+          <span>Payments</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-bell"></i>
+
+          <span>Notifications</span>
+        </a>
+      </nav>
+
+      <!-- Bottom Navigation -->
+
+      <div class="sidebar-bottom">
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-circle-question"></i>
+
+          <span>Help & Support</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-circle-user"></i>
+
+          <span>Profile</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+      <!-- =========================
+             TOP BAR
+        ========================== -->
+
+      <header class="topbar">
+        <div></div>
+
+        <div class="topbar-right">
+          <!-- Notification -->
+
+          <!-- Notification Wrapper -->
+          <div class="notification-wrapper">
+            <button class="notification-btn" id="notificationButton">
+              <i class="fa-regular fa-bell"></i>
+
+              <span class="notification-count">3</span>
+            </button>
+
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" id="notificationDropdown">
+              <!-- Header -->
+              <div class="notification-header">
+                <div>
+                  <h3>Notifications</h3>
+                  <span>3 new notifications</span>
+                </div>
+
+                <button id="markAllRead">Mark all as read</button>
+              </div>
+
+              <!-- Notification 1 -->
+              <div class="notification-item unread">
+                <div class="notification-item-icon green-notification">
+                  <i class="fa-regular fa-calendar-check"></i>
+                </div>
+
+                <div class="notification-content">
+                  <h4>Slot A-42 confirmed</h4>
+
+                  <p>
+                    Your procurement slot has been confirmed for 15 Sep 2026 at
+                    10:00 AM.
+                  </p>
+
+                  <span class="notification-time"> 5 minutes ago </span>
+                </div>
+
+                <span class="unread-dot"></span>
+              </div>
+
+              <!-- Notification 2 -->
+              <div class="notification-item unread">
+                <div class="notification-item-icon blue-notification">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div class="notification-content">
+                  <h4>You're checked in</h4>
+
+                  <p>
+                    You have successfully checked in at Krishnanagar Procurement
+                    Centre.
+                  </p>
+
+                  <span class="notification-time"> 20 minutes ago </span>
+                </div>
+
+                <span class="unread-dot"></span>
+              </div>
+
+              <!-- Notification 3 -->
+              <div class="notification-item unread">
+                <div class="notification-item-icon yellow-notification">
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+
+                <div class="notification-content">
+                  <h4>Payment pending</h4>
+
+                  <p>Your pending payment of ₹14,400 is awaiting processing.</p>
+
+                  <span class="notification-time"> 1 hour ago </span>
+                </div>
+
+                <span class="unread-dot"></span>
+              </div>
+
+              <!-- Footer -->
+              <div class="notification-footer">
+                <button id="viewAllNotifications">
+                  View all notifications
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+
+          <button class="profile-btn" id="profileButton">
+            <div class="profile-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span>Ramesh Kumar</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- Profile Dropdown -->
+
+        <div class="profile-dropdown" id="profileDropdown">
+          <div>
+            <i class="fa-regular fa-user"></i>
+            My Profile
           </div>
 
           <div>
-            <span>Welcome Back!</span>
-            <strong>Ramesh Kumar</strong>
-            <small>Procurement Officer</small>
+            <i class="fa-solid fa-gear"></i>
+            Settings
           </div>
 
-          <i class="bi bi-chevron-down profile-chevron"></i>
+          <div>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+          </div>
+        </div>
+      </header>
+
+      <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+      <section class="dashboard">
+        <!-- =========================
+                 WELCOME + STATS
+            ========================== -->
+
+        <div class="welcome-row">
+          <div class="welcome">
+            <h2>
+              Good morning, Ramesh!
+              <span>👋</span>
+            </h2>
+
+            <p>Here's what's happening with your procurement.</p>
+          </div>
+
+          <!-- Statistics -->
+
+          <div class="stats-card">
+            <div class="stat">
+              <div class="stat-icon green-light">
+                <i class="fa-regular fa-calendar"></i>
+              </div>
+
+              <div>
+                <p>Upcoming Booking</p>
+
+                <strong>1</strong>
+              </div>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat">
+              <div class="stat-icon green-light">
+                <i class="fa-regular fa-circle-check"></i>
+              </div>
+
+              <div>
+                <p>Completed</p>
+
+                <strong>4</strong>
+              </div>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat">
+              <div class="stat-icon yellow-light">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+              </div>
+
+              <div>
+                <p>Pending Payment</p>
+
+                <strong>₹14,400</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Navigation -->
+        <!-- =========================
+                 FIRST ROW
+            ========================== -->
 
-        <nav>
-          <button class="nav-item active">
-            <i class="bi bi-grid-fill"></i>
-            <span>Dashboard</span>
-          </button>
+        <div class="dashboard-grid">
+          <!-- NEXT BOOKING -->
 
-          <button class="nav-item">
-            <i class="bi bi-calendar3"></i>
-            <span>Upcoming Booking</span>
-          </button>
+          <section class="card booking-card">
+            <div class="card-header">
+              <h3>YOUR NEXT BOOKING</h3>
+            </div>
 
-          <button class="nav-item">
-            <i class="bi bi-calendar-check"></i>
-            <span>My Bookings</span>
-          </button>
+            <div class="booking-content">
+              <div class="crop-icon">
+                <i class="fa-solid fa-seedling"></i>
+              </div>
 
-          <button class="nav-item">
-            <i class="bi bi-credit-card"></i>
-            <span>Payments</span>
-          </button>
+              <div class="booking-details">
+                <h2>Paddy</h2>
 
-          <button class="nav-item">
-            <i class="bi bi-file-earmark-text"></i>
-            <span>Procurement</span>
-          </button>
+                <div class="detail">
+                  <i class="fa-regular fa-calendar"></i>
 
-          <button class="nav-item">
-            <i class="bi bi-clipboard-check"></i>
-            <span>My Auctions</span>
-          </button>
+                  <span> 15 Sep 2026 (Mon) </span>
+                </div>
 
-          <button class="nav-item">
-            <i class="bi bi-file-earmark"></i>
-            <span>Processed</span>
-          </button>
+                <div class="detail">
+                  <i class="fa-regular fa-clock"></i>
 
-          <button class="nav-item">
-            <i class="bi bi-pie-chart"></i>
-            <span>Key Metrics</span>
-          </button>
+                  <span> 10:00 AM – 10:30 AM </span>
+                </div>
 
-          <button class="nav-item">
-            <i class="bi bi-file-earmark-bar-graph"></i>
-            <span>Reports</span>
-          </button>
-        </nav>
+                <div class="detail">
+                  <i class="fa-solid fa-location-dot"></i>
 
-        <!-- Logout -->
+                  <span>
+                    Krishnanagar Procurement Centre
+                    <small>Nadia, West Bengal</small>
+                  </span>
+                </div>
+              </div>
 
-        <button class="logout">
-          <i class="bi bi-power"></i>
-          Logout
-        </button>
-      </aside>
+              <div class="confirmed">
+                Confirmed
+                <i class="fa-solid fa-check"></i>
+              </div>
+            </div>
 
-      <!-- ================= MAIN ================= -->
+            <div class="token-area">
+              <div class="token-label">Token Number</div>
 
-      <main class="main">
-        <!-- TOP BAR -->
+              <div class="token-number">A-42</div>
+            </div>
 
-        <header class="topbar">
-          <button class="menu-btn" id="menuBtn">
-            <i class="bi bi-list"></i>
-          </button>
+            <div class="booking-buttons">
+              <button class="outline-btn" id="viewBooking">
+                <i class="fa-regular fa-clipboard"></i>
 
-          <div class="title">
-            <b>Dashboard</b>
-            <span>(Overview)</span>
-          </div>
-
-          <div class="top-actions">
-            <!-- Notification -->
-
-            <button class="icon-btn notification" id="notifyBtn">
-              <i class="bi bi-bell"></i>
-
-              <em>3</em>
-            </button>
-
-            <!-- User -->
-
-            <button class="user-btn" id="userBtn">
-              <span class="mini-avatar">
-                <i class="bi bi-person-fill"></i>
-              </span>
-
-              Ramesh Kumar
-
-              <i class="bi bi-chevron-down"></i>
-            </button>
-
-            <!-- User Dropdown -->
-
-            <div class="user-menu" id="userMenu">
-              <b>Ramesh Kumar</b>
-
-              <span>Procurement Officer</span>
-
-              <hr />
-
-              <button>
-                <i class="bi bi-person"></i>
-                Profile
+                View Booking
               </button>
 
-              <button>
-                <i class="bi bi-box-arrow-right"></i>
-                Sign out
+              <button class="primary-btn" id="viewQueue">
+                <i class="fa-solid fa-users"></i>
+
+                View Live Queue
               </button>
             </div>
-          </div>
-        </header>
+          </section>
 
-        <!-- ================= CONTENT ================= -->
+          <!-- LIVE QUEUE -->
 
-        <section class="content">
-          <!-- ================= STATISTICS ================= -->
-
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="bi bi-calendar2-week"></i>
-              </div>
-
-              <div>
-                <span>Upcoming Booking</span>
-
-                <strong>12</strong>
-
-                <small>Next: 15 May 2026</small>
-              </div>
+          <section class="card queue-card">
+            <div class="card-header">
+              <h3>
+                <i class="fa-solid fa-users"></i>
+                LIVE QUEUE
+              </h3>
             </div>
 
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="bi bi-clipboard2-check"></i>
+            <div class="queue-content">
+              <div class="queue-row">
+                <span>Your Token</span>
+
+                <strong class="green-text"> A-42 </strong>
               </div>
 
-              <div>
-                <span>Total Bookings</span>
+              <div class="queue-row">
+                <span>Currently Serving</span>
 
-                <strong>48</strong>
-
-                <small>This Month</small>
+                <strong> A-39 </strong>
               </div>
+
+              <div class="queue-row">
+                <span>People Ahead of You</span>
+
+                <strong> 2 </strong>
+              </div>
+
+              <div class="queue-row">
+                <span>Estimated Wait Time</span>
+
+                <strong class="green-text"> ~15 min </strong>
+              </div>
+
+              <button class="queue-button" id="queueButton">
+                View Live Queue
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- =========================
+                     PROCUREMENT STATUS
+                ========================== -->
+
+          <section class="card status-card">
+            <div class="card-header">
+              <h3>PROCUREMENT STATUS</h3>
             </div>
 
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="bi bi-file-earmark-check"></i>
-              </div>
+            <div class="status-content">
+              <div class="timeline">
+                <!-- Booked -->
 
-              <div>
-                <span>Total Processed</span>
-
-                <strong>12</strong>
-
-                <small>This Month</small>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="bi bi-currency-rupee"></i>
-              </div>
-
-              <div>
-                <span>Total Payments</span>
-
-                <strong>26</strong>
-
-                <small>This Month</small>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="bi bi-currency-rupee"></i>
-              </div>
-
-              <div>
-                <span>Total Revenue</span>
-
-                <strong>₹ 24,200</strong>
-
-                <small>This Month</small>
-              </div>
-            </div>
-          </div>
-
-          <!-- ================= TOP PANELS ================= -->
-
-          <div class="top-panels">
-            <!-- TODAY'S SUMMARY -->
-
-            <section class="card summary-card">
-              <h2>Today's Summary</h2>
-
-              <div class="summary-body">
-                <div class="farmer-photo">
-                  <img src="./Login-image.jpg" alt="Farmer in field" />
-                </div>
-
-                <div class="summary-metrics">
-                  <div class="metric">
-                    <div class="round-icon">
-                      <i class="bi bi-calendar-event"></i>
-                    </div>
-
-                    <div>
-                      <span>Today's Bookings</span>
-                      <strong>3</strong>
-                    </div>
+                <div class="status-step completed">
+                  <div class="status-circle">
+                    <i class="fa-solid fa-check"></i>
                   </div>
 
-                  <div class="metric">
-                    <div class="round-icon">
-                      <i class="bi bi-clipboard-check"></i>
-                    </div>
+                  <h4>Booked</h4>
 
-                    <div>
-                      <span>Processed Today</span>
-                      <strong>2</strong>
-                    </div>
+                  <p>15 Sep, 9:15 AM</p>
+                </div>
+
+                <!-- Checked In -->
+
+                <div class="status-step completed">
+                  <div class="status-circle">
+                    <i class="fa-solid fa-check"></i>
                   </div>
 
-                  <div class="metric">
-                    <div class="round-icon">
-                      <i class="bi bi-currency-rupee"></i>
-                    </div>
+                  <h4>Checked In</h4>
 
-                    <div>
-                      <span>Today's Revenue</span>
-                      <strong>₹ 4,200</strong>
-                    </div>
+                  <p>15 Sep, 9:58 AM</p>
+                </div>
+
+                <!-- Procurement -->
+
+                <div class="status-step current">
+                  <div class="status-circle">
+                    <i class="fa-solid fa-truck"></i>
                   </div>
 
-                  <button class="primary full">View Details</button>
-                </div>
-              </div>
-            </section>
+                  <h4>Procurement</h4>
 
-            <!-- BOOKING CONFIRMATION -->
-
-            <section class="card confirmation-card">
-              <h2>Booking Confirmation</h2>
-
-              <div class="confirm-main">
-                <div class="success-icon">
-                  <i class="bi bi-check-lg"></i>
+                  <p class="green-text">In Progress</p>
                 </div>
 
-                <h3>Booking Confirmed!</h3>
+                <!-- Payment -->
 
-                <p>Your slot has been successfully booked.</p>
-              </div>
+                <div class="status-step">
+                  <div class="status-circle payment-circle">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                  </div>
 
-              <div class="booking-info">
-                <div>
-                  <span>Booking ID</span>
-                  <b>A-42</b>
-                </div>
+                  <h4>Payment</h4>
 
-                <div>
-                  <span>Date</span>
-                  <b>15 May 2026</b>
-                </div>
-
-                <div>
-                  <span>Time</span>
-                  <b>10:30 AM - 10:30 AM</b>
-                </div>
-
-                <div>
-                  <span>Center</span>
-                  <b>Krishinagar Procurement Center</b>
+                  <p>Pending</p>
                 </div>
               </div>
 
-              <div class="notice">
-                Please arrive 15 minutes before your slot time.
+              <div class="info-message">
+                <i class="fa-regular fa-circle-info"></i>
+
+                <span>
+                  Your produce is being procured. Please wait for your token to
+                  be called.
+                </span>
               </div>
+            </div>
+          </section>
 
-              <div class="two-buttons">
-                <button class="outline">
-                  <i class="bi bi-download"></i>
-                  Download / Share
-                </button>
+          <!-- =========================
+                     RECENT ACTIVITY
+                ========================== -->
 
-                <button class="primary">Done</button>
-              </div>
-            </section>
+          <section class="card activity-card">
+            <div class="card-header activity-header">
+              <h3>RECENT ACTIVITY</h3>
 
-            <!-- MY BOOKINGS -->
+              <a href="#">View All</a>
+            </div>
 
-            <section class="card bookings-card">
-              <h2>My Bookings</h2>
-
-              <div class="tabs">
-                <button class="tab active">Upcoming</button>
-
-                <button class="tab">Completed</button>
-
-                <button class="tab">Cancelled</button>
-              </div>
-
-              <div class="booking-row">
-                <div>
-                  <b>A-42</b>
-
-                  <div>15 May 2026</div>
-
-                  <small>
-                    10:00 AM - 10:30 AM
-                    <br />
-                    Krishinagar Procurement Center
-                  </small>
-                </div>
-
-                <span>Confirmed</span>
-              </div>
-
-              <div class="booking-row">
-                <div>
-                  <b>A-35</b>
-
-                  <div>09 May 2024</div>
-
-                  <small>
-                    02:00 PM - 04:00 PM
-                    <br />
-                    Krishinagar Procurement Center
-                  </small>
-                </div>
-
-                <span>Confirmed</span>
-              </div>
-
-              <button class="outline full">View All Bookings</button>
-            </section>
-          </div>
-
-          <!-- ================= BOTTOM PANELS ================= -->
-
-          <div class="bottom-panels">
-            <!-- PAYMENT -->
-
-            <section class="card payment-card">
-              <div class="section-heading">
-                <div class="round-icon orange">
-                  <i class="bi bi-currency-rupee"></i>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon green-light">
+                  <i class="fa-regular fa-calendar"></i>
                 </div>
 
                 <div>
-                  <h2>Payment in Progress</h2>
+                  <h4>Slot A-42 confirmed</h4>
 
-                  <p>Your payment is being processed.</p>
+                  <p>15 Sep 2026, 9:15 AM</p>
                 </div>
               </div>
 
-              <div class="details">
-                <div>
-                  <span>Procurement ID</span>
-                  <b>PBC-2076-000104</b>
-                </div>
-
-                <div>
-                  <span>Amount</span>
-                  <b>₹ 13,450</b>
+              <div class="activity-item">
+                <div class="activity-icon blue-light">
+                  <i class="fa-solid fa-users"></i>
                 </div>
 
                 <div>
-                  <span>Payment Date</span>
-                  <b>10 May 2026 (Expected)</b>
+                  <h4>Checked in at centre</h4>
+
+                  <p>15 Sep 2026, 9:58 AM</p>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon yellow-light">
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
                 </div>
 
                 <div>
-                  <span>Payment Mode</span>
-                  <b>Bank Transfer</b>
+                  <h4>Previous payment received</h4>
+
+                  <p>08 Sep 2026, 04:30 PM</p>
                 </div>
               </div>
+            </div>
+          </section>
+        </div>
 
-              <div class="progress">
-                <div class="step done">
-                  <i class="bi bi-check"></i>
+        <!-- =========================
+                 QUICK ACTIONS
+            ========================== -->
 
-                  <span>Created</span>
-                </div>
+        <section class="quick-actions card">
+          <div class="quick-title">QUICK ACTIONS</div>
 
-                <div class="line done-line"></div>
-
-                <div class="step done">
-                  <i class="bi bi-check"></i>
-
-                  <span>Processing</span>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="step">
-                  <i></i>
-
-                  <span>Processed</span>
-                </div>
-              </div>
-            </section>
-
-            <!-- TRANSACTIONS -->
-
-            <section class="card transactions-card">
-              <h2>Recent Transactions</h2>
-
-              <div class="transaction">
-                <b>PBC-2076-000104</b>
-
-                <span>10 May 2026</span>
-
-                <strong>₹ 13,450</strong>
-
-                <em>Paid</em>
+          <div class="quick-grid">
+            <button class="quick-card quick-green">
+              <div class="quick-icon">
+                <i class="fa-regular fa-calendar"></i>
               </div>
 
-              <div class="transaction">
-                <b>PBC-2076-000090</b>
+              <div class="quick-text">
+                <h3>Book New Slot</h3>
 
-                <span>25 Apr 2026</span>
-
-                <strong>₹ 8,750</strong>
-
-                <em>Paid</em>
+                <p>Book a new slot for your produce</p>
               </div>
 
-              <div class="transaction">
-                <b>PBC-2076-000076</b>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
 
-                <span>23 Apr 2026</span>
-
-                <strong>₹ 11,200</strong>
-
-                <em>Paid</em>
+            <button class="quick-card quick-blue">
+              <div class="quick-icon">
+                <i class="fa-regular fa-clipboard"></i>
               </div>
 
-              <button class="outline full">View All Transactions</button>
-            </section>
+              <div class="quick-text">
+                <h3>My Bookings</h3>
 
-            <!-- ANALYTICS -->
-
-            <section class="card analytics-card">
-              <h2>Reports &amp; Analytics</h2>
-
-              <div class="filters">
-                <select>
-                  <option>01 May 2026 - 15 May 2026</option>
-                </select>
-
-                <select>
-                  <option>Earnings</option>
-
-                  <option>Bookings</option>
-
-                  <option>Orders</option>
-                </select>
+                <p>View all your bookings</p>
               </div>
 
-              <div class="analytics-stats">
-                <div>
-                  <span>Total Bookings</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
 
-                  <b>540</b>
-
-                  <small>+12% vs last month</small>
-                </div>
-
-                <div>
-                  <span>Total Orders</span>
-
-                  <b>1870</b>
-
-                  <small>+8% vs last month</small>
-                </div>
-
-                <div>
-                  <span>Total Revenue</span>
-
-                  <b>₹ 15,42,000</b>
-
-                  <small>+15% vs last month</small>
-                </div>
+            <button class="quick-card quick-yellow">
+              <div class="quick-icon">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
               </div>
 
-              <h3>Procurement Trend</h3>
+              <div class="quick-text">
+                <h3>Payments</h3>
 
-              <div class="chart">
-                <div class="y-labels">
-                  <span>2K</span>
-                  <span>1.5K</span>
-                  <span>1K</span>
-                  <span>500</span>
-                  <span>0</span>
-                </div>
-
-                <svg viewBox="0 0 560 180" preserveAspectRatio="none">
-                  <g class="grid">
-                    <line x1="30" y1="20" x2="550" y2="20" />
-
-                    <line x1="30" y1="60" x2="550" y2="60" />
-
-                    <line x1="30" y1="100" x2="550" y2="100" />
-
-                    <line x1="30" y1="140" x2="550" y2="140" />
-                  </g>
-
-                  <polygon
-                    points="
-                                30,115
-                                85,70
-                                140,98
-                                195,25
-                                250,90
-                                305,55
-                                360,104
-                                415,42
-                                470,93
-                                525,48
-                                550,60
-                                550,150
-                                30,150"
-                  ></polygon>
-
-                  <polyline
-                    points="
-                                30,115
-                                85,70
-                                140,98
-                                195,25
-                                250,90
-                                305,55
-                                360,104
-                                415,42
-                                470,93
-                                525,48
-                                550,60"
-                  ></polyline>
-
-                  <g class="points">
-                    <circle cx="30" cy="115" r="4" />
-                    <circle cx="85" cy="70" r="4" />
-                    <circle cx="140" cy="98" r="4" />
-                    <circle cx="195" cy="25" r="4" />
-                    <circle cx="250" cy="90" r="4" />
-                    <circle cx="305" cy="55" r="4" />
-                    <circle cx="360" cy="104" r="4" />
-                    <circle cx="415" cy="42" r="4" />
-                    <circle cx="470" cy="93" r="4" />
-                    <circle cx="525" cy="48" r="4" />
-                    <circle cx="550" cy="60" r="4" />
-                  </g>
-                </svg>
+                <p>View payment history and status</p>
               </div>
 
-              <div class="x-labels">
-                <span>1 May</span>
-                <span>3 May</span>
-                <span>5 May</span>
-                <span>7 May</span>
-                <span>9 May</span>
-                <span>11 May</span>
-                <span>13 May</span>
-                <span>15 May</span>
-              </div>
-            </section>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
           </div>
         </section>
-      </main>
-    </div>
-
-    <!-- Toast -->
-
-    <div class="toast" id="toast">Dashboard action completed.</div>
+      </section>
+    </main>
 
     <!-- JavaScript -->
-
     <script src="user-dashboard.js"></script>
   </body>
 </html>

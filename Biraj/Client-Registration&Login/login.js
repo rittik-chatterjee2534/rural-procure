@@ -1,108 +1,145 @@
+// ==========================================
+// 1. Sliding Panels Animation Logic
+// ==========================================
 const authCard = document.getElementById('authCard');
 const toRegister = document.getElementById('toRegister');
 const toLogin = document.getElementById('toLogin');
+
 toRegister.addEventListener('click', (e) => {
     e.preventDefault();
     authCard.classList.add('register-active');
 });
+
 toLogin.addEventListener('click', (e) => {
     e.preventDefault();
     authCard.classList.remove('register-active');
 });
 
-// LOGIN: Select the input field and the toggle button
-const loginpasswordField = document.getElementById('login-password');
-const logintoggleButton = document.getElementById('login-toggle-btn');
 
-// Add a click event listener to the button
-logintoggleButton.addEventListener('click', function () {
-  // Check the current type attribute
-  if (loginpasswordField.type === 'password') {
-    loginpasswordField.type = 'text';
-  } else {
-    loginpasswordField.type = 'password';
-  }
+// ==========================================
+// 2. DOM Node Grabs
+// ==========================================
+// Forms
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+
+// Login Input Fields
+const loginMobile = document.getElementById('login-mobile');
+const loginAadhaar = document.getElementById('login-aadhaar');
+
+// Register Input Fields
+const regName = document.getElementById('reg-name');
+const regMobile = document.getElementById('reg-mobile'); 
+const regAadhaar = document.getElementById('reg-aadhaar');
+
+// Modal Elements
+const otpOverlay = document.getElementById('otpOverlay');
+const modalTitle = document.getElementById('modalTitle');
+const dummyOtpDisplay = document.getElementById('dummyOtpDisplay');
+const closeBtn = document.getElementById('closeBtn');
+const verifyBtn = document.getElementById('verifyBtn');
+const otpInput = document.getElementById('otpInput');
+
+// Track which action opened the modal ('login' or 'register')
+let currentAction = ''; 
+
+
+// ==========================================
+// 3. Login Button Logic
+// ==========================================
+// We listen for the form submission directly to handle all HTML validation flags cleanly
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Stop standard form refresh redirect
+
+    // double check fields lengths and attributes via HTML5 engine
+    if (!loginForm.checkValidity()) {
+        loginForm.reportValidity();
+        return;
+    }
+
+    // Set modal configurations for logging in
+    currentAction = 'login';
+    modalTitle.textContent = "Login Verification";
+    
+    // Open modal wrapper sequence
+    openOtpModal();
 });
 
-// REGISTRATION: Select the input field and the toggle button
-const regpasswordField1 = document.getElementById('reg-password');
-const regtoggleButton1 = document.getElementById('reg-toggle-btn');
 
-regtoggleButton1.addEventListener('click', function () {
-  // Check the current type attribute
-  if (regpasswordField1.type === 'password') {
-    regpasswordField1.type = 'text';
-  } else {
-    regpasswordField1.type = 'password';
+// ==========================================
+// 4. Register Button Logic
+// ==========================================
+/**
+ * Triggered by the inline `onclick="myfunc(event)"` on your Register button
+ */
+function myfunc(event) {
+  // Check field text inputs values are completely empty and set manual focus rules
+  if (regName.value.trim() === "") {
+    regName.focus();
+    return;
   }
-});
-
-const regpasswordField2 = document.getElementById('reg-confirm-password');
-const regtoggleButton2 = document.getElementById('reg-confirm-toggle-btn');
-
-regtoggleButton2.addEventListener('click', function () {
-  // Check the current type attribute
-  if (regpasswordField2.type === 'password') {
-    regpasswordField2.type = 'text';
-  } else {
-    regpasswordField2.type = 'password';
+  if (regMobile.value.trim() === "") {
+    regMobile.focus();
+    return;
   }
-});
-
-
-const createfield = document.getElementById("reg-password");
-const confirmfield = document.getElementById("reg-confirm-password");
-const errorText = document.getElementById('errorText');
-
-const fullname = document.getElementById('reg-name');
-const phonenumber = document.getElementById('reg-phone');
-
-
-
-const nameError = document.getElementById('nameError');
-const phoneError = document.getElementById('phoneError');
-const passwordError = document.getElementById('passwordError');
-const confirmpasswordError = document.getElementById('confirmpasswordError');
-
-function myfunc(event){
-
-
-  if(regpasswordField1.value !== regpasswordField2.value){
-    // alert("Password are not same");
-    errorText.innerText = "Passwords do not match or are empty!";
-
-    createfield.value = "";
-    confirmfield.value = "";
-
-    createfield.focus();
-  }
-
-  else if(fullname.value.trim() === ""){
-    fullname.focus();
+  if (regAadhaar.value.trim() === "") {
+    regAadhaar.focus();
     return;
   }
 
-  else if(phonenumber.value.trim() === ""){
-    fullname.focus();
+  // Check if standard browser length conditions pass cleanly
+  if (!registerForm.checkValidity()) {
+    registerForm.reportValidity(); 
     return;
   }
 
-  else if(regpasswordField1.value.trim() === ""){
-    fullname.focus();
-    return;
-  }
-  
-  else if(regpasswordField2.value.trim() === ""){
-    fullname.focus();
-    return;
-  }
+  event.preventDefault(); // Block unexpected refreshes
 
-  else{
-    location.reload();
-  }
+  // Set modal configurations for register operations
+  currentAction = 'register';
+  modalTitle.textContent = "Registration Verification";
+
+  // Open modal wrapper sequence
+  openOtpModal();
 }
 
 
+// ==========================================
+// 5. Shared Modal Functions & Handlers
+// ==========================================
+function openOtpModal() {
+    // Generate a random 6-digit number string
+    const randomOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
+    // Inject code directly into the modal UI display text
+    dummyOtpDisplay.textContent = randomOTP;
 
+    // Show the dark faded background modal wrapper
+    otpOverlay.style.display = 'flex';
+}
 
+// Close layout overlay via manual cancel/dismiss buttons
+closeBtn.addEventListener('click', () => {
+  otpOverlay.style.display = 'none';
+  otpInput.value = ''; // Clean input placeholder field
+});
+
+// Verification rule checking input text against the dummy display text
+verifyBtn.addEventListener('click', () => {
+  if (otpInput.value === dummyOtpDisplay.textContent) {
+    
+    if (currentAction === 'login') {
+        alert('Logged in successfully!');
+    } 
+    
+    else if (currentAction === 'register') {
+        alert('Account created successfully!');
+    }
+    
+    // Refresh the page immediately after clicking "OK"
+    location.reload(); 
+    
+  } else {
+    alert('Invalid OTP validation code. Please try again.');
+  }
+});

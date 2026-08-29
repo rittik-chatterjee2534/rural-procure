@@ -28,7 +28,7 @@ body {
 .auth-card {
     position: relative;
     width: 54vw;
-    height: 74vh;
+    height: 78vh;
     background: var(--white);
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -198,22 +198,22 @@ body {
 }
 
 
-.eye-toggle {
+/* .eye-toggle {
     position: absolute;
     right: 12px;
     color: var(--text-muted);
     cursor: pointer;
     background-color: transparent;
     border: none;
-}
+} */
 
-.forgot-link {
+/* .forgot-link {
     align-self: flex-end;
     font-size: 0.78rem;
     color: var(--primary);
     text-decoration: none;
     margin-top: 4px;
-}
+} */
 
 .remember-me {
     display: flex;
@@ -260,6 +260,9 @@ body {
     font-weight: 600;
 }
 
+
+
+
 /* =========================================
    ANIMATION / TOGGLE STATES
 ========================================= */
@@ -284,4 +287,104 @@ body {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+}
+
+
+
+/* ==========================================================================
+   OTP Modal Styles
+   ========================================================================== */
+
+/* Fullscreen backdrop container */
+.overlay {
+  display: none;             /* Kept hidden until triggered by JS */
+  position: fixed;           
+  top: 0;
+  left: 0;
+  width: 100vw;               
+  height: 100vh;              
+  background-color: rgba(0, 0, 0, 0.6); /* Creates the dark faded background */
+  z-index: 10000;            /* Keeps it above your login card and banners */
+  justify-content: center;   /* Horizontal alignment */
+  align-items: center;       /* Vertical alignment */
+}
+
+/* Modal window styling */
+.modal-box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  max-width: 90%;            
+  text-align: center;
+}
+
+.otp-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* The generated 6-digit dummy OTP highlight container */
+.otp-display {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: #137547;            /* Procurement green shade matching your theme */
+  background-color: #e8f5e9;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 15px 0;
+  border: 1px dashed #137547;
+}
+
+#otpInput {
+  width: 80%;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+#otpInput:focus {
+  border-color: #137547;
+}
+
+/* Buttons configuration container */
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.primary-btn {
+  background-color: #137547;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+  background-color: #0c5231;
+}
+
+.secondary-btn {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background-color: #e8e8e8;
 }
