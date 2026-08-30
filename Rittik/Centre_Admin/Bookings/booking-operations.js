@@ -190,6 +190,8 @@ const completedBookingsCount = document.getElementById(
 
 const exportBookingsButton = document.getElementById("export-bookings-button");
 
+let visibleBookings = [];
+
 /* Current date */
 
 const today = new Date();
@@ -322,6 +324,43 @@ const bookings = [
     status: "scheduled",
   },
 ];
+
+const BOOKING_STORAGE_KEY = "ruralProcureBookingStatuses";
+
+function saveBookingStatuses() {
+  const bookingStatuses = bookings.map((booking) => {
+    return {
+      id: booking.id,
+      status: booking.status,
+    };
+  });
+
+  localStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(bookingStatuses));
+}
+
+function restoreBookingStatuses() {
+  const savedStatuses = localStorage.getItem(BOOKING_STORAGE_KEY);
+
+  if (!savedStatuses) {
+    return;
+  }
+
+  try {
+    const bookingStatuses = JSON.parse(savedStatuses);
+
+    bookings.forEach((booking) => {
+      const savedBooking = bookingStatuses.find((item) => {
+        return item.id === booking.id;
+      });
+
+      if (savedBooking) {
+        booking.status = savedBooking.status;
+      }
+    });
+  } catch (error) {
+    localStorage.removeItem(BOOKING_STORAGE_KEY);
+  }
+}
 
 /* Booking helpers */
 
@@ -469,12 +508,9 @@ bookingModalContent.addEventListener("click", (event) => {
     return;
   }
 
-  const aadhaarDisplay = document.getElementById(
-    "modal-aadhaar-number",
-  );
+  const aadhaarDisplay = document.getElementById("modal-aadhaar-number");
 
-  const aadhaarIsVisible =
-    toggleButton.getAttribute("aria-pressed") === "true";
+  const aadhaarIsVisible = toggleButton.getAttribute("aria-pressed") === "true";
 
   if (aadhaarIsVisible) {
     aadhaarDisplay.textContent = getMaskedAadhaar(
@@ -511,9 +547,7 @@ function getFarmerInitials(name) {
 function createBookingRow(booking) {
   const checkInDisabled = booking.status !== "scheduled";
 
-  const cancelDisabled = ["completed", "cancelled", "missed"].includes(
-    booking.status,
-  );
+  const cancelDisabled = booking.status !== "scheduled";
 
   return `
     <tr data-booking-id="${booking.id}">
@@ -686,6 +720,7 @@ function applyBookingFilters() {
     return matchesSearch && matchesSlot && matchesStatus;
   });
 
+  visibleBookings = filteredBookings;
   updateBookingSummary(dateBookings);
   renderBookings(filteredBookings);
 }
@@ -703,6 +738,28 @@ bookingFilterForm.addEventListener("reset", () => {
 });
 
 /* Temporary action handlers */
+
+function checkInBooking(booking) {
+  if (booking.status !== "scheduled") {
+    return;
+  }
+
+  booking.status = "checked-in";
+
+  saveBookingStatuses();
+  applyBookingFilters();
+}
+
+function cancelBooking(booking) {
+  if (booking.status !== "scheduled") {
+    return;
+  }
+
+  booking.status = "cancelled";
+
+  saveBookingStatuses();
+  applyBookingFilters();
+}
 
 bookingsTableBody.addEventListener("click", (event) => {
   const actionButton = event.target.closest(".booking-action-button");
@@ -726,11 +783,135 @@ bookingsTableBody.addEventListener("click", (event) => {
     return;
   }
 
-  console.log(action, selectedBooking);
+  if (action === "check-in") {
+    const confirmed = window.confirm(`Check in ${selectedBooking.farmerName}?`);
+
+    if (!confirmed) {
+      return;
+    }
+
+    checkInBooking(selectedBooking);
+    return;
+  }
+
+  if (action === "cancel") {
+    const confirmed = window.confirm(
+      `Cancel booking ${selectedBooking.id} for ${selectedBooking.farmerName}?`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    cancelBooking(selectedBooking);
+    return;
+  }
+
+  // console.log(action, selectedBooking);
 });
 
-exportBookingsButton.addEventListener("click", () => {
-  console.log("Export bookings");
-});
+function exportBookingsToPdf() {
+  if (visibleBookings.length === 0) {
+    window.alert("There are no bookings to export.");
+    return;
+  }
 
+  const { jsPDF } = window.jspdf;
+
+  const pdf = new jsPDF({
+    orientation: "landscape",
+    unit: "mm",
+    format: "a4",
+  });
+
+  pdf.setTextColor(16, 42, 32);
+  pdf.setFontSize(18);
+  pdf.text("RuralProcure Booking Report", 14, 16);
+
+  pdf.setFontSize(10);
+  pdf.setTextColor(51, 65, 85);
+  pdf.text(
+    `Krishnanagar Centre | Date: ${bookingDateFilter.value || todayISO}`,
+    14,
+    23,
+  );
+
+  pdf.setTextColor(220, 38, 38);
+  pdf.setFontSize(8);
+  pdf.text("DEMO DATA - NOT FOR OFFICIAL USE", 220, 16);
+
+  const tableBody = visibleBookings.map((booking) => {
+    return [
+      booking.id,
+      booking.farmerName,
+      booking.kisanId,
+      getMaskedAadhaar(booking.aadhaarNumber),
+      booking.phone,
+      booking.slotTime,
+      booking.crop,
+      `${booking.quantity} quintal`,
+      formatBookingStatus(booking.status),
+    ];
+  });
+
+  const tableOptions = {
+    startY: 29,
+
+    head: [
+      [
+        "Booking ID",
+        "Farmer",
+        "Kisan ID",
+        "Aadhaar",
+        "Phone",
+        "Time Slot",
+        "Crop",
+        "Quantity",
+        "Status",
+      ],
+    ],
+
+    body: tableBody,
+
+    theme: "grid",
+
+    styles: {
+      fontSize: 7.5,
+      cellPadding: 3,
+      textColor: [51, 65, 85],
+      lineColor: [226, 232, 240],
+      lineWidth: 0.2,
+    },
+
+    headStyles: {
+      fillColor: [21, 128, 61],
+      textColor: [255, 255, 255],
+      fontStyle: "bold",
+    },
+
+    alternateRowStyles: {
+      fillColor: [247, 250, 247],
+    },
+
+    margin: {
+      left: 14,
+      right: 14,
+    },
+  };
+
+  if (typeof pdf.autoTable === "function") {
+    pdf.autoTable(tableOptions);
+  } else if (window.jspdfAutoTable?.autoTable) {
+    window.jspdfAutoTable.autoTable(pdf, tableOptions);
+  } else {
+    window.alert("The PDF table library could not be loaded.");
+    return;
+  }
+
+  pdf.save(`bookings-${bookingDateFilter.value || todayISO}.pdf`);
+}
+
+exportBookingsButton.addEventListener("click", exportBookingsToPdf);
+
+restoreBookingStatuses();
 applyBookingFilters();
