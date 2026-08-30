@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,39 +23,179 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="user-dashboard.css" />
+    <link rel="stylesheet" href="Pages/book-new-slot/book-new-slot.css">
   </head>
 
   <body>
-    <!-- =========================
-         MOBILE HEADER
-    ========================== -->
+    <!-- =====================================================
+     MOBILE HEADER
+====================================================== -->
 
     <header class="mobile-header">
+      <!-- Logo -->
       <div class="mobile-logo">
         <div class="logo-circle small-logo">
           <i class="fa-solid fa-seedling"></i>
         </div>
 
-        <div>
-          <h2>RuralProcure</h2>
-        </div>
+        <h2>RuralProcure</h2>
       </div>
 
-      <button class="menu-toggle" id="menuToggle">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <!-- Mobile Header Actions -->
+      <div class="mobile-header-actions">
+        <!-- ================= MOBILE NOTIFICATION ================= -->
+
+        <div class="notification-wrapper">
+          <button
+            class="notification-btn"
+            id="mobileNotificationButton"
+            aria-label="Notifications"
+            type="button"
+          >
+            <i class="fa-regular fa-bell"></i>
+
+            <span class="notification-count" id="mobileNotificationCount">
+              3
+            </span>
+          </button>
+
+          <!-- Mobile Notification Dropdown -->
+          <div class="notification-dropdown" id="mobileNotificationDropdown">
+            <div class="notification-header">
+              <div>
+                <h3>Notifications</h3>
+
+                <span class="notification-header-text">
+                  3 new notifications
+                </span>
+              </div>
+
+              <button id="mobileMarkAllRead" type="button">
+                Mark all as read
+              </button>
+            </div>
+
+            <!-- Notification 1 -->
+            <div class="notification-item unread" data-notification-id="1">
+              <div class="notification-item-icon green-notification">
+                <i class="fa-regular fa-calendar-check"></i>
+              </div>
+
+              <div class="notification-content">
+                <h4>Slot A-42 confirmed</h4>
+
+                <p>
+                  Your procurement slot has been confirmed for 15 Sep 2026 at
+                  10:00 AM.
+                </p>
+
+                <span class="notification-time"> 5 minutes ago </span>
+              </div>
+
+              <span class="unread-dot"></span>
+            </div>
+
+            <!-- Notification 2 -->
+            <div class="notification-item unread" data-notification-id="2">
+              <div class="notification-item-icon blue-notification">
+                <i class="fa-solid fa-users"></i>
+              </div>
+
+              <div class="notification-content">
+                <h4>You're checked in</h4>
+
+                <p>
+                  You have successfully checked in at Krishnanagar Procurement
+                  Centre.
+                </p>
+
+                <span class="notification-time"> 20 minutes ago </span>
+              </div>
+
+              <span class="unread-dot"></span>
+            </div>
+
+            <!-- Notification 3 -->
+            <div class="notification-item unread" data-notification-id="3">
+              <div class="notification-item-icon yellow-notification">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+              </div>
+
+              <div class="notification-content">
+                <h4>Payment pending</h4>
+
+                <p>Your pending payment of ₹14,400 is awaiting processing.</p>
+
+                <span class="notification-time"> 1 hour ago </span>
+              </div>
+
+              <span class="unread-dot"></span>
+            </div>
+
+            <div class="notification-footer">
+              <button type="button" class="view-all-notifications">
+                View all notifications
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= MOBILE PROFILE ================= -->
+
+        <div class="mobile-profile-wrapper">
+          <button
+            class="mobile-profile-btn"
+            id="mobileProfileButton"
+            aria-label="Profile"
+            type="button"
+          >
+            <div class="mobile-profile-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+          </button>
+
+          <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div>
+              <i class="fa-regular fa-user"></i>
+              My Profile
+            </div>
+
+            <div>
+              <i class="fa-solid fa-gear"></i>
+              Settings
+            </div>
+
+            <div>
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              Logout
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= MOBILE MENU ================= -->
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open menu"
+          type="button"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </header>
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+    <!-- =====================================================
+     SIDEBAR
+====================================================== -->
 
     <aside class="sidebar" id="sidebar">
       <!-- Logo -->
 
       <div class="brand">
         <div class="logo-circle">
-          <img src="../Images/logo.png" alt="RuralProcure" />
+          <img src="../Images/logo.png" alt="RuralProcure Logo" />
         </div>
 
         <h1>RuralProcure</h1>
@@ -66,39 +206,33 @@
       <!-- Main Navigation -->
 
       <nav class="navigation">
-        <a href="#" class="nav-item active">
+        <a href="#" class="nav-item active" id="Home">
           <i class="fa-solid fa-house"></i>
-
           <span>Home</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item" id="bookNewSlot">
           <i class="fa-regular fa-calendar"></i>
-
           <span>Book New Slot</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item" id="myBookings">
           <i class="fa-regular fa-clipboard"></i>
-
           <span>My Bookings</span>
         </a>
 
         <a href="#" class="nav-item">
           <i class="fa-solid fa-users"></i>
-
           <span>Live Queue</span>
         </a>
 
         <a href="#" class="nav-item">
           <i class="fa-solid fa-indian-rupee-sign"></i>
-
           <span>Payments</span>
         </a>
 
         <a href="#" class="nav-item">
           <i class="fa-regular fa-bell"></i>
-
           <span>Notifications</span>
         </a>
       </nav>
@@ -108,61 +242,66 @@
       <div class="sidebar-bottom">
         <a href="#" class="nav-item">
           <i class="fa-regular fa-circle-question"></i>
-
           <span>Help & Support</span>
         </a>
 
         <a href="#" class="nav-item">
           <i class="fa-regular fa-circle-user"></i>
-
           <span>Profile</span>
         </a>
 
         <a href="#" class="nav-item">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
           <span>Logout</span>
         </a>
       </div>
     </aside>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
+    <!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
 
-    <main class="main-content">
-      <!-- =========================
-             TOP BAR
-        ========================== -->
+    <main class="main-content" id="main-content">
+      <!-- =================================================
+         TOP BAR
+    ================================================== -->
 
       <header class="topbar">
         <div></div>
 
         <div class="topbar-right">
-          <!-- Notification -->
+          <!-- ================= DESKTOP NOTIFICATION ================= -->
 
-          <!-- Notification Wrapper -->
           <div class="notification-wrapper">
-            <button class="notification-btn" id="notificationButton">
+            <button
+              class="notification-btn"
+              id="notificationButton"
+              aria-label="Notifications"
+              type="button"
+            >
               <i class="fa-regular fa-bell"></i>
 
-              <span class="notification-count">3</span>
+              <span class="notification-count" id="desktopNotificationCount">
+                3
+              </span>
             </button>
 
-            <!-- Notification Dropdown -->
             <div class="notification-dropdown" id="notificationDropdown">
-              <!-- Header -->
               <div class="notification-header">
                 <div>
                   <h3>Notifications</h3>
-                  <span>3 new notifications</span>
+
+                  <span class="notification-header-text">
+                    3 new notifications
+                  </span>
                 </div>
 
-                <button id="markAllRead">Mark all as read</button>
+                <button id="markAllRead" type="button">Mark all as read</button>
               </div>
 
               <!-- Notification 1 -->
-              <div class="notification-item unread">
+
+              <div class="notification-item unread" data-notification-id="1">
                 <div class="notification-item-icon green-notification">
                   <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -182,7 +321,8 @@
               </div>
 
               <!-- Notification 2 -->
-              <div class="notification-item unread">
+
+              <div class="notification-item unread" data-notification-id="2">
                 <div class="notification-item-icon blue-notification">
                   <i class="fa-solid fa-users"></i>
                 </div>
@@ -202,7 +342,8 @@
               </div>
 
               <!-- Notification 3 -->
-              <div class="notification-item unread">
+
+              <div class="notification-item unread" data-notification-id="3">
                 <div class="notification-item-icon yellow-notification">
                   <i class="fa-solid fa-indian-rupee-sign"></i>
                 </div>
@@ -218,9 +359,8 @@
                 <span class="unread-dot"></span>
               </div>
 
-              <!-- Footer -->
               <div class="notification-footer">
-                <button id="viewAllNotifications">
+                <button type="button" id="viewAllNotifications">
                   View all notifications
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -228,9 +368,9 @@
             </div>
           </div>
 
-          <!-- Profile -->
+          <!-- ================= PROFILE ================= -->
 
-          <button class="profile-btn" id="profileButton">
+          <button class="profile-btn" id="profileButton" type="button">
             <div class="profile-icon">
               <i class="fa-solid fa-user"></i>
             </div>
@@ -261,14 +401,12 @@
         </div>
       </header>
 
-      <!-- =========================
-             DASHBOARD
-        ========================== -->
+      <!-- =================================================
+         DASHBOARD
+    ================================================== -->
 
-      <section class="dashboard">
-        <!-- =========================
-                 WELCOME + STATS
-            ========================== -->
+      <section class="dashboard" id="user-dashboard">
+        <!-- ================= WELCOME + STATS ================= -->
 
         <div class="welcome-row">
           <div class="welcome">
@@ -325,9 +463,7 @@
           </div>
         </div>
 
-        <!-- =========================
-                 FIRST ROW
-            ========================== -->
+        <!-- ================= FIRST ROW ================= -->
 
         <div class="dashboard-grid">
           <!-- NEXT BOOKING -->
@@ -348,7 +484,7 @@
                 <div class="detail">
                   <i class="fa-regular fa-calendar"></i>
 
-                  <span> 15 Sep 2026 (Mon) </span>
+                  <span> 15 Sep 2026 (Tue) </span>
                 </div>
 
                 <div class="detail">
@@ -362,16 +498,19 @@
 
                   <span>
                     Krishnanagar Procurement Centre
-                    <small>Nadia, West Bengal</small>
+                    <small> Nadia, West Bengal </small>
                   </span>
                 </div>
               </div>
 
               <div class="confirmed">
                 Confirmed
+
                 <i class="fa-solid fa-check"></i>
               </div>
             </div>
+
+            <!-- Token -->
 
             <div class="token-area">
               <div class="token-label">Token Number</div>
@@ -379,14 +518,16 @@
               <div class="token-number">A-42</div>
             </div>
 
+            <!-- Buttons -->
+
             <div class="booking-buttons">
-              <button class="outline-btn" id="viewBooking">
+              <button class="outline-btn" id="viewBooking" type="button">
                 <i class="fa-regular fa-clipboard"></i>
 
                 View Booking
               </button>
 
-              <button class="primary-btn" id="viewQueue">
+              <button class="primary-btn" id="viewQueue" type="button">
                 <i class="fa-solid fa-users"></i>
 
                 View Live Queue
@@ -400,6 +541,7 @@
             <div class="card-header">
               <h3>
                 <i class="fa-solid fa-users"></i>
+
                 LIVE QUEUE
               </h3>
             </div>
@@ -420,7 +562,7 @@
               <div class="queue-row">
                 <span>People Ahead of You</span>
 
-                <strong> 2 </strong>
+                <strong id="peopleAheadValue"> 2 </strong>
               </div>
 
               <div class="queue-row">
@@ -429,7 +571,7 @@
                 <strong class="green-text"> ~15 min </strong>
               </div>
 
-              <button class="queue-button" id="queueButton">
+              <button class="queue-button" id="queueButton" type="button">
                 View Live Queue
 
                 <i class="fa-solid fa-chevron-right"></i>
@@ -437,9 +579,7 @@
             </div>
           </section>
 
-          <!-- =========================
-                     PROCUREMENT STATUS
-                ========================== -->
+          <!-- PROCUREMENT STATUS -->
 
           <section class="card status-card">
             <div class="card-header">
@@ -508,15 +648,13 @@
             </div>
           </section>
 
-          <!-- =========================
-                     RECENT ACTIVITY
-                ========================== -->
+          <!-- RECENT ACTIVITY -->
 
           <section class="card activity-card">
             <div class="card-header activity-header">
               <h3>RECENT ACTIVITY</h3>
 
-              <a href="#">View All</a>
+              <a href="#"> View All </a>
             </div>
 
             <div class="activity-list">
@@ -559,15 +697,13 @@
           </section>
         </div>
 
-        <!-- =========================
-                 QUICK ACTIONS
-            ========================== -->
+        <!-- ================= QUICK ACTIONS ================= -->
 
         <section class="quick-actions card">
           <div class="quick-title">QUICK ACTIONS</div>
 
           <div class="quick-grid">
-            <button class="quick-card quick-green">
+            <button class="quick-card quick-green" type="button">
               <div class="quick-icon">
                 <i class="fa-regular fa-calendar"></i>
               </div>
@@ -581,7 +717,7 @@
               <i class="fa-solid fa-chevron-right"></i>
             </button>
 
-            <button class="quick-card quick-blue">
+            <button class="quick-card quick-blue" type="button">
               <div class="quick-icon">
                 <i class="fa-regular fa-clipboard"></i>
               </div>
@@ -595,7 +731,7 @@
               <i class="fa-solid fa-chevron-right"></i>
             </button>
 
-            <button class="quick-card quick-yellow">
+            <button class="quick-card quick-yellow" type="button">
               <div class="quick-icon">
                 <i class="fa-solid fa-indian-rupee-sign"></i>
               </div>

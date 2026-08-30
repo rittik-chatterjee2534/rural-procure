@@ -1,38 +1,48 @@
-/* =========================================
-   SIDEBAR
-========================================= */
+/* =========================================================
+SIDEBAR
+========================================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && sidebar) {
+
+menuToggle.addEventListener("click", (event) => {
+
+    event.stopPropagation();
 
     sidebar.classList.toggle("open");
 
 });
 
+}
 
-/* =========================================
-   SIDEBAR NAVIGATION
-========================================= */
+/* =========================================================
+SIDEBAR NAVIGATION
+========================================================= */
 
 const navItems = document.querySelectorAll(".nav-item");
 
-navItems.forEach(item => {
+navItems.forEach((item) => {
 
     item.addEventListener("click", function (event) {
 
         event.preventDefault();
 
-        navItems.forEach(nav => {
+        navItems.forEach((nav) => {
             nav.classList.remove("active");
         });
 
         this.classList.add("active");
 
         // Close mobile sidebar
-        if (window.innerWidth <= 750) {
+        if (window.innerWidth <= 750 && sidebar) {
             sidebar.classList.remove("open");
+        }
+
+        // Home → return to Dashboard
+        if (this.id === "Home") {
+            window.location.reload();
         }
 
     });
@@ -40,16 +50,63 @@ navItems.forEach(item => {
 });
 
 
-/* =========================================
-   PROFILE DROPDOWN
-========================================= */
+/* =========================================================
+   MY BOOKINGS NAVIGATION
+========================================================= */
+
+document.addEventListener("click", function (event) {
+
+    const myBookings =
+        event.target.closest("#myBookings");
+
+    if (!myBookings) {
+        return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+
+    /* -----------------------------------------
+       ACTIVE SIDEBAR ITEM
+    ----------------------------------------- */
+
+    navItems.forEach((nav) => {
+        nav.classList.remove("active");
+    });
+
+    myBookings.classList.add("active");
+
+
+    /* -----------------------------------------
+       CLOSE MOBILE SIDEBAR
+    ----------------------------------------- */
+
+    if (window.innerWidth <= 750 && sidebar) {
+        sidebar.classList.remove("open");
+    }
+
+
+    /* -----------------------------------------
+       SHOW BOOKINGS
+    ----------------------------------------- */
+
+    showMyBookings();
+
+});
+
+
+/* =========================================================
+PROFILE DROPDOWN - DESKTOP
+========================================================= */
 
 const profileButton =
-    document.getElementById("profileButton");
+document.getElementById("profileButton");
 
 const profileDropdown =
-    document.getElementById("profileDropdown");
+document.getElementById("profileDropdown");
 
+if (profileButton && profileDropdown) {
 
 profileButton.addEventListener("click", (event) => {
 
@@ -57,305 +114,1058 @@ profileButton.addEventListener("click", (event) => {
 
     profileDropdown.classList.toggle("show");
 
-});
-
-
-document.addEventListener("click", () => {
-
-    profileDropdown.classList.remove("show");
+    // Close notification dropdown
+    if (notificationDropdown) {
+        notificationDropdown.classList.remove("show");
+    }
 
 });
 
+}
 
-/* =========================================
-   NOTIFICATION DROPDOWN
-========================================= */
+/* =========================================================
+NOTIFICATION ELEMENTS
+========================================================= */
 
 const notificationButton =
-    document.getElementById("notificationButton");
+document.getElementById("notificationButton");
 
 const notificationDropdown =
-    document.getElementById("notificationDropdown");
+document.getElementById("notificationDropdown");
 
-const markAllRead =
-    document.getElementById("markAllRead");
+const mobileNotificationButton =
+document.getElementById("mobileNotificationButton");
 
-const viewAllNotifications =
-    document.getElementById("viewAllNotifications");
+const mobileNotificationDropdown =
+document.getElementById("mobileNotificationDropdown");
 
+const profileDropdownElement =
+document.getElementById("profileDropdown");
 
-/* Open / Close Notification Dropdown */
+const mobileProfileDropdown =
+document.getElementById("mobileProfileDropdown");
 
-notificationButton.addEventListener("click", (event) => {
+/* =========================================================
+NOTIFICATION STATE
+========================================================= */
 
-    event.stopPropagation();
+/*
+These are the 3 actual notifications.
 
-    notificationDropdown.classList.toggle("show");
+Desktop and mobile each contain a visual copy
+of these notifications.
 
-    // Close profile dropdown
-    profileDropdown.classList.remove("show");
+We keep their read/unread state here.
 
-});
+*/
 
+const notificationState = {
+1: true,
+2: true,
+3: true
+};
 
-/* Prevent dropdown from closing when clicking inside */
+/* =========================================================
+GET UNREAD COUNT
+========================================================= */
 
-notificationDropdown.addEventListener("click", (event) => {
+function getUnreadCount() {
 
-    event.stopPropagation();
+return Object.values(notificationState)
+    .filter(Boolean)
+    .length;
 
-});
+}
 
+/* =========================================================
+UPDATE ALL NOTIFICATION ITEMS
+========================================================= */
 
-/* Mark all notifications as read */
-
-markAllRead.addEventListener("click", () => {
-
-    const notifications =
-        document.querySelectorAll(".notification-item");
-
-    notifications.forEach(notification => {
-
-        notification.classList.remove("unread");
-
-        notification.classList.add("read");
-
-    });
-
-
-    // Remove notification badge
-    const badge =
-        document.querySelector(".notification-count");
-
-    badge.style.display = "none";
-
-
-    // Change header text
-    const headerText =
-        document.querySelector(".notification-header span");
-
-    headerText.textContent = "You're all caught up";
-
-});
-
-
-/* Individual notification click */
+function updateNotificationItems() {
 
 const notificationItems =
     document.querySelectorAll(".notification-item");
 
+notificationItems.forEach((item) => {
 
-notificationItems.forEach(notification => {
+    const id =
+        item.dataset.notificationId;
 
-    notification.addEventListener("click", () => {
+    if (notificationState[id]) {
 
-        notification.classList.remove("unread");
+        // Unread
+        item.classList.add("unread");
+        item.classList.remove("read");
 
-        notification.classList.add("read");
+    } else {
 
-        updateNotificationCount();
+        // Read
+        item.classList.remove("unread");
+        item.classList.add("read");
 
-    });
+    }
 
 });
 
+}
 
-/* Update notification count */
+/* =========================================================
+UPDATE NOTIFICATION BADGES
+========================================================= */
 
-function updateNotificationCount() {
+function updateNotificationBadges() {
 
-    const unread =
-        document.querySelectorAll(
-            ".notification-item.unread"
-        ).length;
-
-
-    const badge =
-        document.querySelector(".notification-count");
+const unreadCount =
+    getUnreadCount();
 
 
-    const headerText =
-        document.querySelector(
-            ".notification-header span"
-        );
+const desktopBadge =
+    document.getElementById(
+        "desktopNotificationCount"
+    );
 
 
-    if (unread === 0) {
+const mobileBadge =
+    document.getElementById(
+        "mobileNotificationCount"
+    );
+
+
+const badges = [
+    desktopBadge,
+    mobileBadge
+];
+
+
+badges.forEach((badge) => {
+
+    if (!badge) {
+        return;
+    }
+
+
+    if (unreadCount === 0) {
 
         badge.style.display = "none";
-
-        headerText.textContent =
-            "You're all caught up";
 
     } else {
 
         badge.style.display = "flex";
 
-        badge.textContent = unread;
+        badge.textContent =
+            unreadCount;
 
-        headerText.textContent =
-            unread + " new notifications";
+    }
+
+});
+
+}
+
+/* =========================================================
+UPDATE NOTIFICATION HEADER TEXT
+========================================================= */
+
+function updateNotificationHeaders() {
+
+const unreadCount =
+    getUnreadCount();
+
+
+const headerTexts =
+    document.querySelectorAll(
+        ".notification-header-text"
+    );
+
+
+headerTexts.forEach((text) => {
+
+    if (unreadCount === 0) {
+
+        text.textContent =
+            "You're all caught up";
+
+    } else {
+
+        text.textContent =
+            unreadCount +
+            (
+                unreadCount === 1
+                    ? " new notification"
+                    : " new notifications"
+            );
+
+    }
+
+});
+
+}
+
+/* =========================================================
+UPDATE COMPLETE NOTIFICATION UI
+========================================================= */
+
+function updateNotificationUI() {
+
+updateNotificationItems();
+
+updateNotificationBadges();
+
+updateNotificationHeaders();
+
+}
+
+/* =========================================================
+MARK ONE NOTIFICATION AS READ
+========================================================= */
+
+function markNotificationAsRead(id) {
+
+if (!notificationState.hasOwnProperty(id)) {
+    return;
+}
+
+notificationState[id] = false;
+
+updateNotificationUI();
+
+}
+
+/* =========================================================
+MARK ALL NOTIFICATIONS AS READ
+========================================================= */
+
+function markAllNotificationsAsRead() {
+
+Object.keys(notificationState).forEach((id) => {
+
+    notificationState[id] = false;
+
+});
+
+updateNotificationUI();
+
+}
+
+/* =========================================================
+DESKTOP NOTIFICATION DROPDOWN
+========================================================= */
+
+if (
+notificationButton &&
+notificationDropdown
+) {
+
+notificationButton.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        notificationDropdown.classList.toggle(
+            "show"
+        );
+
+
+        // Close profile dropdown
+
+        if (profileDropdownElement) {
+
+            profileDropdownElement.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+notificationDropdown.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+    }
+);
+
+}
+
+/* =========================================================
+MOBILE NOTIFICATION DROPDOWN
+========================================================= */
+
+if (
+mobileNotificationButton &&
+mobileNotificationDropdown
+) {
+
+mobileNotificationButton.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        mobileNotificationDropdown.classList.toggle(
+            "show"
+        );
+
+
+        // Close mobile profile dropdown
+
+        if (mobileProfileDropdown) {
+
+            mobileProfileDropdown.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+mobileNotificationDropdown.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+    }
+);
+
+}
+
+/* =========================================================
+MARK ALL AS READ - DESKTOP
+========================================================= */
+
+const markAllRead =
+document.getElementById("markAllRead");
+
+if (markAllRead) {
+
+markAllRead.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        markAllNotificationsAsRead();
+
+    }
+);
+
+}
+
+/* =========================================================
+MARK ALL AS READ - MOBILE
+========================================================= */
+
+const mobileMarkAllRead =
+document.getElementById(
+"mobileMarkAllRead"
+);
+
+if (mobileMarkAllRead) {
+
+
+mobileMarkAllRead.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        markAllNotificationsAsRead();
+
+    }
+);
+
+}
+
+/* =========================================================
+INDIVIDUAL NOTIFICATION CLICK
+========================================================= */
+
+const notificationItems =
+document.querySelectorAll(
+".notification-item"
+);
+
+notificationItems.forEach((notification) => {
+
+notification.addEventListener(
+    "click",
+    () => {
+
+        const id =
+            notification.dataset.notificationId;
+
+        markNotificationAsRead(id);
+
+    }
+);
+
+});
+
+/* =========================================================
+VIEW ALL NOTIFICATIONS
+========================================================= */
+
+const viewAllNotifications =
+document.getElementById(
+"viewAllNotifications"
+);
+
+const mobileViewAllNotifications =
+document.querySelector(
+".mobile-header .view-all-notifications"
+);
+
+function showAllNotificationsMessage() {
+
+alert(
+    "Opening all notifications..."
+);
+
+}
+
+if (viewAllNotifications) {
+
+viewAllNotifications.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        showAllNotificationsMessage();
+
+    }
+);
+
+}
+
+if (mobileViewAllNotifications) {
+
+mobileViewAllNotifications.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        showAllNotificationsMessage();
+
+    }
+);
+
+}
+
+/* =========================================================
+MOBILE PROFILE
+========================================================= */
+
+const mobileProfileButton =
+document.getElementById(
+"mobileProfileButton"
+);
+
+if (
+mobileProfileButton &&
+mobileProfileDropdown
+) {
+
+mobileProfileButton.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        mobileProfileDropdown.classList.toggle(
+            "show"
+        );
+
+
+        // Close mobile notification dropdown
+
+        if (mobileNotificationDropdown) {
+
+            mobileNotificationDropdown.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+mobileProfileDropdown.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+    }
+);
+
+}
+
+/* =========================================================
+CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+"click",
+() => {
+
+    // Desktop profile
+
+    if (profileDropdownElement) {
+
+        profileDropdownElement.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // Desktop notification
+
+    if (notificationDropdown) {
+
+        notificationDropdown.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // Mobile notification
+
+    if (mobileNotificationDropdown) {
+
+        mobileNotificationDropdown.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // Mobile profile
+
+    if (mobileProfileDropdown) {
+
+        mobileProfileDropdown.classList.remove(
+            "show"
+        );
 
     }
 
 }
 
+);
 
-/* View All Notifications */
-
-viewAllNotifications.addEventListener("click", () => {
-
-    alert("Opening all notifications...");
-
-});
-
-
-/* Close dropdown when clicking outside */
-
-document.addEventListener("click", () => {
-
-    notificationDropdown.classList.remove("show");
-
-});
-
-
-
-
-/* =========================================
-   VIEW BOOKING
-========================================= */
+/* =========================================================
+VIEW BOOKING
+========================================================= */
 
 const viewBooking =
-    document.getElementById("viewBooking");
+document.getElementById(
+"viewBooking"
+);
 
-viewBooking.addEventListener("click", () => {
+if (viewBooking) {
 
-    alert(
-        "Booking Details\n\n" +
-        "Crop: Paddy\n" +
-        "Token: A-42\n" +
-        "Date: 15 Sep 2026\n" +
-        "Time: 10:00 AM – 10:30 AM\n" +
-        "Centre: Krishnanagar Procurement Centre"
-    );
+viewBooking.addEventListener(
+    "click",
+    () => {
 
-});
+        alert(
+            "Booking Details\n\n" +
+            "Crop: Paddy\n" +
+            "Token: A-42\n" +
+            "Date: 15 Sep 2026\n" +
+            "Time: 10:00 AM – 10:30 AM\n" +
+            "Centre: Krishnanagar Procurement Centre"
+        );
 
-
-/* =========================================
-   LIVE QUEUE
-========================================= */
-
-const viewQueue =
-    document.getElementById("viewQueue");
-
-const queueButton =
-    document.getElementById("queueButton");
-
-
-function showQueueMessage() {
-
-    alert(
-        "Live Queue\n\n" +
-        "Your Token: A-42\n" +
-        "Currently Serving: A-39\n" +
-        "People Ahead: 2\n" +
-        "Estimated Wait: ~15 min"
-    );
+    }
+);
 
 }
 
+/* =========================================================
+LIVE QUEUE
+========================================================= */
 
-viewQueue.addEventListener("click", showQueueMessage);
+const viewQueue =
+document.getElementById(
+"viewQueue"
+);
 
-queueButton.addEventListener("click", showQueueMessage);
+const queueButton =
+document.getElementById(
+"queueButton"
+);
 
+function showQueueMessage() {
 
-/* =========================================
-   QUICK ACTIONS
-========================================= */
+alert(
+    "Live Queue\n\n" +
+    "Your Token: A-42\n" +
+    "Currently Serving: A-39\n" +
+    "People Ahead: 2\n" +
+    "Estimated Wait: ~15 min"
+);
+
+}
+
+if (viewQueue) {
+
+viewQueue.addEventListener(
+    "click",
+    showQueueMessage
+);
+
+}
+
+if (queueButton) {
+
+queueButton.addEventListener(
+    "click",
+    showQueueMessage
+);
+
+}
+
+/* =========================================================
+QUICK ACTIONS
+========================================================= */
 
 const quickCards =
-    document.querySelectorAll(".quick-card");
+document.querySelectorAll(
+".quick-card"
+);
 
+quickCards.forEach((card) => {
 
-quickCards.forEach(card => {
-
-    card.addEventListener("click", () => {
+card.addEventListener(
+    "click",
+    () => {
 
         const title =
-            card.querySelector("h3").textContent;
+            card.querySelector("h3");
 
-        alert(title + " selected.");
+        if (!title) {
+            return;
+        }
 
-    });
+        alert(
+            title.textContent +
+            " selected."
+        );
+
+    }
+);
 
 });
 
-
-/* =========================================
-   LIVE QUEUE SIMULATION
-========================================= */
+/* =========================================================
+LIVE QUEUE SIMULATION
+========================================================= */
 
 let peopleAhead = 2;
 
+const peopleAheadValue =
+document.getElementById(
+"peopleAheadValue"
+);
+
 setInterval(() => {
 
-    if (peopleAhead > 0) {
+if (peopleAhead > 0) {
 
-        // Randomly simulate queue movement
-        if (Math.random() > 0.7) {
+    /*
+        Randomly simulate queue movement.
+        There is a 30% chance every 5 seconds.
+    */
 
-            peopleAhead--;
+    if (Math.random() > 0.7) {
 
-            const queueRows =
-                document.querySelectorAll(".queue-row");
+        peopleAhead--;
 
-            if (queueRows.length >= 3) {
+        if (peopleAheadValue) {
 
-                queueRows[2]
-                    .querySelector("strong")
-                    .textContent = peopleAhead;
-
-            }
+            peopleAheadValue.textContent =
+                peopleAhead;
 
         }
 
     }
 
+}
+
 }, 5000);
 
+/* =========================================================
+RESPONSIVE SIDEBAR
+========================================================= */
 
-/* =========================================
-   NOTIFICATION BADGE
-========================================= */
+window.addEventListener(
+"resize",
+() => {
 
-let notifications = 3;
+    if (
+        window.innerWidth > 750 &&
+        sidebar
+    ) {
 
-setTimeout(() => {
-
-    const badge =
-        document.querySelector(".notification-count");
-
-    if (notifications === 0) {
-
-        badge.style.display = "none";
+        sidebar.classList.remove(
+            "open"
+        );
 
     }
 
-}, 1000);
+}
+
+);
+
+/* =========================================================
+INITIALIZE NOTIFICATION UI
+========================================================= */
+
+updateNotificationUI();
 
 
-/* =========================================
-   RESPONSIVE SIDEBAR
-========================================= */
+/* To Dynamically show the book new slot */
+const bookNewSlot = document.getElementById("bookNewSlot");
+const mainContent = document.getElementById("main-content");
 
-window.addEventListener("resize", () => {
+bookNewSlot.addEventListener("click", async function (event) {
 
-    if (window.innerWidth > 750) {
+    event.preventDefault();
 
-        sidebar.classList.remove("open");
+    try {
 
+        const response = await fetch(
+            "Pages/book-new-slot/book-new-slot.html"
+        );
+
+        if (!response.ok) {
+            throw new Error("Book New Slot HTML not found");
+        }
+
+        const html = await response.text();
+
+        // Display Book New Slot inside dashboard
+        mainContent.innerHTML = html;
+
+        // Load Book New Slot CSS
+        const css = document.createElement("link");
+
+        css.rel = "stylesheet";
+        css.href = "Pages/book-new-slot/book-new-slot.css";
+
+        document.head.appendChild(css);
+
+        // Load Book New Slot JavaScript
+        const script = document.createElement("script");
+
+        script.src = "Pages/book-new-slot/book-new-slot.js";
+
+        script.onload = function(){
+            console.log("Book New Slot JS loaded successfully")
+        };
+
+        script.onerror = function(){
+            console.error("Book New Slot JS could not be loaded");
+        }
+
+        document.body.appendChild(script);
+
+    } catch (error) {
+
+        console.error(error);
+
+        mainContent.innerHTML = `
+            <div style="padding:40px;text-align:center;">
+                <h2>Unable to load Book New Slot</h2>
+                <p>Please check the file path.</p>
+            </div>
+        `;
     }
 
 });
+
+/* =========================================================
+   SHOW MY BOOKINGS
+========================================================= */
+
+function showMyBookings() {
+
+    if (!mainContent) {
+        console.error("main-content not found");
+        return;
+    }
+
+
+    /* =========================================
+       GET SAVED BOOKING
+    ========================================= */
+
+    const savedBooking =
+        localStorage.getItem("myBooking");
+
+
+    /* =========================================
+       NO BOOKING
+    ========================================= */
+
+    if (!savedBooking) {
+
+        mainContent.innerHTML = `
+
+            <div class="my-bookings-page">
+
+                <div class="booking-page-header">
+
+                    <div>
+
+                        <h1>
+                            My Bookings
+                        </h1>
+
+                        <p>
+                            Your confirmed procurement bookings
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="no-booking">
+
+                    <i class="fa-regular fa-calendar-xmark"></i>
+
+                    <h2>
+                        No bookings yet
+                    </h2>
+
+                    <p>
+                        You don't have any confirmed
+                        bookings.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /* =========================================
+       READ BOOKING DATA
+    ========================================= */
+
+    let booking;
+
+    try {
+
+        booking =
+            JSON.parse(savedBooking);
+
+    } catch (error) {
+
+        console.error(
+            "Error reading booking:",
+            error
+        );
+
+        return;
+    }
+
+
+    /* =========================================
+       SHOW BOOKING
+    ========================================= */
+
+    mainContent.innerHTML = `
+
+        <div class="my-bookings-page">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="booking-page-header">
+
+                <div>
+
+                    <h1>
+                        My Bookings
+                    </h1>
+
+                    <p>
+                        View your confirmed procurement slot.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOKING CARD -->
+
+            <div class="my-booking-card">
+
+
+                <!-- BOOKING HEADER -->
+
+                <div class="booking-card-header">
+
+                    <div>
+
+                        <span>
+                            Booking Status
+                        </span>
+
+                        <strong>
+                            ${booking.status || "Confirmed"}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-token">
+
+                        <small>
+                            Token
+                        </small>
+
+                        <strong>
+                            ${booking.token || "A-42"}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOOKING DETAILS -->
+
+                <div class="booking-card-body">
+
+
+                    <!-- CENTRE -->
+
+                    <div class="booking-detail">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>
+                                Procurement Centre
+                            </small>
+
+                            <strong>
+                                ${booking.centre || "-"}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCE -->
+
+                    <div class="booking-detail">
+
+                        <i class="fa-solid fa-seedling"></i>
+
+                        <div>
+
+                            <small>
+                                Produce
+                            </small>
+
+                            <strong>
+                                ${booking.produce || "-"}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="booking-detail">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <div>
+
+                            <small>
+                                Date
+                            </small>
+
+                            <strong>
+                                ${booking.date || "-"}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="booking-detail">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <div>
+
+                            <small>
+                                Time Slot
+                            </small>
+
+                            <strong>
+                                ${booking.time || "-"}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="booking-card-footer">
+
+                    <span>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Booking Confirmed
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+window.showMyBookings = showMyBookings;
