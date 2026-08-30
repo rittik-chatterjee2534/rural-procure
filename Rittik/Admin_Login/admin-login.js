@@ -72,7 +72,7 @@ loginForm.addEventListener("submit", (event) => {
     localStorage.removeItem("rememberedAdminEmail");
   }
   setTimeout( () => {
-    window.location.href = "../Admin_Dashboard/admin-dashboard.html";
+    window.location.href = "../Centre_Admin/Dashboard/centre-admin-dashboard.html";
   }, 1500);
   
 });
