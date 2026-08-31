@@ -742,33 +742,63 @@ queueButton.addEventListener(
 QUICK ACTIONS
 ========================================================= */
 
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
 const quickCards =
-document.querySelectorAll(
-".quick-card"
-);
+    document.querySelectorAll(".quick-card");
+
 
 quickCards.forEach((card) => {
 
-card.addEventListener(
-    "click",
-    () => {
+    card.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
 
         const title =
             card.querySelector("h3");
+
 
         if (!title) {
             return;
         }
 
-        alert(
-            title.textContent +
-            " selected."
-        );
 
-    }
-);
+        const action =
+            title.textContent.trim().toLowerCase();
+
+
+        /* =========================================
+           BOOK NEW SLOT
+        ========================================= */
+
+        if (action.includes("book new slot")) {
+
+            loadBookNewSlot();
+
+            return;
+
+        }
+
+
+        /* =========================================
+           MY BOOKINGS
+        ========================================= */
+
+        if (action.includes("my booking")) {
+
+            showMyBookings();
+
+            return;
+
+        }
+
+    });
 
 });
+
 
 /* =========================================================
 LIVE QUEUE SIMULATION
@@ -838,12 +868,24 @@ updateNotificationUI();
 
 
 /* To Dynamically show the book new slot */
-const bookNewSlot = document.getElementById("bookNewSlot");
-const mainContent = document.getElementById("main-content");
+/* =========================================================
+   LOAD BOOK NEW SLOT
+========================================================= */
 
-bookNewSlot.addEventListener("click", async function (event) {
+const bookNewSlot =
+    document.getElementById("bookNewSlot");
 
-    event.preventDefault();
+const mainContent =
+    document.getElementById("main-content");
+
+
+
+async function loadBookNewSlot() {
+
+    if (!mainContent) {
+        return;
+    }
+
 
     try {
 
@@ -851,51 +893,123 @@ bookNewSlot.addEventListener("click", async function (event) {
             "Pages/book-new-slot/book-new-slot.html"
         );
 
+
         if (!response.ok) {
-            throw new Error("Book New Slot HTML not found");
+
+            throw new Error(
+                "Book New Slot HTML not found"
+            );
+
         }
 
-        const html = await response.text();
 
-        // Display Book New Slot inside dashboard
-        mainContent.innerHTML = html;
+        const html =
+            await response.text();
 
-        // Load Book New Slot CSS
-        const css = document.createElement("link");
 
-        css.rel = "stylesheet";
-        css.href = "Pages/book-new-slot/book-new-slot.css";
+        /* =========================================
+           LOAD HTML
+        ========================================= */
+
+        mainContent.innerHTML =
+            html;
+
+
+        /* =========================================
+           LOAD CSS
+        ========================================= */
+
+        const css =
+            document.createElement("link");
+
+        css.rel =
+            "stylesheet";
+
+        css.href =
+            "Pages/book-new-slot/book-new-slot.css";
 
         document.head.appendChild(css);
 
-        // Load Book New Slot JavaScript
-        const script = document.createElement("script");
 
-        script.src = "Pages/book-new-slot/book-new-slot.js";
+        /* =========================================
+           LOAD JAVASCRIPT
+        ========================================= */
 
-        script.onload = function(){
-            console.log("Book New Slot JS loaded successfully")
+        const script =
+            document.createElement("script");
+
+        script.src =
+            "Pages/book-new-slot/book-new-slot.js";
+
+
+        script.onload = function () {
+
+            console.log(
+                "Book New Slot JS loaded successfully"
+            );
+
         };
 
-        script.onerror = function(){
-            console.error("Book New Slot JS could not be loaded");
-        }
+
+        script.onerror = function () {
+
+            console.error(
+                "Book New Slot JS could not be loaded"
+            );
+
+        };
+
 
         document.body.appendChild(script);
+
 
     } catch (error) {
 
         console.error(error);
 
+
         mainContent.innerHTML = `
-            <div style="padding:40px;text-align:center;">
-                <h2>Unable to load Book New Slot</h2>
-                <p>Please check the file path.</p>
+
+            <div style="
+                padding:40px;
+                text-align:center;
+            ">
+
+                <h2>
+                    Unable to load Book New Slot
+                </h2>
+
+                <p>
+                    Please check the file path.
+                </p>
+
             </div>
+
         `;
+
     }
 
-});
+}
+
+
+/* =========================================================
+   SIDEBAR → BOOK NEW SLOT
+========================================================= */
+
+if (bookNewSlot) {
+
+    bookNewSlot.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            loadBookNewSlot();
+
+        }
+    );
+
+}
 
 /* =========================================================
    SHOW MY BOOKINGS
@@ -914,7 +1028,7 @@ function showMyBookings() {
     ========================================= */
 
     const savedBooking =
-        localStorage.getItem("myBooking");
+        sessionStorage.getItem("myBooking");
 
 
     /* =========================================
@@ -990,7 +1104,7 @@ function showMyBookings() {
 
 
     /* =========================================
-       SHOW BOOKING
+       SHOW MY BOOKING
     ========================================= */
 
     mainContent.innerHTML = `
@@ -1003,7 +1117,9 @@ function showMyBookings() {
             <div class="booking-page-header">
 
                 <div>
-
+                    <button class="back-dashboard" id="backDashboard">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
                     <h1>
                         My Bookings
                     </h1>

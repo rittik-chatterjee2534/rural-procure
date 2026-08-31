@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-  <html lang="en">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +23,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="user-dashboard.css" />
-    <link rel="stylesheet" href="Pages/book-new-slot/book-new-slot.css">
+    <link rel="stylesheet" href="Pages/book-new-slot/book-new-slot.css" />
   </head>
 
   <body>
@@ -418,49 +418,52 @@
             <p>Here's what's happening with your procurement.</p>
           </div>
 
-          <!-- Statistics -->
+          <!-- QUICK ACTIONS -->
 
-          <div class="stats-card">
-            <div class="stat">
-              <div class="stat-icon green-light">
-                <i class="fa-regular fa-calendar"></i>
-              </div>
+          <section class="quick-actions card">
+            <div class="quick-title">QUICK ACTIONS</div>
 
-              <div>
-                <p>Upcoming Booking</p>
+            <div class="quick-grid">
+              <button class="quick-card quick-green" type="button">
+                <div class="quick-icon">
+                  <i class="fa-regular fa-calendar"></i>
+                </div>
 
-                <strong>1</strong>
-              </div>
+                <div class="quick-text" id="bookNewSlot">
+                  <h3>Book New Slot</h3>
+                  <p>Book a new slot for your produce</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <button class="quick-card quick-blue" type="button">
+                <div class="quick-icon">
+                  <i class="fa-regular fa-clipboard"></i>
+                </div>
+
+                <div class="quick-text">
+                  <h3>My Bookings</h3>
+                  <p>View all your bookings</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <button class="quick-card quick-yellow" type="button">
+                <div class="quick-icon">
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+
+                <div class="quick-text">
+                  <h3>Payments</h3>
+                  <p>View payment history and status</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
-
-            <div class="stat-divider"></div>
-
-            <div class="stat">
-              <div class="stat-icon green-light">
-                <i class="fa-regular fa-circle-check"></i>
-              </div>
-
-              <div>
-                <p>Completed</p>
-
-                <strong>4</strong>
-              </div>
-            </div>
-
-            <div class="stat-divider"></div>
-
-            <div class="stat">
-              <div class="stat-icon yellow-light">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-              </div>
-
-              <div>
-                <p>Pending Payment</p>
-
-                <strong>₹14,400</strong>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
 
         <!-- ================= FIRST ROW ================= -->
@@ -697,55 +700,58 @@
           </section>
         </div>
 
-        <!-- ================= QUICK ACTIONS ================= -->
+        <!-- ================= STATISTICS ================= -->
 
-        <section class="quick-actions card">
-          <div class="quick-title">QUICK ACTIONS</div>
+<div class="stats-card">
 
-          <div class="quick-grid">
-            <button class="quick-card quick-green" type="button">
-              <div class="quick-icon">
-                <i class="fa-regular fa-calendar"></i>
-              </div>
+  <div class="stat">
 
-              <div class="quick-text">
-                <h3>Book New Slot</h3>
+    <div class="stat-icon green-light">
+      <i class="fa-regular fa-calendar"></i>
+    </div>
 
-                <p>Book a new slot for your produce</p>
-              </div>
+    <div>
+      <p>Upcoming Booking</p>
+      <strong>1</strong>
+    </div>
 
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+  </div>
 
-            <button class="quick-card quick-blue" type="button">
-              <div class="quick-icon">
-                <i class="fa-regular fa-clipboard"></i>
-              </div>
 
-              <div class="quick-text">
-                <h3>My Bookings</h3>
+  <div class="stat-divider"></div>
 
-                <p>View all your bookings</p>
-              </div>
 
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+  <div class="stat">
 
-            <button class="quick-card quick-yellow" type="button">
-              <div class="quick-icon">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-              </div>
+    <div class="stat-icon green-light">
+      <i class="fa-regular fa-circle-check"></i>
+    </div>
 
-              <div class="quick-text">
-                <h3>Payments</h3>
+    <div>
+      <p>Completed</p>
+      <strong>4</strong>
+    </div>
 
-                <p>View payment history and status</p>
-              </div>
+  </div>
 
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
-        </section>
+
+  <div class="stat-divider"></div>
+
+
+  <div class="stat">
+
+    <div class="stat-icon yellow-light">
+      <i class="fa-solid fa-indian-rupee-sign"></i>
+    </div>
+
+    <div>
+      <p>Pending Payment</p>
+      <strong>₹14,400</strong>
+    </div>
+
+  </div>
+
+</div>
       </section>
     </main>
 

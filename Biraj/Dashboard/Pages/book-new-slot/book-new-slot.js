@@ -1120,13 +1120,13 @@ function confirmBooking() {
         status: "Confirmed"
     };
 
-    // Save booking
-    localStorage.setItem(
+    // Save booking ONLY when Confirm Booking is clicked
+    sessionStorage.setItem(
         "myBooking",
         JSON.stringify(booking)
     );
 
-    // Show your existing receipt
+    // Show receipt
     showBookingReceipt(booking);
 }
 
@@ -1308,3 +1308,34 @@ function showBookingReceipt(booking) {
 initializeBookNewSlot();
 
 const backDashboard = document.getElementById("backToDashboard");
+
+/* =========================================================
+   BACK TO HOME - MOBILE ONLY
+========================================================= */
+
+document.addEventListener("click", function (event) {
+
+    const backButton =
+        event.target.closest("#backDashboard");
+
+    if (!backButton) {
+        return;
+    }
+
+    /* -----------------------------------------
+       MOBILE ONLY
+    ----------------------------------------- */
+
+    if (window.innerWidth > 750) {
+        return;
+    }
+
+    /* -----------------------------------------
+       RETURN TO HOME
+    ----------------------------------------- */
+
+    event.preventDefault();
+
+    window.location.reload();
+
+});

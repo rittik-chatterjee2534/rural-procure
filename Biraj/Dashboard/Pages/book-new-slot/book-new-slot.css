@@ -31,12 +31,12 @@
 
 .back-dashboard {
     border: none;
+    display: none;
     background: transparent;
     cursor: pointer;
     color: #303632;
     font-size: 14px;
 }
-
 
 .booking-heading h1 {
     font-size: 28px;
@@ -734,6 +734,10 @@
 ========================================= */
 
 @media (max-width: 600px) {
+
+    .back-dashboard{
+        display: flex;
+    }
 
     .step-header {
         margin: 0 18px 18px;
