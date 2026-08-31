@@ -524,9 +524,64 @@
               </table>
             </div>
           </section>
+          <section
+            class="queue-list-card"
+            aria-labelledby="skipped-farmers-title"
+          >
+            <header class="queue-list-header">
+              <div>
+                <h2 id="skipped-farmers-title">Skipped Farmers</h2>
+
+                <p>Farmers skipped from the active waiting queue.</p>
+              </div>
+
+              <span id="skipped-total-badge">0 skipped</span>
+            </header>
+
+            <div class="queue-table-wrapper">
+              <table class="queue-table">
+                <caption class="visually-hidden">
+                  Farmers skipped from the waiting queue
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Token</th>
+                    <th scope="col">Farmer</th>
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Skipped At</th>
+                    <th scope="col">Time Slot</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="skipped-table-body">
+                  <tr>
+                    <td colspan="7">
+                      <div class="queue-empty-state">
+                        <i data-lucide="users" aria-hidden="true"></i>
+
+                        <strong>No farmers have been skipped</strong>
+
+                        <p>Skipped farmers will appear here.</p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </main>
       </div>
     </div>
+    <div
+      class="queue-toast"
+      id="queue-toast"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="./queue-management.js"></script>
   </body>
