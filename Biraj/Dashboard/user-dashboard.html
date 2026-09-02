@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,8 +28,8 @@
 
   <body>
     <!-- =====================================================
-     MOBILE HEADER
-====================================================== -->
+         MOBILE HEADER
+    ====================================================== -->
 
     <header class="mobile-header">
       <!-- Logo -->
@@ -60,6 +60,7 @@
           </button>
 
           <!-- Mobile Notification Dropdown -->
+
           <div class="notification-dropdown" id="mobileNotificationDropdown">
             <div class="notification-header">
               <div>
@@ -76,6 +77,7 @@
             </div>
 
             <!-- Notification 1 -->
+
             <div class="notification-item unread" data-notification-id="1">
               <div class="notification-item-icon green-notification">
                 <i class="fa-regular fa-calendar-check"></i>
@@ -96,6 +98,7 @@
             </div>
 
             <!-- Notification 2 -->
+
             <div class="notification-item unread" data-notification-id="2">
               <div class="notification-item-icon blue-notification">
                 <i class="fa-solid fa-users"></i>
@@ -116,6 +119,7 @@
             </div>
 
             <!-- Notification 3 -->
+
             <div class="notification-item unread" data-notification-id="3">
               <div class="notification-item-icon yellow-notification">
                 <i class="fa-solid fa-indian-rupee-sign"></i>
@@ -187,8 +191,8 @@
     </header>
 
     <!-- =====================================================
-     SIDEBAR
-====================================================== -->
+         SIDEBAR
+    ====================================================== -->
 
     <aside class="sidebar" id="sidebar">
       <!-- Logo -->
@@ -206,32 +210,32 @@
       <!-- Main Navigation -->
 
       <nav class="navigation">
-        <a href="#" class="nav-item active" id="Home">
+        <a href="user-dashboard.html" class="nav-item active">
           <i class="fa-solid fa-house"></i>
           <span>Home</span>
         </a>
 
-        <a href="#" class="nav-item" id="bookNewSlot">
+        <a href="Pages/book-new-slot/book-new-slot.html" class="nav-item">
           <i class="fa-regular fa-calendar"></i>
           <span>Book New Slot</span>
         </a>
 
-        <a href="#" class="nav-item" id="myBookings">
+        <a href="Pages/my-bookings/my-bookings.html" class="nav-item">
           <i class="fa-regular fa-clipboard"></i>
           <span>My Bookings</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="Pages/live-queue/live-queue.html" class="nav-item">
           <i class="fa-solid fa-users"></i>
           <span>Live Queue</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="Pages/payments/payments.html" class="nav-item">
           <i class="fa-solid fa-indian-rupee-sign"></i>
           <span>Payments</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="Pages/notifications/notifications.html" class="nav-item">
           <i class="fa-regular fa-bell"></i>
           <span>Notifications</span>
         </a>
@@ -242,7 +246,7 @@
       <div class="sidebar-bottom">
         <a href="#" class="nav-item">
           <i class="fa-regular fa-circle-question"></i>
-          <span>Help & Support</span>
+          <span>Help &amp; Support</span>
         </a>
 
         <a href="#" class="nav-item">
@@ -258,13 +262,13 @@
     </aside>
 
     <!-- =====================================================
-     MAIN CONTENT
-====================================================== -->
+         MAIN CONTENT
+    ====================================================== -->
 
     <main class="main-content" id="main-content">
       <!-- =================================================
-         TOP BAR
-    ================================================== -->
+           TOP BAR
+      ================================================== -->
 
       <header class="topbar">
         <div></div>
@@ -402,8 +406,8 @@
       </header>
 
       <!-- =================================================
-         DASHBOARD
-    ================================================== -->
+           DASHBOARD
+      ================================================== -->
 
       <section class="dashboard" id="user-dashboard">
         <!-- ================= WELCOME + STATS ================= -->
@@ -424,44 +428,62 @@
             <div class="quick-title">QUICK ACTIONS</div>
 
             <div class="quick-grid">
-              <button class="quick-card quick-green" type="button">
+              <!-- BOOK NEW SLOT -->
+
+              <a
+                href="Pages/book-new-slot/book-new-slot.html"
+                class="quick-card quick-green"
+              >
                 <div class="quick-icon">
                   <i class="fa-regular fa-calendar"></i>
                 </div>
 
-                <div class="quick-text" id="bookNewSlot">
+                <div class="quick-text">
                   <h3>Book New Slot</h3>
+
                   <p>Book a new slot for your produce</p>
                 </div>
 
                 <i class="fa-solid fa-chevron-right"></i>
-              </button>
+              </a>
 
-              <button class="quick-card quick-blue" type="button">
+              <!-- MY BOOKINGS -->
+
+              <a
+                href="Pages/my-bookings/my-bookings.html"
+                class="quick-card quick-blue"
+              >
                 <div class="quick-icon">
                   <i class="fa-regular fa-clipboard"></i>
                 </div>
 
                 <div class="quick-text">
                   <h3>My Bookings</h3>
+
                   <p>View all your bookings</p>
                 </div>
 
                 <i class="fa-solid fa-chevron-right"></i>
-              </button>
+              </a>
 
-              <button class="quick-card quick-yellow" type="button">
+              <!-- PAYMENTS -->
+
+              <a
+                href="Pages/payments/payments.html"
+                class="quick-card quick-yellow"
+              >
                 <div class="quick-icon">
                   <i class="fa-solid fa-indian-rupee-sign"></i>
                 </div>
 
                 <div class="quick-text">
                   <h3>Payments</h3>
+
                   <p>View payment history and status</p>
                 </div>
 
                 <i class="fa-solid fa-chevron-right"></i>
-              </button>
+              </a>
             </div>
           </section>
         </div>
@@ -702,60 +724,53 @@
 
         <!-- ================= STATISTICS ================= -->
 
-<div class="stats-card">
+        <div class="stats-card">
+          <div class="stat">
+            <div class="stat-icon green-light">
+              <i class="fa-regular fa-calendar"></i>
+            </div>
 
-  <div class="stat">
+            <div>
+              <p>Upcoming Booking</p>
 
-    <div class="stat-icon green-light">
-      <i class="fa-regular fa-calendar"></i>
-    </div>
+              <strong> 1 </strong>
+            </div>
+          </div>
 
-    <div>
-      <p>Upcoming Booking</p>
-      <strong>1</strong>
-    </div>
+          <div class="stat-divider"></div>
 
-  </div>
+          <div class="stat">
+            <div class="stat-icon green-light">
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
 
+            <div>
+              <p>Completed</p>
 
-  <div class="stat-divider"></div>
+              <strong> 4 </strong>
+            </div>
+          </div>
 
+          <div class="stat-divider"></div>
 
-  <div class="stat">
+          <div class="stat">
+            <div class="stat-icon yellow-light">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
 
-    <div class="stat-icon green-light">
-      <i class="fa-regular fa-circle-check"></i>
-    </div>
+            <div>
+              <p>Pending Payment</p>
 
-    <div>
-      <p>Completed</p>
-      <strong>4</strong>
-    </div>
-
-  </div>
-
-
-  <div class="stat-divider"></div>
-
-
-  <div class="stat">
-
-    <div class="stat-icon yellow-light">
-      <i class="fa-solid fa-indian-rupee-sign"></i>
-    </div>
-
-    <div>
-      <p>Pending Payment</p>
-      <strong>₹14,400</strong>
-    </div>
-
-  </div>
-
-</div>
+              <strong> ₹14,400 </strong>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <!-- JavaScript -->
+
     <script src="user-dashboard.js"></script>
   </body>
 </html>
+```

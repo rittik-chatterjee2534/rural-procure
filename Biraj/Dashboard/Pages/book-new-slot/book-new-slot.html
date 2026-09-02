@@ -1,1222 +1,614 @@
-<div class="book-slot-page">
-
-    <!-- ==============================
-         HEADER
-    =============================== -->
-
-    <div class="booking-header">
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book New Slot - RuralProcure</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="book-new-slot.css" />
+  </head>
+  <body>
+    <div class="book-slot-page">
+      <!-- ==============================
+             HEADER
+        =============================== -->
+      <header class="booking-header">
         <div class="booking-heading">
-
-            <div class="back-title">
-                <button class="back-dashboard" id="backDashboard">
-                   <i class="fa-solid fa-arrow-left"></i>
-                </button>
-
-                <h1>Book New Slot</h1>
-            </div>
-
-            <p id="stepDescription">
-                Select your preferred procurement centre
-            </p>
-
+          <div class="back-title">
+            <button
+              class="back-dashboard"
+              id="backDashboard"
+              type="button"
+              aria-label="Back"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+              <h1>Book New Slot</h1>
+          </div>
+          <p id="stepDescription">Select your preferred procurement centre</p>
         </div>
+        <div class="step-counter">Step <span id="stepNumber">1</span> of 4</div>
+      </header>
 
-        <div class="step-counter">
-            Step <span id="stepNumber">1</span> of 4
+      <!-- ==============================
+             PROGRESS BAR
+        =============================== -->
+      <div class="booking-progress">
+        <div class="progress-item active" id="progress1">
+          <span>1</span>
+          <p>Centre</p>
         </div>
+        <div class="progress-line" id="line1"></div>
 
-    </div>
+        <div class="progress-item" id="progress2">
+          <span>2</span>
+          <p>Produce</p>
+        </div>
+        <div class="progress-line" id="line2"></div>
 
+        <div class="progress-item" id="progress3">
+          <span>3</span>
+          <p>Date</p>
+        </div>
+        <div class="progress-line" id="line3"></div>
 
-    <!-- ==============================
-     PROGRESS
-================================ -->
+        <div class="progress-item" id="progress4">
+          <span>4</span>
+          <p>Time</p>
+        </div>
+      </div>
 
-<div class="booking-progress">
-
-    <!-- 1 Centre -->
-    <div class="progress-item active" id="progress1">
-        <span>1</span>
-        <p>Centre</p>
-    </div>
-
-    <div class="progress-line" id="line1"></div>
-
-    <!-- 2 Produce -->
-    <div class="progress-item" id="progress2">
-        <span>2</span>
-        <p>Produce</p>
-    </div>
-
-    <div class="progress-line" id="line2"></div>
-
-    <!-- 3 Date -->
-    <div class="progress-item" id="progress3">
-        <span>3</span>
-        <p>Date</p>
-    </div>
-
-    <div class="progress-line" id="line3"></div>
-
-    <!-- 4 Time -->
-    <div class="progress-item" id="progress4">
-        <span>4</span>
-        <p>Time</p>
-    </div>
-
-</div>
-
-
-    <!-- ======================================================
-         STEP 1 : CENTRE SELECTION
-    ======================================================= -->
-
-    <section class="booking-step active" id="centreStep">
-
+      <!-- ==============================
+             STEP 1: CENTRE SELECTION
+        =============================== -->
+      <section class="booking-step active" id="centreStep">
         <div class="step-header">
-
-            <h2>Centre Selection</h2>
-
-            <p>
-                Select a procurement centre near you
-            </p>
-
+          <h2>Centre Selection</h2>
+          <p>Select a procurement centre near you</p>
         </div>
-
-
-        <!-- SEARCH -->
 
         <div class="centre-search">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-                type="text"
-                id="centreSearch"
-                placeholder="Search by centre name or location"
-            >
-
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="centreSearch"
+            placeholder="Search by centre name or location"
+          />
         </div>
-
-
-        <!-- CENTRE LIST -->
 
         <div class="centre-list">
+          <label class="centre-card selected">
+            <input
+              type="radio"
+              name="centre"
+              value="Krishnanagar Procurement Centre"
+              checked
+            />
+            <div class="centre-location-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="centre-details">
+              <h3>Krishnanagar Procurement Centre</h3>
+              <p>Krishnanagar, Nadia, West Bengal</p>
+            </div>
+            <span class="distance">0 km</span>
+            <span class="selected-check">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </label>
 
+          <label class="centre-card">
+            <input
+              type="radio"
+              name="centre"
+              value="Shantipur Procurement Centre"
+            />
+            <div class="centre-location-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="centre-details">
+              <h3>Shantipur Procurement Centre</h3>
+              <p>Shantipur, Nadia, West Bengal</p>
+            </div>
+            <span class="distance">14.5 km</span>
+            <span class="selected-check">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </label>
 
-            <!-- 1 -->
+          <label class="centre-card">
+            <input
+              type="radio"
+              name="centre"
+              value="Ranaghat Procurement Centre"
+            />
+            <div class="centre-location-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="centre-details">
+              <h3>Ranaghat Procurement Centre</h3>
+              <p>Ranaghat, Nadia, West Bengal</p>
+            </div>
+            <span class="distance">18.4 km</span>
+            <span class="selected-check">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </label>
 
-            <label class="centre-card selected">
-
-                <input
-                    type="radio"
-                    name="centre"
-                    value="Krishnanagar Procurement Centre"
-                    checked
-                >
-
-                <div class="centre-location-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-                <div class="centre-details">
-
-                    <h3>
-                        Krishnanagar Procurement Centre
-                    </h3>
-
-                    <p>
-                        Krishnanagar, Nadia, West Bengal
-                    </p>
-
-                </div>
-
-                <span class="distance">
-                    0 km
-                </span>
-
-                <span class="selected-check">
-                    <i class="fa-solid fa-check"></i>
-                </span>
-
-            </label>
-
-
-            <!-- 2 -->
-
-            <label class="centre-card">
-
-                <input
-                    type="radio"
-                    name="centre"
-                    value="Shantipur Procurement Centre"
-                >
-
-                <div class="centre-location-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-                <div class="centre-details">
-
-                    <h3>
-                        Shantipur Procurement Centre
-                    </h3>
-
-                    <p>
-                        Shantipur, Nadia, West Bengal
-                    </p>
-
-                </div>
-
-                <span class="distance">
-                    14.5 km
-                </span>
-
-                <span class="selected-check">
-                    <i class="fa-solid fa-check"></i>
-                </span>
-
-            </label>
-
-
-            <!-- 3 -->
-
-            <label class="centre-card">
-
-                <input
-                    type="radio"
-                    name="centre"
-                    value="Ranaghat Procurement Centre"
-                >
-
-                <div class="centre-location-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-                <div class="centre-details">
-
-                    <h3>
-                        Ranaghat Procurement Centre
-                    </h3>
-
-                    <p>
-                        Ranaghat, Nadia, West Bengal
-                    </p>
-
-                </div>
-
-                <span class="distance">
-                    18.4 km
-                </span>
-
-                <span class="selected-check">
-                    <i class="fa-solid fa-check"></i>
-                </span>
-
-            </label>
-
-
-            <!-- 4 -->
-
-            <label class="centre-card">
-
-                <input
-                    type="radio"
-                    name="centre"
-                    value="Haringhata Procurement Centre"
-                >
-
-                <div class="centre-location-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-                <div class="centre-details">
-
-                    <h3>
-                        Haringhata Procurement Centre
-                    </h3>
-
-                    <p>
-                        Haringhata, Nadia, West Bengal
-                    </p>
-
-                </div>
-
-                <span class="distance">
-                    27.2 km
-                </span>
-
-                <span class="selected-check">
-                    <i class="fa-solid fa-check"></i>
-                </span>
-
-            </label>
-
+          <label class="centre-card">
+            <input
+              type="radio"
+              name="centre"
+              value="Haringhata Procurement Centre"
+            />
+            <div class="centre-location-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="centre-details">
+              <h3>Haringhata Procurement Centre</h3>
+              <p>Haringhata, Nadia, West Bengal</p>
+            </div>
+            <span class="distance">27.2 km</span>
+            <span class="selected-check">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </label>
         </div>
-
-
-        <!-- BUTTON -->
 
         <div class="booking-actions">
-
-            <button
-                class="next-button"
-                id="centreNext"
-            >
-                Next
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-
+          <button class="next-button" id="centreNext" type="button">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
-
-    </section>
-
-
-    <!-- ================================
-     STEP 2 — SELECT PRODUCE
-================================ -->
-
-<section class="booking-step" id="produceStep">
-
-    <div class="step-header">
-
-        <h2>Select Produce</h2>
-
-        <p>
-            Choose the produce you want to book a slot for.
-        </p>
-
-    </div>
-
-
-    <!-- Selected Centre -->
-
-    <div class="selected-centre">
-
-        <div class="centre-icon">
-            <i class="fa-solid fa-location-dot"></i>
-        </div>
-
-        <div>
-            <span>Selected Procurement Centre</span>
-
-            <strong id="selectedCentreName">
-                Krishnanagar Procurement Centre
-            </strong>
-        </div>
-
-    </div>
-
-
-    <!-- Produce Options -->
-
-    <div class="produce-list">
-
-        <!-- Paddy -->
-        <label class="produce-card selected">
-
-            <input
-                type="radio"
-                name="produce"
-                value="Paddy"
-            >
-
-            <div class="produce-icon">🌾</div>
-
-            <div class="produce-info">
-                <h3>Paddy</h3>
-                <p>Rice crop</p>
-            </div>
-
-            <div class="produce-radio"></div>
-
-        </label>
-
-
-        <!-- Wheat -->
-        <label class="produce-card">
-
-            <input
-                type="radio"
-                name="produce"
-                value="Wheat"
-            >
-
-            <div class="produce-icon">🌾</div>
-
-            <div class="produce-info">
-                <h3>Wheat</h3>
-                <p>Wheat crop</p>
-            </div>
-
-            <div class="produce-radio"></div>
-
-        </label>
-
-
-        <!-- Maize -->
-        <label class="produce-card">
-
-            <input
-                type="radio"
-                name="produce"
-                value="Maize"
-            >
-
-            <div class="produce-icon">🌽</div>
-
-            <div class="produce-info">
-                <h3>Maize</h3>
-                <p>Corn crop</p>
-            </div>
-
-            <div class="produce-radio"></div>
-
-        </label>
-
-
-        <!-- Potato -->
-        <label class="produce-card">
-
-            <input
-                type="radio"
-                name="produce"
-                value="Potato"
-            >
-
-            <div class="produce-icon">🥔</div>
-
-            <div class="produce-info">
-                <h3>Potato</h3>
-                <p>Potato crop</p>
-            </div>
-
-            <div class="produce-radio"></div>
-
-        </label>
-
-
-        <!-- Onion -->
-        <label class="produce-card">
-
-            <input
-                type="radio"
-                name="produce"
-                value="Onion"
-            >
-
-            <div class="produce-icon">🧅</div>
-
-            <div class="produce-info">
-                <h3>Onion</h3>
-                <p>Onion crop</p>
-            </div>
-
-            <div class="produce-radio"></div>
-
-        </label>
-
-    </div>
-
-
-    <!-- Buttons -->
-
-    <div class="booking-actions">
-
-        <button
-            type="button"
-            class="back-button"
-            id="produceBack"
-        >
-            <i class="fa-solid fa-arrow-left"></i>
-            Back
-        </button>
-
-
-        <button
-            type="button"
-            class="next-button"
-            id="produceNext"
-        >
-            Next
-            <i class="fa-solid fa-arrow-right"></i>
-        </button>
-
-    </div>
-
-</section>
-
-
-    <!-- ======================================================
-         STEP 3 : DATE SELECTION
-    ======================================================= -->
-
-    <section class="booking-step" id="dateStep">
-
+      </section>
+
+      <!-- ==============================
+             STEP 2: SELECT PRODUCE
+        =============================== -->
+      <section class="booking-step" id="produceStep">
         <div class="step-header">
-
-            <h2>Date Selection</h2>
-
-            <p>
-                Select your preferred date
-            </p>
-
+          <h2>Select Produce</h2>
+          <p>Choose the produce you want to book a slot for.</p>
         </div>
 
+        <div class="selected-centre">
+          <div class="centre-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <span>Selected Procurement Centre</span>
+            <strong class="selected-centre-display"
+              >Krishnanagar Procurement Centre</strong
+            >
+          </div>
+        </div>
 
-        <!-- SELECTED CENTRE -->
+        <div class="produce-list">
+          <label class="produce-card selected">
+            <input type="radio" name="produce" value="Paddy" checked />
+            <div class="produce-icon">🌾</div>
+            <div class="produce-info">
+              <h3>Paddy</h3>
+              <p>Rice crop</p>
+            </div>
+            <div class="produce-radio"></div>
+          </label>
+
+          <label class="produce-card">
+            <input type="radio" name="produce" value="Wheat" />
+            <div class="produce-icon">🌾</div>
+            <div class="produce-info">
+              <h3>Wheat</h3>
+              <p>Wheat crop</p>
+            </div>
+            <div class="produce-radio"></div>
+          </label>
+
+          <label class="produce-card">
+            <input type="radio" name="produce" value="Maize" />
+            <div class="produce-icon">🌽</div>
+            <div class="produce-info">
+              <h3>Maize</h3>
+              <p>Corn crop</p>
+            </div>
+            <div class="produce-radio"></div>
+          </label>
+
+          <label class="produce-card">
+            <input type="radio" name="produce" value="Potato" />
+            <div class="produce-icon">🥔</div>
+            <div class="produce-info">
+              <h3>Potato</h3>
+              <p>Potato crop</p>
+            </div>
+            <div class="produce-radio"></div>
+          </label>
+
+          <label class="produce-card">
+            <input type="radio" name="produce" value="Onion" />
+            <div class="produce-icon">🧅</div>
+            <div class="produce-info">
+              <h3>Onion</h3>
+              <p>Onion crop</p>
+            </div>
+            <div class="produce-radio"></div>
+          </label>
+        </div>
+
+        <div class="booking-actions">
+          <button type="button" class="back-button" id="produceBack">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <button type="button" class="next-button" id="produceNext">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ==============================
+             STEP 3: DATE SELECTION
+        =============================== -->
+      <section class="booking-step" id="dateStep">
+        <div class="step-header">
+          <h2>Date Selection</h2>
+          <p>Select your preferred date</p>
+        </div>
 
         <div class="selected-information">
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            <div>
-
-                <small>
-                    Selected Procurement Centre
-                </small>
-
-                <strong id="selectedCentreName">
-                    Krishnanagar Procurement Centre
-                </strong>
-
-            </div>
-
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <small>Selected Procurement Centre</small>
+            <strong class="selected-centre-display"
+              >Krishnanagar Procurement Centre</strong
+            >
+          </div>
         </div>
-
-
-        <!-- CALENDAR -->
 
         <div class="calendar-container">
-
-            <div class="calendar-top">
-
-    <button id="previousMonth">
-        <i class="fa-solid fa-chevron-left"></i>
-    </button>
-
-    <div class="month-selector">
-
-        <button id="monthTitle" class="month-title">
-            May 2026
-            <i class="fa-solid fa-chevron-down"></i>
-        </button>
-
-        <div class="month-dropdown" id="monthDropdown">
-
-            <button data-month="0">January</button>
-            <button data-month="1">February</button>
-            <button data-month="2">March</button>
-            <button data-month="3">April</button>
-            <button data-month="4">May</button>
-            <button data-month="5">June</button>
-            <button data-month="6">July</button>
-            <button data-month="7">August</button>
-            <button data-month="8">September</button>
-            <button data-month="9">October</button>
-            <button data-month="10">November</button>
-            <button data-month="11">December</button>
-
-        </div>
-
-    </div>
-
-    <button id="nextMonth">
-        <i class="fa-solid fa-chevron-right"></i>
-    </button>
-
-</div>
-
-
-            <div class="weekdays">
-
-                <span>Sun</span>
-                <span>Mon</span>
-                <span>Tue</span>
-                <span>Wed</span>
-                <span>Thu</span>
-                <span>Fri</span>
-                <span>Sat</span>
-
+          <div class="calendar-top">
+            <button
+              id="previousMonth"
+              type="button"
+              aria-label="Previous Month"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="month-selector">
+              <button id="monthTitle" class="month-title" type="button">
+                May 2026 <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="month-dropdown" id="monthDropdown">
+                <button type="button" data-month="0">January</button>
+                <button type="button" data-month="1">February</button>
+                <button type="button" data-month="2">March</button>
+                <button type="button" data-month="3">April</button>
+                <button type="button" data-month="4">May</button>
+                <button type="button" data-month="5">June</button>
+                <button type="button" data-month="6">July</button>
+                <button type="button" data-month="7">August</button>
+                <button type="button" data-month="8">September</button>
+                <button type="button" data-month="9">October</button>
+                <button type="button" data-month="10">November</button>
+                <button type="button" data-month="11">December</button>
+              </div>
             </div>
+            <button id="nextMonth" type="button" aria-label="Next Month">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
 
-
-            <div
-                class="calendar-days"
-                id="calendarDays"
-            ></div>
-
+          <div class="weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span
+            ><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="calendar-days" id="calendarDays"></div>
         </div>
-
-
-        <!-- SELECTED DATE -->
 
         <div class="selected-date-box">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span>Selected Date</span>
-
-            <strong id="selectedDate">
-                15 May 2026
-            </strong>
-
+          <i class="fa-regular fa-calendar"></i>
+          <span>Selected Date:</span>
+          <strong id="selectedDate">15 May 2026</strong>
         </div>
-
-
-        <!-- BUTTONS -->
 
         <div class="booking-actions">
-
-            <button
-                class="back-button"
-                id="dateBack"
-            >
-                <i class="fa-solid fa-arrow-left"></i>
-                Back
-            </button>
-
-            <button
-                class="next-button"
-                id="dateNext"
-            >
-                Next
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-
+          <button class="back-button" id="dateBack" type="button">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <button class="next-button" id="dateNext" type="button">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
+      </section>
 
-    </section>
-
-
-
-    <!-- ======================================================
-         STEP 4 : TIME SLOT
-    ======================================================= -->
-
-    <section class="booking-step" id="timeStep">
-
+      <!-- ==============================
+             STEP 4: TIME SLOT
+        =============================== -->
+      <section class="booking-step" id="timeStep">
         <div class="step-header">
-
-            <h2>Time Slot Selection</h2>
-
-            <p>
-                Select an available time slot
-            </p>
-
+          <h2>Time Slot Selection</h2>
+          <p>Select an available time slot</p>
         </div>
-
-
-        <!-- BOOKING DETAILS -->
 
         <div class="booking-details-summary">
-
-            <div>
-
-                <i class="fa-solid fa-location-dot"></i>
-
-                <section>
-
-                    <small>Procurement Centre</small>
-
-                    <strong id="summaryCentre">
-                        Krishnanagar Procurement Centre
-                    </strong>
-
-                </section>
-
-            </div>
-
-
-            <div>
-
-                <i class="fa-regular fa-calendar"></i>
-
-                <section>
-
-                    <small>Date</small>
-
-                    <strong id="summaryDate">
-                        15 May 2026
-                    </strong>
-
-                </section>
-
-            </div>
-
+          <div>
+            <i class="fa-solid fa-location-dot"></i>
+            <section>
+              <small>Procurement Centre</small>
+              <strong id="summaryCentre"
+                >Krishnanagar Procurement Centre</strong
+              >
+            </section>
+          </div>
+          <div>
+            <i class="fa-regular fa-calendar"></i>
+            <section>
+              <small>Date</small>
+              <strong id="summaryDate">15 May 2026</strong>
+            </section>
+          </div>
         </div>
 
-
-        <!-- TIME TITLE -->
-
-        <h3 class="available-heading">
-            Available Time Slots
-        </h3>
-
-
-        <!-- TIME SLOTS -->
+        <h3 class="available-heading">Available Time Slots</h3>
 
         <div class="time-slot-grid">
-
-
-            <button
-                class="time-slot disabled"
-                disabled
-            >
-
-                <strong>08:00 - 08:30</strong>
-
-                <span>Full</span>
-
-            </button>
-
-
-            <button class="time-slot">
-
-                <strong>08:30 - 09:00</strong>
-
-                <span>1 slot left</span>
-
-            </button>
-
-
-            <button class="time-slot">
-
-                <strong>09:00 - 09:30</strong>
-
-                <span>3 slots left</span>
-
-            </button>
-
-
-            <button class="time-slot">
-
-                <strong>09:30 - 10:00</strong>
-
-                <span>1 slot left</span>
-
-            </button>
-
-
-            <button class="time-slot selected">
-
-                <strong>10:00 - 10:30</strong>
-
-                <span>Your Selected</span>
-
-            </button>
-
-
-            <button class="time-slot">
-
-                <strong>10:30 - 11:00</strong>
-
-                <span>4 slots left</span>
-
-            </button>
-
-
-            <button class="time-slot">
-
-                <strong>11:00 - 11:30</strong>
-
-                <span>2 slots left</span>
-
-            </button>
-
-
-            <button
-                class="time-slot disabled"
-                disabled
-            >
-
-                <strong>11:30 - 12:00</strong>
-
-                <span>Full</span>
-
-            </button>
-
+          <button class="time-slot disabled" disabled type="button">
+            <strong>08:00 - 08:30</strong>
+            <span>Full</span>
+          </button>
+          <button class="time-slot" type="button">
+            <strong>08:30 - 09:00</strong>
+            <span>1 slot left</span>
+          </button>
+          <button class="time-slot" type="button">
+            <strong>09:00 - 09:30</strong>
+            <span>3 slots left</span>
+          </button>
+          <button class="time-slot" type="button">
+            <strong>09:30 - 10:00</strong>
+            <span>1 slot left</span>
+          </button>
+          <button class="time-slot selected" type="button">
+            <strong>10:00 - 10:30</strong>
+            <span>Selected</span>
+          </button>
+          <button class="time-slot" type="button">
+            <strong>10:30 - 11:00</strong>
+            <span>4 slots left</span>
+          </button>
+          <button class="time-slot" type="button">
+            <strong>11:00 - 11:30</strong>
+            <span>2 slots left</span>
+          </button>
+          <button class="time-slot disabled" disabled type="button">
+            <strong>11:30 - 12:00</strong>
+            <span>Full</span>
+          </button>
         </div>
-
-
-        <!-- NOTICE -->
 
         <div class="slot-notice">
-
-            <i class="fa-regular fa-clock"></i>
-
-            <p>
-                Please arrive at least
-                <strong>15 minutes</strong>
-                before your slot time.
-            </p>
-
+          <i class="fa-regular fa-clock"></i>
+          <p>
+            Please arrive at least <strong>15 minutes</strong> before your slot
+            time.
+          </p>
         </div>
-
-
-        <!-- BUTTONS -->
 
         <div class="booking-actions">
+          <button class="back-button" id="timeBack" type="button">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <button class="next-button" id="continueToReview" type="button">
+            Continue to Review <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
 
-            <button
-                class="back-button"
-                id="timeBack"
-            >
-                <i class="fa-solid fa-arrow-left"></i>
-                Back
-            </button>
-
-            <button
-                class="next-button"
-                id="continueToReview"
-            >
-                Continue to Review
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-
+      <!-- ==============================
+             STEP 5: REVIEW BOOKING
+        =============================== -->
+      <section class="booking-step" id="reviewStep">
+        <div class="step-header">
+          <h2>Review Your Booking</h2>
+          <p>Please check your details before confirming.</p>
         </div>
 
-    </section>
-
-    <!-- ======================================================
-     REVIEW BOOKING
-======================================================= -->
-
-<section class="booking-step" id="reviewStep">
-
-    <div class="step-header">
-
-        <h2>Review Your Booking</h2>
-
-        <p>
-            Please check your details before confirming.
-        </p>
-
-    </div>
-
-
-    <!-- BOOKING SUMMARY -->
-
-    <div class="review-booking-card">
-
-        <!-- Centre -->
-
-        <div class="review-row">
-
+        <div class="review-booking-card">
+          <div class="review-row">
             <div class="review-icon">
-                <i class="fa-solid fa-building-columns"></i>
+              <i class="fa-solid fa-building-columns"></i>
             </div>
-
             <div class="review-info">
-
-                <small>Procurement Centre</small>
-
-                <strong id="reviewCentre">
-                    Krishnanagar Procurement Centre
-                </strong>
-
-                <span id="reviewLocation">
-                    Krishnanagar, Nadia, West Bengal
-                </span>
-
+              <small>Procurement Centre</small>
+              <strong id="reviewCentre">Krishnanagar Procurement Centre</strong>
+              <span id="reviewLocation">Krishnanagar, Nadia, West Bengal</span>
             </div>
+          </div>
 
-        </div>
+          <div class="review-row">
+            <div class="review-icon">🌾</div>
+            <div class="review-info">
+              <small>Produce</small>
+              <strong id="reviewProduce">Paddy</strong>
+            </div>
+          </div>
 
-
-        <!-- Produce -->
-
-        <div class="review-row">
-
+          <div class="review-row">
             <div class="review-icon">
-                🌾
+              <i class="fa-solid fa-weight-hanging"></i>
             </div>
-
             <div class="review-info">
-
-                <small>Produce</small>
-
-                <strong id="reviewProduce">
-                    Paddy
-                </strong>
-
+              <small>Approximate Quantity</small>
+              <strong><span id="reviewQuantity">12</span> Quintal</strong>
             </div>
+          </div>
 
-        </div>
-
-
-        <!-- Quantity -->
-
-        <div class="review-row">
-
+          <div class="review-row">
             <div class="review-icon">
-                <i class="fa-solid fa-weight-hanging"></i>
+              <i class="fa-regular fa-calendar"></i>
             </div>
-
             <div class="review-info">
-
-                <small>Approximate Quantity</small>
-
-                <strong>
-                    <span id="reviewQuantity">12</span>
-                    Quintal
-                </strong>
-
+              <small>Date</small>
+              <strong id="reviewDate">15 May 2026</strong>
             </div>
+          </div>
 
-        </div>
-
-
-        <!-- Date -->
-
-        <div class="review-row">
-
+          <div class="review-row">
             <div class="review-icon">
-                <i class="fa-regular fa-calendar"></i>
+              <i class="fa-regular fa-clock"></i>
             </div>
-
             <div class="review-info">
-
-                <small>Date</small>
-
-                <strong id="reviewDate">
-                    15 May 2026
-                </strong>
-
+              <small>Time Slot</small>
+              <strong id="reviewTime">10:00 - 10:30</strong>
             </div>
-
+          </div>
         </div>
 
-
-        <!-- Time -->
-
-        <div class="review-row">
-
-            <div class="review-icon">
-                <i class="fa-regular fa-clock"></i>
-            </div>
-
-            <div class="review-info">
-
-                <small>Time Slot</small>
-
-                <strong id="reviewTime">
-                    10:00 - 10:30
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- FARMER DETAILS -->
-
-    <div class="farmer-details">
-
-        <h3>Farmer Details</h3>
-
-        <div class="farmer-row">
-
+        <div class="farmer-details">
+          <h3>Farmer Details</h3>
+          <div class="farmer-row">
             <i class="fa-regular fa-user"></i>
-
             <span>Name</span>
-
             <strong>Ramesh Kumar</strong>
-
-        </div>
-
-
-        <div class="farmer-row">
-
+          </div>
+          <div class="farmer-row">
             <i class="fa-solid fa-mobile-screen"></i>
-
             <span>Mobile Number</span>
-
             <strong>98XXXXXX10</strong>
-
+          </div>
         </div>
 
-    </div>
-
-
-    <!-- ARRIVAL NOTICE -->
-
-    <div class="arrival-notice">
-
-        <i class="fa-solid fa-circle-info"></i>
-
-        <div>
-
+        <div class="arrival-notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
             <strong>Please arrive at the centre</strong>
-
-            <p>
-                15 minutes before your slot time.
-            </p>
-
+            <p>15 minutes before your slot time.</p>
+          </div>
         </div>
 
-    </div>
+        <div class="booking-actions review-actions">
+          <button type="button" class="back-button" id="changeDetails">
+            <i class="fa-solid fa-arrow-left"></i> Change Details
+          </button>
+          <button type="button" class="next-button" id="finalConfirmBooking">
+            <i class="fa-solid fa-check"></i> Confirm Booking
+          </button>
+        </div>
+      </section>
 
+      <!-- ==============================
+             CONFIRMATION / RECEIPT SCREEN
+        =============================== -->
+      <section class="booking-step" id="bookingConfirmed">
+        <div class="confirmation-icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
 
-    <!-- BUTTONS -->
+        <h2>Booking Confirmed!</h2>
+        <p>Your procurement slot has been successfully booked.</p>
 
-    <div class="booking-actions review-actions">
-
-        <button
-            type="button"
-            class="back-button change-details"
-            id="changeDetails"
-        >
-            <i class="fa-solid fa-arrow-left"></i>
-            Change Details
-        </button>
-
-
-        <button
-            type="button"
-            class="next-button"
-            id="finalConfirmBooking"
-        >
-            <i class="fa-solid fa-check"></i>
-            Confirm Booking
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     BOOKING CONFIRMED
-======================================================= -->
-
-<section class="booking-confirmed" id="bookingConfirmed">
-
-    <div class="confirmation-icon">
-        <i class="fa-solid fa-check"></i>
-    </div>
-
-
-    <h2>Booking Confirmed!</h2>
-
-    <p>
-        Your procurement slot has been successfully booked.
-    </p>
-
-
-    <!-- TOKEN CARD -->
-
-    <div class="token-card">
-
-        <div class="token-information">
-
+        <div class="token-card">
+          <div class="token-information">
             <span>Token Number</span>
-
-            <strong id="tokenNumber">
-                A-42
-            </strong>
-
+            <strong id="tokenNumber">A-42</strong>
 
             <div class="token-details">
-
-                <span>
-                    <i class="fa-regular fa-calendar"></i>
-                    <b id="confirmedDate">
-                        15 May 2026
-                    </b>
-                </span>
-
-
-                <span>
-                    <i class="fa-regular fa-clock"></i>
-                    <b id="confirmedTime">
-                        10:00 - 10:30
-                    </b>
-                </span>
-
+              <span>
+                <i class="fa-regular fa-calendar"></i>
+                <b id="confirmedDate">15 May 2026</b>
+              </span>
+              <span>
+                <i class="fa-regular fa-clock"></i>
+                <b id="confirmedTime">10:00 - 10:30</b>
+              </span>
             </div>
-
 
             <div class="confirmed-centre">
-
-                <i class="fa-solid fa-building"></i>
-
-                <span id="confirmedCentre">
-                    Krishnanagar Procurement Centre
-                </span>
-
+              <i class="fa-solid fa-building"></i>
+              <span id="confirmedCentre">Krishnanagar Procurement Centre</span>
             </div>
+          </div>
 
-        </div>
-
-
-        <!-- QR PLACEHOLDER -->
-
-        <div class="qr-placeholder">
-
+          <div class="qr-placeholder" aria-label="Slot Token QR Code">
             <i class="fa-solid fa-qrcode"></i>
-
+          </div>
         </div>
 
-    </div>
-
-
-    <div class="booking-id">
-
-        <i class="fa-regular fa-clipboard"></i>
-
-        Booking ID:
-        <strong>RPC-2026-000142</strong>
-
-    </div>
-
-
-    <!-- NEXT STEPS -->
-
-    <div class="next-steps">
-
-        <h3>What happens next?</h3>
-
-        <div class="steps-flow">
-
-            <div class="flow-item">
-
-                <div class="flow-icon">
-                    <i class="fa-regular fa-calendar-check"></i>
-                </div>
-
-                <strong>Booked</strong>
-
-                <span>Your slot is confirmed</span>
-
-            </div>
-
-
-            <div class="flow-arrow">
-                →
-            </div>
-
-
-            <div class="flow-item">
-
-                <div class="flow-icon">
-                    <i class="fa-solid fa-user-check"></i>
-                </div>
-
-                <strong>Check-in</strong>
-
-                <span>Check in at the centre</span>
-
-            </div>
-
-
-            <div class="flow-arrow">
-                →
-            </div>
-
-
-            <div class="flow-item">
-
-                <div class="flow-icon">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-
-                <strong>In Queue</strong>
-
-                <span>Wait for your token</span>
-
-            </div>
-
-
-            <div class="flow-arrow">
-                →
-            </div>
-
-
-            <div class="flow-item">
-
-                <div class="flow-icon">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </div>
-
-                <strong>Procurement</strong>
-
-                <span>Weighing & quality check</span>
-
-            </div>
-
-
-            <div class="flow-arrow">
-                →
-            </div>
-
-
-            <div class="flow-item">
-
-                <div class="flow-icon">
-                    ₹
-                </div>
-
-                <strong>Payment</strong>
-
-                <span>Get paid securely</span>
-
-            </div>
-
+        <div class="booking-id">
+          <i class="fa-regular fa-clipboard"></i>
+          Booking ID: <strong>RPC-2026-000142</strong>
         </div>
 
+        <div class="next-steps">
+          <h3>What happens next?</h3>
+          <div class="steps-flow">
+            <div class="flow-item">
+              <div class="flow-icon">
+                <i class="fa-regular fa-calendar-check"></i>
+              </div>
+              <strong>Booked</strong>
+              <span>Your slot is confirmed</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <div class="flow-icon">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <strong>Check-in</strong>
+              <span>Check in at the centre</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <div class="flow-icon"><i class="fa-solid fa-users"></i></div>
+              <strong>In Queue</strong>
+              <span>Wait for your token</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <div class="flow-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+              <strong>Procurement</strong>
+              <span>Weighing & quality check</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <div class="flow-icon">₹</div>
+              <strong>Payment</strong>
+              <span>Get paid securely</span>
+            </div>
+          </div>
 
-        <!-- IMPORTANT NOTES -->
-
-        <div class="important-notes">
-
+          <div class="important-notes">
             <h3>Important Notes</h3>
-
             <ul>
-
-                <li>Bring a valid ID proof.</li>
-
-                <li>Reach 15 minutes before your slot time.</li>
-
-                <li>Carry your produce in clean bags.</li>
-
-                <li>Follow the instructions at the centre.</li>
-
+              <li>Bring a valid ID proof.</li>
+              <li>Reach 15 minutes before your slot time.</li>
+              <li>Carry your produce in clean bags.</li>
+              <li>Follow the instructions at the centre.</li>
             </ul>
-
+          </div>
         </div>
 
+        <div class="confirmation-actions">
+          <button type="button" class="next-button" id="backToDashboard">
+            <i class="fa-solid fa-house"></i> Back to Dashboard
+          </button>
+        </div>
+      </section>
     </div>
 
-
-    <!-- CONFIRMATION ACTIONS -->
-
-    <div class="confirmation-actions">
-
-        <button
-            type="button"
-            class="back-button"
-            id="viewMyBooking"
-        >
-            <i class="fa-regular fa-clipboard"></i>
-            View My Booking
-        </button>
-
-
-        <button
-            type="button"
-            class="next-button"
-            id="backToDashboard"
-        >
-            <i class="fa-solid fa-house"></i>
-            Back to Dashboard
-        </button>
-
-    </div>
-
-</section>
-
-</div>
+    <script src="book-new-slot.js"></script>
+  </body>
+</html>
