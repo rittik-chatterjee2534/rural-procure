@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./procurement-operations.css" />
+
+    <title>Procurement Operations | RuralProcure</title>
+  </head>
+
+  <body>
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="../Dashboard/centre-admin-dashboard.html"
+            class="sidebar-brand"
+          >
+            <img
+              src="../../Images/logo.png"
+              alt="RuralProcure logo"
+              class="sidebar-logo"
+            />
+            <div class="brand-details">
+              <h1>RuralProcure</h1>
+              <span>Centre Admin Portal</span>
+            </div>
+          </a>
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            class="sidebar-close"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav" aria-label="Centre admin navigation">
+          <div class="nav-group">
+            <p class="nav-group-title">Overview</p>
+
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="../Dashboard/centre-admin-dashboard.html"
+                  class="nav-link"
+                >
+                  <i data-lucide="layout-dashboard" aria-hidden="true"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="warehouse" aria-hidden="true"></i>
+                  <span>My Centre</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">Operations</p>
+
+            <ul class="nav-list">
+              <li>
+                <a
+                  href="../Slot_Management/slot-management.html"
+                  class="nav-link"
+                >
+                  <i data-lucide="calendar-days" aria-hidden="true"></i>
+                  <span>Slot Management</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Bookings/booking-operations.html" class="nav-link">
+                  <i data-lucide="clipboard-list" aria-hidden="true"></i>
+                  <span>Bookings</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Live_Queue/queue-management.html" class="nav-link">
+                  <i data-lucide="list-ordered" aria-hidden="true"></i>
+                  <span>Live Queue</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="./procurement-operations.html"
+                  class="nav-link active"
+                  aria-current="page"
+                >
+                  <i data-lucide="package-check" aria-hidden="true"></i>
+                  <span>Procurements</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Payments/payments.html" class="nav-link">
+                  <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  <span>Payments</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">System</p>
+
+            <ul class="nav-list">
+              <li>
+                <a href="../Reports/reports.html" class="nav-link">
+                  <i
+                    data-lucide="chart-no-axes-combined"
+                    aria-hidden="true"
+                  ></i>
+                  <span>Centre Reports</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="bell" aria-hidden="true"></i>
+                  <span>Notifications</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="nav-link">
+                  <i data-lucide="settings" aria-hidden="true"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <footer class="sidebar-footer">
+          <!--Sidebar Footer-->
+          <button
+            type="button"
+            class="admin-profile"
+            aria-label="Open admin menu"
+            aria-expanded="false"
+          >
+            <div class="admin-avatar">
+              <i data-lucide="user-round" aria-hidden="true"></i>
+            </div>
+            <div class="admin-details">
+              <strong>Centre Admin</strong>
+              <span>Krishnanagar Centre</span>
+            </div>
+            <i
+              data-lucide="chevron-down"
+              class="profile-chevron"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </footer>
+      </aside>
+
+      <div class="sidebar-overlay" aria-hidden="true"></div>
+
+      <div class="dashboard-main">
+        <header class="top-navbar">
+          <!--Top Navbar-->
+          <div class="navbar-left">
+            <!--Top Navbar Left-->
+            <button
+              type="button"
+              class="sidebar-toggle"
+              aria-label="Open sidebar"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <div class="welcome-text page-heading">
+              <h2>Procurement Operations</h2>
+
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../Dashboard/centre-admin-dashboard.html">Dashboard</a>
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+                <span>Procurement Operations</span>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-right">
+            <!--Top Navbar Right-->
+            <button
+              type="button"
+              class="date-selector"
+              aria-label="Select dashboard date"
+            >
+              <i data-lucide="calendar-days" aria-hidden="true"></i>
+              <time id="dashboard-date" datetime="2026-08-28">
+                Aug 28, 2026
+              </time>
+              <i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="notification-button"
+              aria-label="View 4 unread notifications"
+              aria-expanded="false"
+              aria-controls="notification-panel"
+            >
+              <i data-lucide="bell" aria-hidden="true"></i>
+              <span class="notification-badge">4</span>
+            </button>
+            <div class="notification-panel" id="notification-panel" hidden>
+              <div class="notification-panel-header">
+                <h3>Notifications</h3>
+                <button type="button" class="mark-read-button">
+                  Mark all as read
+                </button>
+              </div>
+
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="calendar-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>New slot booking</strong>
+                    <p>Ramesh Kumar booked a slot at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:15">5 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="package-check" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Procurement completed</strong>
+                    <p>Procurement #RP-1024 was completed at Sehore Centre.</p>
+                    <time datetime="2026-08-28T21:02">18 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="indian-rupee" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Payment requires review</strong>
+                    <p>
+                      Payment for procurement #RP-1018 is awaiting approval.
+                    </p>
+                    <time datetime="2026-08-28T20:45">35 minutes ago</time>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <span class="notification-icon">
+                    <i data-lucide="warehouse" aria-hidden="true"></i>
+                  </span>
+
+                  <div class="notification-content">
+                    <strong>Centre capacity update</strong>
+                    <p>Bhopal Rural Centre reached 90% daily capacity.</p>
+                    <time datetime="2026-08-28T20:20">1 hour ago</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="navbar-profile"
+              aria-label="Open admin profile menu"
+              aria-controls="profile-menu"
+              aria-expanded="false"
+            >
+              <span class="navbar-avatar">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" hidden>
+              <div class="profile-menu-header">
+                <span class="profile-menu-avatar">
+                  <i data-lucide="user-round" aria-hidden="true"></i>
+                </span>
+
+                <div>
+                  <strong>Centre Admin</strong>
+                  <span>centre.admin@ruralprocure.in</span>
+                </div>
+              </div>
+
+              <a href="#" class="profile-menu-item">
+                <i data-lucide="settings" aria-hidden="true"></i>
+                <span>Account Settings</span>
+              </a>
+
+              <button type="button" class="profile-menu-item logout-button">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main class="dashboard-content">
+          <section class="procurement-intro">
+            <div>
+              <h1>Today’s Procurements</h1>
+              <p>
+                Record weighment, quality inspection and procurement details for
+                farmers served today.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="export-procurements-button"
+              id="export-procurements-button"
+            >
+              <i data-lucide="download" aria-hidden="true"></i>
+              <span>Export Records</span>
+            </button>
+          </section>
+          <section class="procurement-summary" aria-label="Procurement summary">
+            <article class="procurement-stat-card pending">
+              <div class="stat-icon">
+                <i data-lucide="clipboard-clock" aria-hidden="true"></i>
+              </div>
+
+              <div>
+                <span>Awaiting Inspection</span>
+                <strong id="awaiting-inspection-count">0</strong>
+                <p>Ready for quality checking</p>
+              </div>
+            </article>
+
+            <article class="procurement-stat-card progress">
+              <div class="stat-icon">
+                <i data-lucide="scale" aria-hidden="true"></i>
+              </div>
+
+              <div>
+                <span>In Progress</span>
+                <strong id="in-progress-count">0</strong>
+                <p>Currently being processed</p>
+              </div>
+            </article>
+
+            <article class="procurement-stat-card completed">
+              <div class="stat-icon">
+                <i data-lucide="circle-check" aria-hidden="true"></i>
+              </div>
+
+              <div>
+                <span>Completed Today</span>
+                <strong id="completed-procurement-count">0</strong>
+                <p>Procurements completed today</p>
+              </div>
+            </article>
+
+            <article class="procurement-stat-card quantity">
+              <div class="stat-icon">
+                <i data-lucide="weight" aria-hidden="true"></i>
+              </div>
+
+              <div>
+                <span>Total Quantity</span>
+
+                <div class="quantity-value">
+                  <strong id="total-procured-quantity">0</strong>
+                  <small>quintal</small>
+                </div>
+
+                <p>Quantity procured today</p>
+              </div>
+            </article>
+          </section>
+          <form class="procurement-filters" id="procurement-filter-form">
+            <div class="filter-field search-field">
+              <label for="procurement-search">Search Procurements</label>
+
+              <div class="search-input-wrapper">
+                <i data-lucide="search" aria-hidden="true"></i>
+
+                <input
+                  type="search"
+                  id="procurement-search"
+                  placeholder="Search ID, farmer or Kisan ID..."
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="filter-field">
+              <label for="procurement-status-filter">Status</label>
+
+              <select id="procurement-status-filter">
+                <option value="all">All Statuses</option>
+                <option value="awaiting-inspection">Awaiting Inspection</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="procurement-crop-filter">Crop</label>
+
+              <select id="procurement-crop-filter">
+                <option value="all">All Crops</option>
+                <option value="wheat">Wheat</option>
+                <option value="rice">Rice</option>
+                <option value="maize">Maize</option>
+                <option value="mustard">Mustard</option>
+                <option value="mixed-crops">Mixed Crops</option>
+              </select>
+            </div>
+
+            <button type="reset" class="clear-procurement-filters">
+              <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+              <span>Clear</span>
+            </button>
+          </form>
+          <section
+            class="procurement-list-card"
+            aria-labelledby="procurement-list-title"
+          >
+            <header class="procurement-list-header">
+              <div>
+                <h2 id="procurement-list-title">Procurement Records</h2>
+                <p>Review and process today’s farmer procurements.</p>
+              </div>
+
+              <span
+                class="procurement-total-badge"
+                id="procurement-total-badge"
+              >
+                0 records
+              </span>
+            </header>
+
+            <div class="procurement-table-wrapper">
+              <table class="procurement-table">
+                <caption class="visually-hidden">
+                  Procurement records for the selected filters
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Procurement ID</th>
+                    <th scope="col">Farmer</th>
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Crop</th>
+                    <th scope="col">Expected Qty.</th>
+                    <th scope="col">Actual Qty.</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="procurement-table-body">
+                  <tr>
+                    <td colspan="9">
+                      <div class="procurement-empty-state">
+                        <i data-lucide="package-search" aria-hidden="true"></i>
+                        <strong>No procurement records found</strong>
+                        <p>
+                          Completed queue services will appear here for
+                          inspection.
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+        <div class="procurement-modal" id="procurement-modal" hidden>
+          <div
+            class="procurement-modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="procurement-modal-title"
+          >
+            <header class="procurement-modal-header">
+              <div>
+                <h2 id="procurement-modal-title">Process Procurement</h2>
+                <p id="procurement-modal-subtitle">Record ID</p>
+              </div>
+
+              <button
+                type="button"
+                class="close-procurement-modal"
+                id="close-procurement-modal"
+                aria-label="Close procurement form"
+              >
+                <i data-lucide="x" aria-hidden="true"></i>
+              </button>
+            </header>
+
+            <div class="procurement-modal-body">
+              <form id="procurement-process-form" novalidate>
+                <input type="hidden" id="active-procurement-id" />
+
+                <section
+                  class="procurement-form-section"
+                  aria-labelledby="record-information-title"
+                >
+                  <div class="form-section-heading">
+                    <h3 id="record-information-title">Farmer &amp; Booking</h3>
+                    <p>
+                      Procurement record linked to the completed queue service.
+                    </p>
+                  </div>
+
+                  <div class="procurement-record-grid">
+                    <div class="record-information-item">
+                      <span>Farmer</span>
+                      <strong id="modal-farmer-name">—</strong>
+                      <small id="modal-kisan-id">—</small>
+                    </div>
+
+                    <div class="record-information-item">
+                      <span>Booking ID</span>
+                      <strong id="modal-booking-id">—</strong>
+                    </div>
+
+                    <div class="record-information-item">
+                      <span>Crop</span>
+                      <strong id="modal-crop">—</strong>
+                    </div>
+
+                    <div class="record-information-item">
+                      <span>Expected Quantity</span>
+                      <strong id="modal-expected-quantity">—</strong>
+                    </div>
+                  </div>
+                </section>
+                <section
+                  class="procurement-form-section"
+                  aria-labelledby="inspection-details-title"
+                >
+                  <div class="form-section-heading">
+                    <h3 id="inspection-details-title">
+                      Weighment &amp; Quality Inspection
+                    </h3>
+                    <p>Enter the measured quantity and crop-quality results.</p>
+                  </div>
+
+                  <div class="procurement-form-grid">
+                    <div class="procurement-form-field">
+                      <label for="actual-quantity">
+                        Actual Quantity <span aria-hidden="true">*</span>
+                      </label>
+
+                      <div class="input-with-unit">
+                        <input
+                          type="number"
+                          id="actual-quantity"
+                          min="0.01"
+                          step="0.01"
+                          required
+                        />
+                        <span>quintal</span>
+                      </div>
+                    </div>
+
+                    <div class="procurement-form-field">
+                      <label for="moisture-percentage">
+                        Moisture <span aria-hidden="true">*</span>
+                      </label>
+
+                      <div class="input-with-unit">
+                        <input
+                          type="number"
+                          id="moisture-percentage"
+                          min="0"
+                          max="100"
+                          step="0.1"
+                          required
+                        />
+                        <span>%</span>
+                      </div>
+                    </div>
+
+                    <div class="procurement-form-field">
+                      <label for="foreign-matter-percentage"
+                        >Foreign Matter</label
+                      >
+
+                      <div class="input-with-unit">
+                        <input
+                          type="number"
+                          id="foreign-matter-percentage"
+                          min="0"
+                          max="100"
+                          step="0.1"
+                        />
+                        <span>%</span>
+                      </div>
+                    </div>
+
+                    <div class="procurement-form-field">
+                      <label for="quality-grade">
+                        Quality Grade <span aria-hidden="true">*</span>
+                      </label>
+
+                      <select id="quality-grade" required>
+                        <option value="">Select grade</option>
+                        <option value="A">Grade A</option>
+                        <option value="B">Grade B</option>
+                        <option value="C">Grade C</option>
+                        <option value="Rejected">Rejected</option>
+                      </select>
+                    </div>
+                  </div>
+                </section>
+
+                <section
+                  class="procurement-form-section"
+                  aria-labelledby="pricing-details-title"
+                >
+                  <div class="form-section-heading">
+                    <h3 id="pricing-details-title">
+                      Accepted Quantity &amp; Pricing
+                    </h3>
+                    <p>
+                      Calculate the payable amount for the accepted crop
+                      quantity.
+                    </p>
+                  </div>
+
+                  <div class="procurement-form-grid pricing-grid">
+                    <div class="procurement-form-field">
+                      <label for="accepted-quantity">
+                        Accepted Quantity <span aria-hidden="true">*</span>
+                      </label>
+
+                      <div class="input-with-unit">
+                        <input
+                          type="number"
+                          id="accepted-quantity"
+                          min="0"
+                          step="0.01"
+                          required
+                        />
+                        <span>quintal</span>
+                      </div>
+                    </div>
+
+                    <div class="procurement-form-field">
+                      <label for="rate-per-quintal">
+                        Rate per Quintal <span aria-hidden="true">*</span>
+                      </label>
+
+                      <div class="input-with-unit currency-input">
+                        <span>₹</span>
+                        <input
+                          type="number"
+                          id="rate-per-quintal"
+                          min="0"
+                          step="0.01"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="procurement-form-field">
+                      <label for="calculated-total-amount">Total Amount</label>
+
+                      <div
+                        class="input-with-unit currency-input calculated-amount"
+                      >
+                        <span>₹</span>
+                        <input
+                          type="text"
+                          id="calculated-total-amount"
+                          value="0.00"
+                          readonly
+                          aria-readonly="true"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <p
+                  class="procurement-form-message"
+                  id="procurement-form-message"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+
+                <footer class="procurement-modal-footer">
+                  <button
+                    type="button"
+                    class="cancel-procurement-button"
+                    id="cancel-procurement-button"
+                  >
+                    Cancel
+                  </button>
+
+                  <button type="submit" class="save-procurement-button">
+                    <i data-lucide="circle-check" aria-hidden="true"></i>
+                    <span>Complete Procurement</span>
+                  </button>
+                </footer>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="queue-toast"
+      id="queue-toast"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
+
+    <script src="https://unpkg.com/jspdf-autotable@5.0.8/dist/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="procurement-operations.js"></script>
+  </body>
+</html>
