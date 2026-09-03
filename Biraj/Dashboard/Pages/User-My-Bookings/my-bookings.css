@@ -1,0 +1,922 @@
+/* =========================================================
+MY BOOKINGS - RuralProcure
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #278b32;
+    --dark-green: #09651d;
+    --light-green: #edf7ee;
+    --border: #e2e7e2;
+    --text: #111111;
+    --muted: #666666;
+    --white: #ffffff;
+    --yellow: #f2a900;
+    --bg: #f7f9f7;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SHARED APP CHROME
+   Sidebar + Topbar + Notifications + Profile + Mobile Header
+   Paste inside <style> in the <head> of every page
+========================================================= */
+
+/* ---------------------------------------------------------
+   1. BASE / RESET
+--------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f6f8f6;
+    color: #111111;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   2. LAYOUT
+--------------------------------------------------------- */
+.main-content {
+    margin-left: 240px;   /* matches fixed sidebar width */
+    min-height: 100vh;
+}
+
+/* ---------------------------------------------------------
+   3. SIDEBAR
+--------------------------------------------------------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e1e5e1;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-top: 20px;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---------- 3a. Brand ---------- */
+.brand {
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 50% 45%,
+        #ffffff 0%,
+        #e9f6e8 65%,
+        #c9e5c7 100%
+    );
+    border: 4px solid #2f9b39;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand h1 {
+    margin-top: 9px;
+    font-size: 22px;
+    color: #075f1b;
+    font-weight: 700;
+}
+
+.brand p {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #555555;
+}
+
+/* ---------- 3b. Navigation ---------- */
+.navigation {
+    padding: 10px 14px;
+}
+
+.nav-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    margin-bottom: 6px;
+    border-radius: 9px;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.nav-item i {
+    width: 18px;
+    font-size: 17px;
+    color: #50555b;
+}
+
+.nav-item:hover {
+    background: #f0f7f0;
+    color: #09651d;
+}
+
+.nav-item:hover i {
+    color: #278b32;
+}
+
+.nav-item.active {
+    background: #eaf4eb;
+    color: #075f1b;
+}
+
+.nav-item.active i {
+    color: #278b32;
+}
+
+/* ---------- 3c. Sidebar bottom ---------- */
+.sidebar-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #eeeeee;
+    padding: 20px 16px;
+}
+
+/* ---------------------------------------------------------
+   4. TOPBAR
+--------------------------------------------------------- */
+.topbar {
+    height: 78px;
+    border-bottom: 1px solid #e7e9e7;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: relative;   /* anchors the profile dropdown */
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ---------------------------------------------------------
+   5. NOTIFICATIONS
+--------------------------------------------------------- */
+.notification-wrapper {
+    position: relative;
+}
+
+.notification-btn {
+    position: relative;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    color: #444444;
+}
+
+.notification-count {
+    position: absolute;
+    top: -8px;
+    right: -7px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #288c37;
+    color: #ffffff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* ---------- 5a. Dropdown panel ---------- */
+.notification-dropdown {
+    position: absolute;
+    top: 45px;
+    right: -10px;
+    width: 380px;
+    background: #ffffff;
+    border: 1px solid #e1e6e1;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    z-index: 1000;
+    display: none;
+}
+
+.notification-dropdown.show {
+    display: block;
+}
+
+/* ---------- 5b. Header ---------- */
+.notification-header {
+    min-height: 66px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e7eae7;
+}
+
+.notification-header h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.notification-header span {
+    font-size: 11px;
+    color: #6c6c6c;
+}
+
+.notification-header button {
+    border: none;
+    background: transparent;
+    color: #188029;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notification-header button:hover {
+    text-decoration: underline;
+}
+
+/* ---------- 5c. Notification items ---------- */
+.notification-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background: #f7faf7;
+}
+
+.notification-item-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.green-notification {
+    background: #eaf6ea;
+    color: #248b30;
+}
+
+.blue-notification {
+    background: #eaf6fc;
+    color: #0786c6;
+}
+
+.yellow-notification {
+    background: #fff5dc;
+    color: #e6a000;
+}
+
+.notification-content {
+    padding-right: 10px;
+}
+
+.notification-content h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.notification-content p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.notification-time {
+    font-size: 10px;
+    color: #999999;
+}
+
+.unread-dot {
+    position: absolute;
+    top: 18px;
+    right: 14px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #299138;
+}
+
+/* ---------- 5d. Read state ---------- */
+.notification-item.read {
+    opacity: 0.65;
+}
+
+.notification-item.read .unread-dot {
+    display: none;
+}
+
+/* ---------- 5e. Footer ---------- */
+.notification-footer {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbfcfb;
+}
+
+.notification-footer button {
+    border: none;
+    background: transparent;
+    color: #08721d;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notification-footer button:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   6. PROFILE (topbar)
+--------------------------------------------------------- */
+.profile-btn {
+    height: 46px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #e1e5e1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 210px;
+}
+
+.profile-btn > i {
+    margin-left: auto;
+    font-size: 12px;
+    color: #555555;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #eef7ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #168127;
+    font-size: 15px;
+}
+
+/* ---------- 6a. Profile dropdown ---------- */
+.profile-dropdown {
+    position: absolute;
+    right: 30px;
+    top: 66px;
+    width: 185px;
+    background: #ffffff;
+    border: 1px solid #e2e5e2;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    padding: 8px;
+    display: none;
+    z-index: 500;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-dropdown div {
+    padding: 11px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.profile-dropdown div:hover {
+    background: #f0f7f0;
+    color: #278b32;
+}
+
+/* ---------------------------------------------------------
+   7. MOBILE HEADER (hidden on desktop, shown <= 750px)
+--------------------------------------------------------- */
+.mobile-header {
+    display: none;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.small-logo {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+}
+
+.mobile-logo h2 {
+    font-size: 17px;
+    color: #075f1b;
+}
+
+.mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ---------- 7a. Mobile notification/profile buttons ---------- */
+.mobile-profile-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.mobile-profile-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #eef7ef;
+    color: #168127;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-profile-dropdown {
+    position: absolute;
+    right: 12px;
+    top: 58px;
+    width: 170px;
+    background: #ffffff;
+    border: 1px solid #e2e5e2;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    padding: 8px;
+    display: none;
+    z-index: 600;
+}
+
+.mobile-profile-dropdown.show {
+    display: block;
+}
+
+.mobile-profile-dropdown div {
+    padding: 11px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.mobile-profile-dropdown div:hover {
+    background: #f0f7f0;
+    color: #278b32;
+}
+
+.menu-toggle {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333333;
+}
+
+/* ---------------------------------------------------------
+   8. RESPONSIVE (<= 750px)
+--------------------------------------------------------- */
+@media (max-width: 750px) {
+    .sidebar {
+        width: 260px;
+        min-width: 0;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 62px;
+        padding: 0 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #e7e9e7;
+        position: sticky;
+        top: 0;
+        z-index: 90;
+    }
+
+    .topbar {
+        display: none;
+    }
+}
+
+
+
+.my-bookings-page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.bookings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+}
+
+.back-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.back-dashboard {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-green);
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.2s ease;
+    flex-shrink: 0;
+}
+
+.back-dashboard:hover {
+    background: var(--light-green);
+    border-color: var(--green);
+}
+
+.bookings-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #075f1b;
+}
+
+.bookings-header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.new-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--green);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.new-booking-btn:hover {
+    background: var(--dark-green);
+}
+
+/* =========================================================
+TOOLBAR
+========================================================= */
+
+.bookings-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.clear-btn {
+    border: none;
+    background: transparent;
+    color: #c0392b;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+BOOKING CARDS
+========================================================= */
+
+.bookings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 18px;
+}
+
+.book-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.book-card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.book-crop-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--light-green);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.book-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.book-status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--green);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.book-card-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.book-location {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.book-token {
+    flex-shrink: 0;
+    background: #eaf4eb;
+    color: #075f1b;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px dashed #9ccba1;
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+    padding: 13px 14px;
+    background: #fafcfa;
+    border-radius: 10px;
+}
+
+.book-meta span {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.book-meta span i {
+    width: 15px;
+    color: var(--green);
+    font-size: 13px;
+}
+
+.book-card-foot {
+    border-top: 1px solid #eef1ee;
+    padding-top: 11px;
+    font-size: 11px;
+    color: #999999;
+}
+
+/* =========================================================
+EMPTY STATE
+========================================================= */
+
+.empty-state {
+    background: #ffffff;
+    border: 1px dashed #c9d4c9;
+    border-radius: 16px;
+    padding: 70px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: var(--light-green);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 22px;
+}
+
+.empty-state h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #075f1b;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 400px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.empty-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--green);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.empty-cta:hover {
+    background: var(--dark-green);
+}
+
+/* ---------- Download PDF button ---------- */
+.book-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.book-actions {
+    margin-left: auto;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffff;
+    border: 1px solid #278b32;
+    color: #278b32;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+    background: #edf7ee;
+}
+
+.download-btn i {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 560px) {
+    .my-bookings-page {
+        padding: 20px 16px 50px;
+    }
+
+    .bookings-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .new-booking-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

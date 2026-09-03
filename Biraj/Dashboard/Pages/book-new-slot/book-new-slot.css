@@ -1,14 +1,593 @@
+/* =========================================================
+   BOOK NEW SLOT - RuralProcure
+   Complete stylesheet (deduplicated + shell-ready)
+   Load AFTER ../../user-dashboard.css on shell pages
+========================================================= */
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #111111;
+}
+
+
+/* =========================================================
+   SHARED APP CHROME
+   Sidebar + Topbar + Notifications + Profile + Mobile Header
+   Paste inside <style> in the <head> of every page
+========================================================= */
+
+/* ---------------------------------------------------------
+   1. BASE / RESET
+--------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f6f8f6;
+    color: #111111;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   2. LAYOUT
+--------------------------------------------------------- */
+.main-content {
+    margin-left: 240px;   /* matches fixed sidebar width */
+    min-height: 100vh;
+}
+
+/* ---------------------------------------------------------
+   3. SIDEBAR
+--------------------------------------------------------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e1e5e1;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-top: 20px;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---------- 3a. Brand ---------- */
+.brand {
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 50% 45%,
+        #ffffff 0%,
+        #e9f6e8 65%,
+        #c9e5c7 100%
+    );
+    border: 4px solid #2f9b39;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand h1 {
+    margin-top: 9px;
+    font-size: 22px;
+    color: #075f1b;
+    font-weight: 700;
+}
+
+.brand p {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #555555;
+}
+
+/* ---------- 3b. Navigation ---------- */
+.navigation {
+    padding: 10px 14px;
+}
+
+.nav-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    margin-bottom: 6px;
+    border-radius: 9px;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.nav-item i {
+    width: 18px;
+    font-size: 17px;
+    color: #50555b;
+}
+
+.nav-item:hover {
+    background: #f0f7f0;
+    color: #09651d;
+}
+
+.nav-item:hover i {
+    color: #278b32;
+}
+
+.nav-item.active {
+    background: #eaf4eb;
+    color: #075f1b;
+}
+
+.nav-item.active i {
+    color: #278b32;
+}
+
+/* ---------- 3c. Sidebar bottom ---------- */
+.sidebar-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #eeeeee;
+    padding: 20px 16px;
+}
+
+/* ---------------------------------------------------------
+   4. TOPBAR
+--------------------------------------------------------- */
+.topbar {
+    height: 78px;
+    border-bottom: 1px solid #e7e9e7;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: relative;   /* anchors the profile dropdown */
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ---------------------------------------------------------
+   5. NOTIFICATIONS
+--------------------------------------------------------- */
+.notification-wrapper {
+    position: relative;
+}
+
+.notification-btn {
+    position: relative;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    color: #444444;
+}
+
+.notification-count {
+    position: absolute;
+    top: -8px;
+    right: -7px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #288c37;
+    color: #ffffff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* ---------- 5a. Dropdown panel ---------- */
+.notification-dropdown {
+    position: absolute;
+    top: 45px;
+    right: -10px;
+    width: 380px;
+    background: #ffffff;
+    border: 1px solid #e1e6e1;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    z-index: 1000;
+    display: none;
+}
+
+.notification-dropdown.show {
+    display: block;
+}
+
+/* ---------- 5b. Header ---------- */
+.notification-header {
+    min-height: 66px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e7eae7;
+}
+
+.notification-header h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.notification-header span {
+    font-size: 11px;
+    color: #6c6c6c;
+}
+
+.notification-header button {
+    border: none;
+    background: transparent;
+    color: #188029;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notification-header button:hover {
+    text-decoration: underline;
+}
+
+/* ---------- 5c. Notification items ---------- */
+.notification-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background: #f7faf7;
+}
+
+.notification-item-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.green-notification {
+    background: #eaf6ea;
+    color: #248b30;
+}
+
+.blue-notification {
+    background: #eaf6fc;
+    color: #0786c6;
+}
+
+.yellow-notification {
+    background: #fff5dc;
+    color: #e6a000;
+}
+
+.notification-content {
+    padding-right: 10px;
+}
+
+.notification-content h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.notification-content p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.notification-time {
+    font-size: 10px;
+    color: #999999;
+}
+
+.unread-dot {
+    position: absolute;
+    top: 18px;
+    right: 14px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #299138;
+}
+
+/* ---------- 5d. Read state ---------- */
+.notification-item.read {
+    opacity: 0.65;
+}
+
+.notification-item.read .unread-dot {
+    display: none;
+}
+
+/* ---------- 5e. Footer ---------- */
+.notification-footer {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbfcfb;
+}
+
+.notification-footer button {
+    border: none;
+    background: transparent;
+    color: #08721d;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notification-footer button:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   6. PROFILE (topbar)
+--------------------------------------------------------- */
+.profile-btn {
+    height: 46px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #e1e5e1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 210px;
+}
+
+.profile-btn > i {
+    margin-left: auto;
+    font-size: 12px;
+    color: #555555;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #eef7ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #168127;
+    font-size: 15px;
+}
+
+/* ---------- 6a. Profile dropdown ---------- */
+.profile-dropdown {
+    position: absolute;
+    right: 30px;
+    top: 66px;
+    width: 185px;
+    background: #ffffff;
+    border: 1px solid #e2e5e2;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    padding: 8px;
+    display: none;
+    z-index: 500;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-dropdown div {
+    padding: 11px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.profile-dropdown div:hover {
+    background: #f0f7f0;
+    color: #278b32;
+}
+
+/* ---------------------------------------------------------
+   7. MOBILE HEADER (hidden on desktop, shown <= 750px)
+--------------------------------------------------------- */
+.mobile-header {
+    display: none;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.small-logo {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+}
+
+.mobile-logo h2 {
+    font-size: 17px;
+    color: #075f1b;
+}
+
+.mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ---------- 7a. Mobile notification/profile buttons ---------- */
+.mobile-profile-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.mobile-profile-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #eef7ef;
+    color: #168127;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-profile-dropdown {
+    position: absolute;
+    right: 12px;
+    top: 58px;
+    width: 170px;
+    background: #ffffff;
+    border: 1px solid #e2e5e2;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    padding: 8px;
+    display: none;
+    z-index: 600;
+}
+
+.mobile-profile-dropdown.show {
+    display: block;
+}
+
+.mobile-profile-dropdown div {
+    padding: 11px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.mobile-profile-dropdown div:hover {
+    background: #f0f7f0;
+    color: #278b32;
+}
+
+.menu-toggle {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333333;
+}
+
+/* ---------------------------------------------------------
+   8. RESPONSIVE (<= 750px)
+--------------------------------------------------------- */
+@media (max-width: 750px) {
+    .sidebar {
+        width: 260px;
+        min-width: 0;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 62px;
+        padding: 0 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #e7e9e7;
+        position: sticky;
+        top: 0;
+        z-index: 90;
+    }
+
+    .topbar {
+        display: none;
+    }
+}
+
+
+
+
 /* =====================================================
-   BOOK NEW SLOT
+   SHELL + PAGE CONTAINER
 ===================================================== */
+
+.main-content {
+    background: #f6f8f6;
+    min-height: 100vh;
+}
 
 .book-slot-page {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1020px;
     margin: 0 auto;
-    padding: 35px 30px 40px;
+    padding: 26px 30px 80px;
 }
-
 
 /* =====================================================
    HEADER
@@ -18,9 +597,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
     margin-bottom: 25px;
 }
-
 
 .back-title {
     display: flex;
@@ -28,21 +608,20 @@
     gap: 12px;
 }
 
-
 .back-dashboard {
     border: none;
     display: none;
     background: transparent;
     cursor: pointer;
     color: #303632;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .booking-heading h1 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
+    color: #075f1b;
 }
-
 
 .booking-heading p {
     margin-top: 8px;
@@ -50,21 +629,18 @@
     color: #777;
 }
 
-
 .step-counter {
     font-size: 1rem;
     color: #777;
 }
-
 
 .step-counter span {
     color: #07883f;
     font-weight: 700;
 }
 
-
 /* =====================================================
-   PROGRESS
+   PROGRESS BAR
 ===================================================== */
 
 .booking-progress {
@@ -74,7 +650,6 @@
     margin-bottom: 22px;
 }
 
-
 .progress-item {
     display: flex;
     align-items: center;
@@ -82,46 +657,36 @@
     color: #999;
 }
 
-
 .progress-item span {
     width: 35px;
     height: 35px;
-
     border-radius: 50%;
-
     border: 1px solid #d1d6d2;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 13px;
 }
-
 
 .progress-item p {
     font-size: 13px;
 }
-
 
 .progress-item.active {
     color: #07883f;
     font-weight: 600;
 }
 
-
 .progress-item.active span,
 .progress-item.completed span {
     background: #07883f;
     border-color: #07883f;
-    color: white;
+    color: #ffffff;
 }
-
 
 .progress-item.completed {
     color: #07883f;
 }
-
 
 .progress-line {
     width: 70px;
@@ -130,386 +695,275 @@
     margin: 0 12px;
 }
 
-
 .progress-line.completed {
     background: #07883f;
 }
 
-
 /* =====================================================
-   STEP
+   STEP CARD
 ===================================================== */
 
 .booking-step {
     display: none;
-
-    background: white;
-
+    background: #ffffff;
     border: 1px solid #e1e6e2;
-
     border-radius: 12px;
-
     overflow: hidden;
-
     animation: showStep 0.25s ease;
 }
-
 
 .booking-step.active {
     display: block;
 }
 
-
 @keyframes showStep {
-
     from {
         opacity: 0;
         transform: translateY(7px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
-
 
 /* =====================================================
    STEP HEADER
 ===================================================== */
 
 .step-header {
-    padding: 22px 25px;
-
+    padding: 20px 25px;
     border-bottom: 1px solid #edf0ee;
 }
 
-
 .step-header h2 {
-    font-size: 22px;
+    margin: 0;
+    font-size: 20px;
     font-weight: 600;
+    color: #173024;
 }
-
 
 .step-header p {
-    font-size: 13px;
+    margin: 6px 0 0;
+    font-size: 12.5px;
     color: #888;
-    margin-top: 5px;
 }
 
-
 /* =====================================================
-   SEARCH
+   CENTRE SEARCH
 ===================================================== */
 
 .centre-search {
     height: 43px;
-
     margin: 20px 25px;
-
     border: 1px solid #d9dedb;
-
     border-radius: 7px;
-
     display: flex;
     align-items: center;
-
     padding: 0 13px;
-
     gap: 10px;
 }
-
 
 .centre-search i {
     font-size: 12px;
     color: #777;
 }
 
-
 .centre-search input {
     border: none;
     outline: none;
-
     flex: 1;
-
     font-family: inherit;
-
-    font-size: 11px;
+    font-size: 13px;
+    background: transparent;
 }
 
-
 /* =====================================================
-   CENTRES
+   CENTRE CARDS
 ===================================================== */
 
 .centre-list {
     padding: 0 25px;
 }
 
-
 .centre-card {
     min-height: 72px;
-
     display: flex;
     align-items: center;
-
     gap: 13px;
-
     padding: 12px 14px;
-
     margin-bottom: 10px;
-
     border: 1px solid #e0e5e1;
-
     border-radius: 8px;
-
     cursor: pointer;
-
     transition: 0.2s;
-
     position: relative;
 }
-
 
 .centre-card:hover {
     border-color: #9acaaa;
 }
-
 
 .centre-card.selected {
     background: #f3faf5;
     border-color: #7fbd94;
 }
 
-
 .centre-card input {
     display: none;
 }
 
-
 .centre-location-icon {
     width: 38px;
     height: 38px;
-
     border-radius: 50%;
-
     background: #edf7ef;
-
     color: #07883f;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 14px;
+    flex-shrink: 0;
 }
-
 
 .centre-details {
     flex: 1;
+    min-width: 0;
 }
-
 
 .centre-details h3 {
     font-size: 15px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
 }
-
 
 .centre-details p {
     font-size: 12px;
     color: #888;
+    margin: 0;
 }
-
 
 .distance {
-    font-size: 9px;
+    font-size: 11px;
     color: #777;
+    flex-shrink: 0;
 }
-
 
 .selected-check {
     width: 21px;
     height: 21px;
-
     border-radius: 50%;
-
     background: #dfe6e1;
-
-    color: white;
-
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 8px;
+    font-size: 10px;
+    flex-shrink: 0;
 }
-
 
 .centre-card.selected .selected-check {
     background: #07883f;
 }
 
-
 /* =====================================================
-   BUTTONS
+   ACTION BUTTONS (single definition for all steps)
 ===================================================== */
 
 .booking-actions {
-    border-top: 1px solid #edf0ee;
-
-    padding: 18px 25px;
-
     display: flex;
-
-    justify-content: space-between;
-
     align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 25px;
+    border-top: 1px solid #edf0ee;
 }
 
+/* Lone "Next" (Step 1) gets pushed to the right */
+.booking-actions .next-button {
+    margin-left: auto;
+}
 
 .next-button,
 .back-button {
-    height: 39px;
-
-    padding: 0 22px;
-
-    border-radius: 6px;
-
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 7px;
     font-family: inherit;
-
     font-size: 13px;
-
-    font-weight: 500;
-
-    display: flex;
-
+    font-weight: 600;
+    display: inline-flex;
     align-items: center;
-
     gap: 8px;
-
     cursor: pointer;
+    border: 1px solid transparent;
 }
-
 
 .next-button {
-    margin-left: auto;
-
     background: #07883f;
-
-    color: white;
-
-    border: 1px solid #07883f;
+    color: #ffffff;
+    border-color: #07883f;
 }
-
 
 .next-button:hover {
     background: #056b32;
 }
 
-
 .back-button {
-    background: white;
-
-    color: #555;
-
-    border: 1px solid #cbd1cd;
+    background: #ffffff;
+    color: #555555;
+    border-color: #cbd1cd;
 }
 
+.back-button:hover {
+    background: #f5f7f5;
+}
 
 /* =====================================================
-   SELECTED INFORMATION
+   SELECTED INFO BOX (date step)
 ===================================================== */
 
 .selected-information {
     margin: 20px 25px;
-
     padding: 14px;
-
     background: #f7faf8;
-
     border: 1px solid #e0e5e1;
-
     border-radius: 8px;
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
 }
 
-
 .selected-information > i {
     color: #07883f;
-
     font-size: 16px;
 }
 
-
 .selected-information div {
     display: flex;
-
     flex-direction: column;
-
     gap: 4px;
 }
 
-
 .selected-information small {
     font-size: 10px;
-
     color: #888;
 }
-
 
 .selected-information strong {
     font-size: 13px;
 }
 
-
-/* =========================================
-   SELECT PRODUCE
-========================================= */
-
-.booking-step {
-    display: none;
-}
-
-
-/* Step Header */
-
-.step-header {
-    margin: 0 25px 20px;
-}
-
-.step-header h2 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.step-header p {
-    margin-top: 7px;
-    font-size: 13px;
-    color: #777;
-}
-
-
-/* =========================================
-   SELECTED CENTRE
-========================================= */
+/* =====================================================
+   SELECTED CENTRE (produce step)
+===================================================== */
 
 .selected-centre {
     display: flex;
     align-items: center;
     gap: 14px;
-
     margin: 0 25px 22px;
     padding: 14px 16px;
-
     background: #f5faf6;
     border: 1px solid #dfe9e2;
     border-radius: 9px;
@@ -518,18 +972,16 @@
 .centre-icon {
     width: 38px;
     height: 38px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background: #e4f3e8;
     color: #07883f;
+    flex-shrink: 0;
 }
 
-.selected-centre div:last-child {
+.selected-centre > div:last-child {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -545,39 +997,27 @@
     font-weight: 600;
 }
 
-
-/* =========================================
+/* =====================================================
    PRODUCE LIST
-========================================= */
+===================================================== */
 
 .produce-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-
-    margin: 0 25px;
+    margin: 0 25px 25px;
 }
-
-
-/* Produce Card */
 
 .produce-card {
     display: flex;
     align-items: center;
-
     gap: 15px;
-
     min-height: 70px;
-
     padding: 14px 18px;
-
     background: #ffffff;
-
     border: 1px solid #dfe5e1;
     border-radius: 9px;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
@@ -586,47 +1026,26 @@
     transform: translateY(-1px);
 }
 
-
-/* Hide actual radio */
-
 .produce-card input {
     display: none;
 }
-
-
-/* Selected Card */
 
 .produce-card.selected {
     background: #f3faf5;
     border-color: #07883f;
 }
 
-
-/* =========================================
-   PRODUCE ICON
-========================================= */
-
 .produce-icon {
     width: 46px;
     height: 46px;
-
     flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #edf7ef;
-
     border-radius: 50%;
-
     font-size: 23px;
 }
-
-
-/* =========================================
-   PRODUCE INFORMATION
-========================================= */
 
 .produce-info {
     display: flex;
@@ -636,33 +1055,28 @@
 
 .produce-info h3 {
     margin: 0;
-
     font-size: 15px;
     font-weight: 600;
 }
 
 .produce-info p {
     margin: 0;
-
     font-size: 11px;
     color: #888;
 }
 
-
-/* =========================================
-   CUSTOM RADIO
-========================================= */
-
 .produce-radio {
-    width: 20px;
-    height: 20px;
-
+    width: 22px;
+    height: 22px;
     margin-left: auto;
-
+    flex-shrink: 0;
+    display: flex;              /* <-- makes the dot a flex child */
+    align-items: center;        /* <-- centers vertically */
+    justify-content: center;    /* <-- centers horizontally */
     border: 2px solid #cbd3cd;
     border-radius: 50%;
-
-    position: relative;
+    background: #ffffff;
+    box-sizing: border-box;
 }
 
 .produce-card.selected .produce-radio {
@@ -671,88 +1085,796 @@
 
 .produce-card.selected .produce-radio::after {
     content: "";
-
-    position: absolute;
-
     width: 10px;
     height: 10px;
-
-    top: 3px;
-    left: 3px;
-
     border-radius: 50%;
-
     background: #07883f;
 }
 
+/* =====================================================
+   CALENDAR
+===================================================== */
 
-/* =========================================
-   BUTTONS
-========================================= */
+.calendar-container {
+    margin: 0 25px;
+    border: 1px solid #e0e5e1;
+    border-radius: 9px;
+    padding: 20px;
+}
 
-.booking-actions {
+.calendar-top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    margin: 25px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.back-button,
-.next-button {
-    min-height: 42px;
-
-    padding: 0 20px;
-
-    border-radius: 6px;
-
-    font-family: inherit;
-    font-size: 13px;
-
+.calendar-top button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e1e6e2;
+    background: #ffffff;
+    border-radius: 7px;
     cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
 }
 
-.back-button {
-    background: transparent;
+.calendar-top button:hover {
+    border-color: #07883f;
+    color: #07883f;
+}
+
+/* Month selector */
+.month-selector {
+    position: relative;
+}
+
+.month-title {
     border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.month-title i {
+    font-size: 10px;
+    color: #777;
+    transition: transform 0.2s ease;
+}
+
+.month-selector.open .month-title i {
+    transform: rotate(180deg);
+}
+
+.month-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    background: #ffffff;
+    border: 1px solid #dfe5e1;
+    border-radius: 9px;
+    padding: 7px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+}
+
+.month-selector.open .month-dropdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.month-dropdown button {
+    border: none;
+    background: transparent;
+    padding: 8px 5px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 11px;
+    color: #555;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.month-dropdown button:hover {
+    background: #edf7ef;
+    color: #07883f;
+}
+
+.month-dropdown button.selected-month {
+    background: #07883f;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Grid + days */
+.weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.weekdays {
+    margin-bottom: 10px;
+}
+
+.weekdays span {
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+}
+
+.calendar-days {
+    row-gap: 7px;
+}
+
+.calendar-day {
+    width: 34px;
+    height: 34px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.calendar-day:hover {
+    background: #eaf7ef;
+    color: #07883f;
+}
+
+.calendar-day.empty {
+    cursor: default;
+}
+
+.calendar-day.empty:hover {
+    background: transparent;
+    color: inherit;
+}
+
+.calendar-day.selected {
+    background: #07883f;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.calendar-day.disabled {
+    color: #c4c9c6;
+    cursor: not-allowed;
+}
+
+.calendar-day.disabled:hover {
+    background: transparent;
+    color: #c4c9c6;
+}
+
+/* Selected date box */
+.selected-date-box {
+    margin: 18px 25px 0;
+    padding: 12px 15px;
+    background: #eff8f1;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+}
+
+.selected-date-box i {
+    color: #07883f;
+}
+
+.selected-date-box strong {
+    color: #07883f;
+}
+
+/* =====================================================
+   BOOKING SUMMARY (time step)
+===================================================== */
+
+.booking-details-summary {
+    margin: 20px 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.booking-details-summary > div {
+    border: 1px solid #e0e5e1;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.booking-details-summary > div > i {
+    color: #07883f;
+    font-size: 16px;
+}
+
+.booking-details-summary section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.booking-details-summary small {
+    font-size: 10px;
+    color: #888;
+}
+
+.booking-details-summary strong {
+    font-size: 13px;
+}
+
+/* =====================================================
+   TIME SLOTS
+===================================================== */
+
+.available-heading {
+    margin: 5px 25px 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.time-slot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 0 25px;
+}
+
+.time-slot {
+    min-height: 68px;
+    border: 1px solid #dce1de;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: 0.2s;
+}
+
+.time-slot strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.time-slot span {
+    font-size: 11px;
+    color: #888;
+}
+
+.time-slot:hover {
+    border-color: #07883f;
+    background: #f5fbf6;
+}
+
+.time-slot.selected {
+    background: #07883f;
+    border-color: #07883f;
+    color: #ffffff;
+}
+
+.time-slot.selected strong,
+.time-slot.selected span {
+    color: #ffffff;
+}
+
+.time-slot.disabled {
+    background: #f7f8f7;
+    color: #c2c7c4;
+    cursor: not-allowed;
+}
+
+.time-slot.disabled strong,
+.time-slot.disabled span {
+    color: #aeb4b0;
+}
+
+/* Slot notice */
+.slot-notice {
+    margin: 20px 25px 0;
+    padding: 13px 15px;
+    background: #fffaf0;
+    border: 1px solid #eedfbf;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slot-notice i {
+    color: #b98228;
+}
+
+.slot-notice p {
+    font-size: 13px;
+    color: #6c634f;
+    margin: 0;
+}
+
+/* =====================================================
+   REVIEW BOOKING
+===================================================== */
+
+.review-booking-card {
+    margin: 20px 25px 0;
+    border: 1px solid #e0e5e1;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.review-row {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf0ee;
+}
+
+.review-row:last-child {
+    border-bottom: none;
+}
+
+.review-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #edf7ef;
+    color: #07883f;
+    font-size: 15px;
+}
+
+.review-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.review-info small {
+    font-size: 10px;
+    color: #888;
+}
+
+.review-info strong {
+    font-size: 13px;
+    color: #333;
+}
+
+.review-info span {
+    font-size: 10px;
+    color: #888;
+}
+
+/* Farmer details */
+.farmer-details {
+    margin: 20px 25px 0;
+    padding: 16px;
+    border: 1px solid #e0e5e1;
+    border-radius: 9px;
+}
+
+.farmer-details h3 {
+    font-size: 14px;
+    margin: 0 0 14px;
+    color: #333;
+}
+
+.farmer-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 0;
+    font-size: 12px;
+}
+
+.farmer-row i {
     color: #777;
 }
 
-.next-button {
+.farmer-row span {
+    color: #888;
+}
+
+.farmer-row strong {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Arrival notice */
+.arrival-notice {
+    margin: 20px 25px 0;
+    padding: 13px 15px;
+    background: #eef8ff;
+    border: 1px solid #d5eaf7;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.arrival-notice > i {
+    color: #147bb5;
+    font-size: 17px;
+}
+
+.arrival-notice strong {
+    display: block;
+    font-size: 12px;
+    color: #1470a2;
+}
+
+.arrival-notice p {
+    margin: 4px 0 0;
+    font-size: 11px;
+    color: #555;
+}
+
+/* Review action bar sits inside the card */
+.review-actions {
+    margin-top: 0;
+}
+
+/* =====================================================
+   BOOKING CONFIRMED SCREEN
+   (HTML uses id="bookingConfirmed" - style it directly)
+===================================================== */
+
+#bookingConfirmed {
+    display: none;
+}
+
+#bookingConfirmed.active {
+    display: block;
+    background: #f5fbf6;
+    border: 1px solid #dfe9e2;
+    border-radius: 12px;
+    padding: 35px 25px;
+    text-align: center;
+    animation: showStep 0.3s ease;
+}
+
+#bookingConfirmed h2 {
+    margin: 0;
+    color: #087a3a;
+    font-size: 23px;
+}
+
+#bookingConfirmed > p {
+    margin: 7px 0 0;
+    font-size: 13px;
+    color: #777;
+}
+
+/* Icon */
+.confirmation-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
     background: #07883f;
-    border: 1px solid #07883f;
-    color: white;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
 }
 
-.next-button:hover {
-    background: #056d32;
+/* Token card */
+.token-card {
+    max-width: 520px;
+    margin: 22px auto 12px;
+    background: #ffffff;
+    border: 1px solid #e0e5e1;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    text-align: left;
 }
 
+.token-information {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
 
-/* =========================================
-   MOBILE
-========================================= */
+.token-information > span {
+    font-size: 11px;
+    color: #777;
+}
+
+.token-information > strong {
+    font-size: 30px;
+    color: #07883f;
+}
+
+.token-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+
+.token-details span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #555;
+}
+
+.token-details i {
+    color: #07883f;
+}
+
+.token-details b {
+    font-weight: 500;
+}
+
+.confirmed-centre {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: #555;
+    margin-top: 3px;
+}
+
+.confirmed-centre i {
+    color: #07883f;
+}
+
+/* QR placeholder */
+.qr-placeholder {
+    width: 95px;
+    height: 95px;
+    flex-shrink: 0;
+    border: 1px solid #e0e5e1;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.qr-placeholder i {
+    font-size: 62px;
+    color: #222;
+}
+
+/* Booking id pill */
+.booking-id {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    background: #eaf5ec;
+    border-radius: 20px;
+    font-size: 11px;
+    color: #555;
+    margin-top: 8px;
+}
+
+.booking-id i {
+    color: #07883f;
+}
+
+.booking-id strong {
+    color: #087a3a;
+}
+
+/* Next steps card */
+.next-steps {
+    max-width: 1000px;
+    margin: 28px auto 0;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e0e5e1;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.next-steps > h3 {
+    margin: 0 0 18px;
+    font-size: 15px;
+    color: #176f3b;
+}
+
+.steps-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.flow-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.flow-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #edf7ef;
+    color: #07883f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.flow-item strong {
+    font-size: 11px;
+}
+
+.flow-item span {
+    font-size: 9px;
+    color: #888;
+}
+
+.flow-arrow {
+    font-size: 20px;
+    color: #999;
+}
+
+/* Important notes */
+.important-notes {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f6fbf7;
+    border: 1px solid #e1ebe3;
+    border-radius: 8px;
+}
+
+.important-notes h3 {
+    font-size: 13px;
+    color: #176f3b;
+    margin: 0 0 10px;
+}
+
+.important-notes ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.important-notes li {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+/* Confirmation buttons */
+.confirmation-actions {
+    max-width: 520px;
+    margin: 22px auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirmation-actions button {
+    min-width: 190px;
+    justify-content: center;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+    .time-slot-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-details-summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .steps-flow {
+        flex-wrap: wrap;
+    }
+
+    .flow-arrow {
+        display: none;
+    }
+
+    .flow-item {
+        flex: 0 0 30%;
+    }
+}
 
 @media (max-width: 600px) {
-
-    .back-dashboard{
+    .back-dashboard {
         display: flex;
     }
 
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .progress-line {
+        width: 25px;
+        margin: 0 5px;
+    }
+
+    .distance {
+        display: none;
+    }
+
+    /* Tighten inner gutters on small screens */
     .step-header {
-        margin: 0 18px 18px;
+        padding: 18px;
     }
 
-    .step-header h2 {
-        font-size: 20px;
+    .centre-search {
+        margin: 18px 18px 0;
     }
 
-    .selected-centre {
+    .centre-list {
+        padding: 0 18px;
+        margin-top: 18px;
+    }
+
+    .selected-centre,
+    .selected-information {
         margin: 0 18px 18px;
     }
 
     .produce-list {
-        margin: 0 18px;
+        margin: 0 18px 18px;
+    }
+
+    .calendar-container,
+    .selected-date-box,
+    .booking-details-summary,
+    .slot-notice,
+    .available-heading,
+    .time-slot-grid,
+    .review-booking-card,
+    .farmer-details,
+    .arrival-notice {
+        margin-left: 18px;
+        margin-right: 18px;
     }
 
     .produce-card {
@@ -769,1529 +1891,12 @@
         font-size: 14px;
     }
 
-    .produce-info p {
-        font-size: 10px;
-    }
-
     .booking-actions {
-        margin: 20px 18px;
-    }
-}
-
-
-/* =====================================================
-   CALENDAR
-===================================================== */
-
-.calendar-container {
-    margin: 0 25px;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 9px;
-
-    padding: 20px;
-}
-
-
-.calendar-top {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 20px;
-}
-
-
-.calendar-top h2 {
-    font-size: 19px;
-}
-
-
-.calendar-top button {
-    width: 30px;
-
-    height: 30px;
-
-    border: 1px solid white;
-
-    background: white;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-
-    color: #555;
-}
-
-
-
-/* =========================================
-   MONTH SELECTOR
-========================================= */
-
-.month-selector {
-    position: relative;
-}
-
-
-/* Month button */
-
-.month-title {
-    border: none;
-    background: transparent;
-
-    font-family: inherit;
-    font-size: 19px;
-    font-weight: 600;
-
-    color: #333;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-
-/* Small arrow */
-
-.month-title i {
-    font-size: 10px;
-    color: #777;
-
-    transition: transform 0.2s ease;
-}
-
-
-/* Rotate arrow when opened */
-
-.month-selector.open .month-title i {
-    transform: rotate(180deg);
-}
-
-
-/* Dropdown */
-
-.month-dropdown {
-    display: none;
-
-    position: absolute;
-
-    top: 40px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 150px;
-
-    background: white;
-
-    border: 1px solid #dfe5e1;
-
-    border-radius: 9px;
-
-    padding: 7px;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-
-    z-index: 100;
-}
-
-
-/* Show dropdown */
-
-.month-selector.open .month-dropdown {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 4px;
-}
-
-
-/* Month options */
-
-.month-dropdown button {
-    border: none;
-
-    background: transparent;
-
-    padding: 8px 5px;
-
-    border-radius: 6px;
-
-    font-family: inherit;
-
-    font-size: 11px;
-
-    color: #555;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-
-.month-dropdown button:hover {
-    background: #edf7ef;
-
-    color: #07883f;
-}
-
-
-/* Selected month */
-
-.month-dropdown button.selected-month {
-    background: #07883f;
-
-    color: white;
-
-    font-weight: 600;
-}
-
-
-.weekdays,
-.calendar-days {
-    display: grid;
-
-    grid-template-columns: repeat(7, 1fr);
-
-    text-align: center;
-}
-
-
-.weekdays {
-    margin-bottom: 10px;
-}
-
-
-.weekdays span {
-    font-size: 11px;
-
-    color: #888;
-
-    font-weight: 600;
-}
-
-
-.calendar-days {
-    row-gap: 7px;
-}
-
-
-.calendar-day {
-    width: 34px;
-
-    height: 34px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    font-size: 13px;
-
-    transition: 0.2s;
-}
-
-
-.calendar-day:hover {
-    background: #eaf7ef;
-
-    color: #07883f;
-}
-
-
-.calendar-day.empty {
-    cursor: default;
-}
-
-
-.calendar-day.selected {
-    background: #07883f;
-
-    color: white;
-
-    font-weight: 600;
-}
-
-
-.calendar-day.disabled {
-    color: #c4c9c6;
-
-    cursor: not-allowed;
-}
-
-
-/* =====================================================
-   SELECTED DATE
-===================================================== */
-
-.selected-date-box {
-    margin: 18px 25px 0;
-
-    padding: 12px 15px;
-
-    background: #eff8f1;
-
-    border-radius: 7px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    font-size: 13px;
-}
-
-
-.selected-date-box i {
-    color: #07883f;
-}
-
-
-.selected-date-box strong {
-    color: #07883f;
-}
-
-
-/* =====================================================
-   BOOKING SUMMARY
-===================================================== */
-
-.booking-details-summary {
-    margin: 20px 25px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-}
-
-
-.booking-details-summary > div {
-    border: 1px solid #e0e5e1;
-
-    border-radius: 8px;
-
-    padding: 14px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-}
-
-
-.booking-details-summary > div > i {
-    color: #07883f;
-
-    font-size: 16px;
-}
-
-
-.booking-details-summary section {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-
-.booking-details-summary small {
-    font-size: 10px;
-
-    color: #888;
-}
-
-
-.booking-details-summary strong {
-    font-size: 13px;
-}
-
-
-/* =====================================================
-   TIME SLOTS
-===================================================== */
-
-.available-heading {
-    margin: 5px 25px 15px;
-
-    font-size: 12px;
-}
-
-
-.time-slot-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 12px;
-
-    padding: 0 25px;
-}
-
-
-.time-slot {
-    min-height: 68px;
-
-    border: 1px solid #dce1de;
-
-    background: white;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-family: inherit;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 7px;
-
-    transition: 0.2s;
-}
-
-
-.time-slot strong {
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #333;
-}
-
-
-.time-slot span {
-    font-size: 11px;
-
-    color: #888;
-}
-
-
-.time-slot:hover {
-    border-color: #07883f;
-
-    background: #f5fbf6;
-}
-
-
-.time-slot.selected {
-    background: #07883f;
-
-    border-color: #07883f;
-
-    color: white;
-}
-
-
-.time-slot.selected strong,
-.time-slot.selected span {
-    color: white;
-}
-
-
-.time-slot.disabled {
-    background: #f7f8f7;
-
-    color: #c2c7c4;
-
-    cursor: not-allowed;
-}
-
-
-.time-slot.disabled strong,
-.time-slot.disabled span {
-    color: #aeb4b0;
-}
-
-
-/* =====================================================
-   NOTICE
-===================================================== */
-
-.slot-notice {
-    margin: 20px 25px 0;
-
-    padding: 13px 15px;
-
-    background: #fffaf0;
-
-    border: 1px solid #eedfbf;
-
-    border-radius: 7px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-
-.slot-notice i {
-    color: #b98228;
-}
-
-
-.slot-notice p {
-    font-size: 13px;
-
-    color: #6c634f;
-}
-
-
-
-/* =====================================================
-   REVIEW BOOKING
-===================================================== */
-
-#reviewStep {
-    display: none;
-}
-
-#reviewStep.active {
-    display: block;
-}
-
-
-/* Review Card */
-
-.review-booking-card {
-    margin: 20px 25px;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 9px;
-
-    overflow: hidden;
-}
-
-
-.review-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 14px 16px;
-
-    border-bottom: 1px solid #edf0ee;
-}
-
-
-.review-row:last-child {
-    border-bottom: none;
-}
-
-
-.review-icon {
-    width: 38px;
-    height: 38px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #edf7ef;
-
-    color: #07883f;
-
-    font-size: 15px;
-}
-
-
-.review-info {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-
-.review-info small {
-    font-size: 10px;
-
-    color: #888;
-}
-
-
-.review-info strong {
-    font-size: 13px;
-
-    color: #333;
-}
-
-
-.review-info span {
-    font-size: 10px;
-
-    color: #888;
-}
-
-
-/* =====================================================
-   FARMER DETAILS
-===================================================== */
-
-.farmer-details {
-    margin: 20px 25px;
-
-    padding: 16px;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 9px;
-}
-
-
-.farmer-details h3 {
-    font-size: 14px;
-
-    margin-bottom: 14px;
-
-    color: #333;
-}
-
-
-.farmer-row {
-    display: grid;
-
-    grid-template-columns: 20px 1fr auto;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 7px 0;
-
-    font-size: 12px;
-}
-
-
-.farmer-row i {
-    color: #777;
-}
-
-
-.farmer-row span {
-    color: #888;
-}
-
-
-.farmer-row strong {
-    color: #333;
-
-    font-weight: 500;
-}
-
-
-/* =====================================================
-   ARRIVAL NOTICE
-===================================================== */
-
-.arrival-notice {
-    margin: 20px 25px;
-
-    padding: 13px 15px;
-
-    background: #eef8ff;
-
-    border: 1px solid #d5eaf7;
-
-    border-radius: 8px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-}
-
-
-.arrival-notice > i {
-    color: #147bb5;
-
-    font-size: 17px;
-}
-
-
-.arrival-notice strong {
-    display: block;
-
-    font-size: 12px;
-
-    color: #1470a2;
-}
-
-
-.arrival-notice p {
-    margin-top: 4px;
-
-    font-size: 11px;
-
-    color: #555;
-}
-
-
-.review-actions {
-    margin-top: 25px;
-}
-
-
-/* =====================================================
-   BOOKING CONFIRMED
-===================================================== */
-
-.booking-confirmed {
-    display: none;
-
-    background: #f5fbf6;
-
-    border: 1px solid #dfe9e2;
-
-    border-radius: 12px;
-
-    padding: 35px 25px;
-
-    text-align: center;
-
-    animation: showStep 0.3s ease;
-}
-
-
-.booking-confirmed.active {
-    display: block;
-}
-
-
-.confirmation-icon {
-    width: 58px;
-    height: 58px;
-
-    margin: 0 auto 14px;
-
-    border-radius: 50%;
-
-    background: #07883f;
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 27px;
-}
-
-
-.booking-confirmed h2 {
-    margin: 0;
-
-    color: #087a3a;
-
-    font-size: 23px;
-}
-
-
-.booking-confirmed > p {
-    margin-top: 7px;
-
-    font-size: 13px;
-
-    color: #777;
-}
-
-
-/* =====================================================
-   TOKEN CARD
-===================================================== */
-
-.token-card {
-    max-width: 520px;
-
-    margin: 22px auto 12px;
-
-    background: white;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 10px;
-
-    padding: 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    text-align: left;
-}
-
-
-.token-information {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-}
-
-
-.token-information > span {
-    font-size: 11px;
-
-    color: #777;
-}
-
-
-.token-information > strong {
-    font-size: 30px;
-
-    color: #07883f;
-}
-
-
-.token-details {
-    display: flex;
-
-    gap: 20px;
-
-    margin-top: 6px;
-}
-
-
-.token-details span {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    font-size: 11px;
-
-    color: #555;
-}
-
-
-.token-details i {
-    color: #07883f;
-}
-
-
-.token-details b {
-    font-weight: 500;
-}
-
-
-.confirmed-centre {
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    font-size: 11px;
-
-    color: #555;
-
-    margin-top: 3px;
-}
-
-
-.confirmed-centre i {
-    color: #07883f;
-}
-
-
-/* =====================================================
-   QR
-===================================================== */
-
-.qr-placeholder {
-    width: 95px;
-    height: 95px;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 7px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: white;
-}
-
-
-.qr-placeholder i {
-    font-size: 62px;
-
-    color: #222;
-}
-
-
-/* =====================================================
-   BOOKING ID
-===================================================== */
-
-.booking-id {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding: 7px 12px;
-
-    background: #eaf5ec;
-
-    border-radius: 20px;
-
-    font-size: 11px;
-
-    color: #555;
-}
-
-
-.booking-id i {
-    color: #07883f;
-}
-
-
-.booking-id strong {
-    color: #087a3a;
-}
-
-
-/* =====================================================
-   NEXT STEPS
-===================================================== */
-
-.next-steps {
-    max-width: 1000px;
-
-    margin: 28px auto 0;
-
-    padding: 20px;
-
-    background: white;
-
-    border: 1px solid #e0e5e1;
-
-    border-radius: 10px;
-
-    text-align: left;
-}
-
-
-.next-steps > h3 {
-    margin-bottom: 18px;
-
-    font-size: 15px;
-
-    color: #176f3b;
-}
-
-
-.steps-flow {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-}
-
-
-.flow-item {
-    flex: 1;
-
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 5px;
-}
-
-
-.flow-icon {
-    width: 42px;
-    height: 42px;
-
-    border-radius: 50%;
-
-    background: #edf7ef;
-
-    color: #07883f;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 17px;
-}
-
-
-.flow-item strong {
-    font-size: 11px;
-}
-
-
-.flow-item span {
-    font-size: 9px;
-
-    color: #888;
-}
-
-
-.flow-arrow {
-    font-size: 20px;
-
-    color: #999;
-}
-
-
-/* =====================================================
-   IMPORTANT NOTES
-===================================================== */
-
-.important-notes {
-    margin-top: 20px;
-
-    padding: 15px;
-
-    background: #f6fbf7;
-
-    border: 1px solid #e1ebe3;
-
-    border-radius: 8px;
-}
-
-
-.important-notes h3 {
-    font-size: 13px;
-
-    color: #176f3b;
-
-    margin-bottom: 10px;
-}
-
-
-.important-notes ul {
-    margin: 0;
-
-    padding-left: 18px;
-}
-
-
-.important-notes li {
-    font-size: 11px;
-
-    color: #555;
-
-    margin-bottom: 6px;
-}
-
-
-/* =====================================================
-   CONFIRMATION BUTTONS
-===================================================== */
-
-.confirmation-actions {
-    max-width: 520px;
-
-    margin: 22px auto 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-}
-
-
-.confirmation-actions button {
-    min-width: 190px;
-
-    justify-content: center;
-}
-
-
-#bookingConfirmed{
-    display: none;
-}
-
-#bookingConfirmed.active{
-    display: block;
-}
-
-
-/* =====================================================
-   BOOKING RECEIPT
-===================================================== */
-
-.booking-receipt {
-
-    width: min(900px, 90%);
-
-    margin: 60px auto;
-
-    padding: 45px;
-
-    background: #ffffff;
-
-    border-radius: 22px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 50px;
-
-    box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.10);
-
-    border: 1px solid #e9ecef;
-
-}
-
-
-/* =====================================================
-   LEFT SECTION
-===================================================== */
-
-.receipt-left {
-
-    flex: 1;
-
-}
-
-
-.receipt-success-icon {
-
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #e8f7ee;
-
-    color: #22a05a;
-
-    font-size: 25px;
-
-    margin-bottom: 18px;
-
-}
-
-
-.receipt-left h1 {
-
-    margin: 0;
-
-    font-size: 32px;
-
-    font-weight: 700;
-
-    color: #182b3a;
-
-}
-
-
-.receipt-message {
-
-    margin-top: 8px;
-
-    margin-bottom: 28px;
-
-    color: #6b7280;
-
-    font-size: 16px;
-
-    line-height: 1.5;
-
-}
-
-
-/* =====================================================
-   RECEIPT DETAILS
-===================================================== */
-
-.receipt-details {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 17px;
-
-}
-
-
-.receipt-detail {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding-bottom: 12px;
-
-    border-bottom: 1px solid #eeeeee;
-
-}
-
-
-.receipt-detail span {
-
-    color: #737b83;
-
-    font-size: 14px;
-
-}
-
-
-.receipt-detail strong {
-
-    color: #1d2d3d;
-
-    font-size: 15px;
-
-    text-align: right;
-
-}
-
-
-/* =====================================================
-   CONFIRMED STATUS
-===================================================== */
-
-.receipt-status {
-
-    margin-top: 28px;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 10px 16px;
-
-    border-radius: 30px;
-
-    background: #eaf8ef;
-
-    color: #219653;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-}
-
-
-.receipt-status i {
-
-    font-size: 15px;
-
-}
-
-
-/* =====================================================
-   RIGHT QR SECTION
-===================================================== */
-
-.receipt-right {
-
-    width: 260px;
-
-    min-width: 260px;
-
-    padding-left: 45px;
-
-    border-left: 1px dashed #d8dde2;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-}
-
-
-.qr-wrapper {
-
-    padding: 12px;
-
-    background: white;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.08);
-
-}
-
-
-/* =====================================================
-   DUMMY QR
-===================================================== */
-
-.dummy-qr {
-
-    width: 170px;
-
-    height: 170px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(21, 1fr);
-
-    grid-template-rows:
-        repeat(21, 1fr);
-
-    background: white;
-
-}
-
-
-.dummy-qr span {
-
-    width: 100%;
-
-    height: 100%;
-
-}
-
-
-.qr-black {
-
-    background: #111;
-
-}
-
-
-.qr-white {
-
-    background: white;
-
-}
-
-
-.receipt-right h3 {
-
-    margin: 18px 0 5px;
-
-    font-size: 17px;
-
-    color: #263746;
-
-}
-
-
-.receipt-right p {
-
-    margin: 0;
-
-    max-width: 190px;
-
-    color: #7b858d;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-}
-
-
-.qr-token {
-
-    margin-top: 12px;
-
-    padding: 6px 14px;
-
-    border-radius: 6px;
-
-    background: #f1f5f3;
-
-    color: #263746;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .booking-receipt {
-
-        width: 90%;
-
-        margin: 30px auto;
-
-        padding: 28px 22px;
-
-        flex-direction: column;
-
-        gap: 35px;
-
-    }
-
-
-    .receipt-left {
-
-        width: 100%;
-
-    }
-
-
-    .receipt-left h1 {
-
-        font-size: 26px;
-
-    }
-
-
-    .receipt-detail {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 4px;
-
-    }
-
-
-    .receipt-detail strong {
-
-        text-align: left;
-
-    }
-
-
-    .receipt-right {
-
-        width: 100%;
-
-        min-width: auto;
-
-        padding-left: 0;
-
-        padding-top: 30px;
-
-        border-left: none;
-
-        border-top: 1px dashed #d8dde2;
-
-    }
-
-}
-
-
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .steps-flow {
-        flex-wrap: wrap;
-    }
-
-    .flow-arrow {
-        display: none;
-    }
-
-    .flow-item {
-        flex: 0 0 30%;
-    }
-
-}
-
-
-@media (max-width: 550px) {
-
-    .review-booking-card,
-    .farmer-details,
-    .arrival-notice {
-        margin-left: 18px;
-        margin-right: 18px;
+        padding: 14px 18px;
     }
 
     .token-card {
         flex-direction: column;
-
-        gap: 18px;
-
         align-items: flex-start;
     }
 
@@ -2301,13 +1906,11 @@
 
     .token-details {
         flex-direction: column;
-
         gap: 7px;
     }
 
     .confirmation-actions {
         flex-direction: column;
-
         margin-left: 18px;
         margin-right: 18px;
     }
@@ -2315,41 +1918,4 @@
     .confirmation-actions button {
         width: 100%;
     }
-
-    .booking-header {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .progress-line {
-        width: 25px;
-
-        margin: 0 5px;
-    }
-
-    .distance {
-        display: none;
-    }
-
 }
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media (max-width: 800px) {
-
-    .time-slot-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .booking-details-summary {
-        grid-template-columns: 1fr;
-    }
-
-}
-
