@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,10 +14,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="../../user-dashboard.css" />
-    <!-- dashboard chrome styles -->
+    <!-- Chrome + page styles live in payments.css (chrome pasted at the top) -->
     <link rel="stylesheet" href="payments.css" />
-    <!-- payments content styles -->
   </head>
   <body>
     <!-- ================= MOBILE HEADER (same as dashboard) ================= -->
@@ -151,7 +149,7 @@
         <a href="../live-queue/live-queue.html" class="nav-item"
           ><i class="fa-solid fa-users"></i><span>Live Queue</span></a
         >
-        <a href="payments.html" class="nav-item active"
+        <a href="../User-Payments/payments.html" class="nav-item active"
           ><i class="fa-solid fa-indian-rupee-sign"></i><span>Payments</span></a
         >
       </nav>
@@ -160,8 +158,8 @@
           ><i class="fa-regular fa-circle-question"></i
           ><span>Help &amp; Support</span></a
         >
-        <a href="#" class="nav-item"
-          ><i class="fa-regular fa-circle-user"></i><span>Profile</span></a
+        <a href="../User-Settings/user-settings.html" class="nav-item"
+          ><i class="fa-solid fa-gear"></i><span>Settings</span></a
         >
         <a href="#" class="nav-item"
           ><i class="fa-solid fa-arrow-right-from-bracket"></i
@@ -268,7 +266,7 @@
             </div>
             <div>
               <p>Total Payments</p>
-              <strong>₹24,650</strong><span>All time</span>
+              <strong  id="totalPayments">₹24,650</strong><span>All time</span>
             </div>
           </div>
           <div class="pay-stat">
@@ -277,7 +275,7 @@
             </div>
             <div>
               <p>Paid Amount</p>
-              <strong>₹20,250</strong><span>Completed payments</span>
+              <strong id="paidAmount">₹20,250</strong><span>Completed payments</span>
             </div>
           </div>
           <div class="pay-stat">
@@ -286,7 +284,7 @@
             </div>
             <div>
               <p>Pending Amount</p>
-              <strong>₹4,400</strong><span>Awaiting payment</span>
+              <strong id="pendingAmount">₹4,400</strong><span>Awaiting payment</span>
             </div>
           </div>
           <div class="pay-stat">
@@ -295,7 +293,7 @@
             </div>
             <div>
               <p>Total Transactions</p>
-              <strong>7</strong><span>All transactions</span>
+              <strong id="totalTransactions">7</strong><span>All transactions</span>
             </div>
           </div>
         </div>

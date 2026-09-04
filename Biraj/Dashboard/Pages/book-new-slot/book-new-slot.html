@@ -153,7 +153,7 @@
         <a href="../../Pages/" class="nav-item"
           ><i class="fa-solid fa-users"></i><span>Live Queue</span></a
         >
-        <a href="../../Pages/" class="nav-item"
+        <a href="../../Pages/User-Payments/payments.html" class="nav-item"
           ><i class="fa-solid fa-indian-rupee-sign"></i><span>Payments</span></a
         >
       </nav>
@@ -162,9 +162,11 @@
           ><i class="fa-regular fa-circle-question"></i
           ><span>Help &amp; Support</span></a
         >
-        <a href="#" class="nav-item"
-          ><i class="fa-regular fa-circle-user"></i><span>Profile</span></a
-        >
+        <a href="Pages/User-Settings/user-settings.html" class="nav-item">
+          <i class="fa-regular fa-circle-user"></i>
+          <span>Settings</span>
+        </a>
+
         <a href="#" class="nav-item"
           ><i class="fa-solid fa-arrow-right-from-bracket"></i
           ><span>Logout</span></a
@@ -383,6 +385,12 @@
                 ><i class="fa-solid fa-check"></i></span
             ></label>
           </div>
+          <!-- No-match message (shown only when search has no results) -->
+          <p class="no-centre-match" id="noCentreMatch" hidden>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            No centres found. Try a different search.
+          </p>
+
           <div class="booking-actions">
             <button class="next-button" id="centreNext" type="button">
               Next <i class="fa-solid fa-arrow-right"></i>
@@ -454,6 +462,48 @@
               <div class="produce-radio"></div
             ></label>
           </div>
+
+          <!-- ================= QUANTITY SELECTION ================= -->
+          <div class="quantity-card">
+            <div class="quantity-info">
+              <div class="quantity-icon">
+                <i class="fa-solid fa-weight-hanging"></i>
+              </div>
+              <div>
+                <h3>Approximate Quantity</h3>
+                <p>How much produce will you bring?</p>
+              </div>
+            </div>
+
+            <div class="quantity-stepper">
+              <button
+                type="button"
+                class="qty-btn"
+                id="qtyMinus"
+                aria-label="Decrease quantity"
+              >
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <input
+                type="number"
+                id="quantityInput"
+                value="12"
+                min="1"
+                max="500"
+                inputmode="numeric"
+              />
+              <span class="qty-unit">Quintal</span>
+              <button
+                type="button"
+                class="qty-btn"
+                id="qtyPlus"
+                aria-label="Increase quantity"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
           <div class="booking-actions">
             <button type="button" class="back-button" id="produceBack">
               <i class="fa-solid fa-arrow-left"></i> Back</button
@@ -664,8 +714,6 @@
               <p>15 minutes before your slot time.</p>
             </div>
           </div>
-
-          
 
           <div class="booking-actions review-actions">
             <button type="button" class="back-button" id="changeDetails">
