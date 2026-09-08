@@ -1327,6 +1327,12 @@ RESPONSIVE 750px
 
 @media (max-width: 750px) {
 
+    .notification-dropdown {
+        position: fixed;
+        top: 70px;
+        right: 8px;
+        width: min(380px, calc(100vw - 24px));
+    }
     /* Sidebar */
 
     .sidebar {
@@ -1721,14 +1727,31 @@ NO BOOKINGS
 MOBILE
 ========================================================= */
 
-@media (max-width: 700px) {
-
-    .my-bookings-page {
-        padding: 20px;
+@media (max-width: 750px) {
+    .mobile-header .notification-dropdown {
+        position: fixed;
+        top: 70px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        max-width: calc(100vw - 24px);
     }
 
-    .booking-card-body {
-        grid-template-columns: 1fr;
+    .quick-actions {
+        width: 100%;
+        max-width: none;
     }
+
+    .quick-grid {
+        grid-template-columns: 1fr;  /* one full-width card per row */
+        gap: 12px;
+    }
+
+    .quick-card {
+        width: 100%;
+        max-width: none;
+    }
+
 }
+
 

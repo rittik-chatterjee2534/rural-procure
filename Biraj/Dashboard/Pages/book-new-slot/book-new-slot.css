@@ -536,6 +536,16 @@ a {
    8. RESPONSIVE (<= 750px)
 --------------------------------------------------------- */
 @media (max-width: 750px) {
+
+    .mobile-header .notification-dropdown {
+        position: fixed;
+        top: 70px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        max-width: calc(100vw - 24px);
+    }
+
     .sidebar {
         width: 260px;
         min-width: 0;
