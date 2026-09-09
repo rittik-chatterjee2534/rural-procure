@@ -72,7 +72,7 @@ a {
     top: 0;
     width: 240px;
     height: 100vh;
-    background: #ffffff;
+    background: #034d35;
     border-right: 1px solid #e1e5e1;
     display: flex;
     flex-direction: column;
@@ -122,15 +122,63 @@ a {
 .brand h1 {
     margin-top: 9px;
     font-size: 22px;
-    color: #075f1b;
+    color: white;
     font-weight: 700;
 }
 
 .brand p {
     margin-top: 5px;
     font-size: 11px;
-    color: #555555;
+    color: white;
 }
+
+
+/* =========================================================
+   KISAN MITRA SIDEBAR BRAND
+========================================================= */
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.brand-heading {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.8px;
+    white-space: nowrap;
+}
+
+.brand-green {
+    color: #23b55b;
+}
+
+.brand-orange {
+    color: #f39a0b;
+}
+
+.brand-tagline {
+    margin-top: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+    color: white;
+    white-space: nowrap;
+}
+
 
 /* ---------- 3b. Navigation ---------- */
 .navigation {
@@ -145,7 +193,7 @@ a {
     padding: 0 16px;
     margin-bottom: 6px;
     border-radius: 9px;
-    color: #111111;
+    color: white;
     font-size: 15px;
     font-weight: 500;
     transition: background 0.25s ease, color 0.25s ease;
@@ -154,7 +202,7 @@ a {
 .nav-item i {
     width: 18px;
     font-size: 17px;
-    color: #50555b;
+    color: white;
 }
 
 .nav-item:hover {

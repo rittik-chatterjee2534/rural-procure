@@ -100,26 +100,58 @@ BRAND
     object-fit: contain;
 }
 
-.brand h1 {
-    margin-top: 9px;
-    font-size: 22px;
-    color: #075f1b;
-    font-weight: 700;
+/* =========================================================
+   KISAN MITRA SIDEBAR BRAND
+========================================================= */
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.brand p {
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.brand-heading {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.8px;
+    white-space: nowrap;
+}
+
+.brand-green {
+    color: #23b55b;
+}
+
+.brand-orange {
+    color: #f39a0b;
+}
+
+.brand-tagline {
     margin-top: 5px;
-    font-size: 11px;
-    color: #555;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+    color: white;
+    white-space: nowrap;
 }
 
 
 /* =========================================================
 NAVIGATION
 ========================================================= */
-
-.navigation {
-    padding: 2.5vh 1vw;
+.navigation{
+    margin-top: 2vh;
 }
 
 .nav-item {
